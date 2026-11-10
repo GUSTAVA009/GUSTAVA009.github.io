@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ВЕЗУВИЙ V48 — GUSTAVA ZONE 2040 · 3D-просмотр</title>
+<meta name="theme-color" content="#070b10">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--line:#303b49;--ink:#e9edf3;--muted:#9dacbf;--amber:#ef9b48}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 60% -35%,#222d3c 0,#0b121b 48%,#070b10 100%);font:15px/1.5 "Segoe UI",Inter,system-ui,Arial,sans-serif;color:var(--ink)}
+a{color:#ffc38a;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1312px;padding:20px 22px 46px;margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:8px 0 26px;border-bottom:1px solid #253140}
+.brand{letter-spacing:.17em;color:#b7c5d9;font-weight:800;font-size:12px}.brand strong{color:#ffb979}
+.topbar a{font-size:14px;color:#b7c5d9}
+.lead{padding:30px 0 20px}.eyebrow{font-size:12px;letter-spacing:.21em;color:var(--amber);font-weight:800}
+h1{font-size:clamp(40px,6.2vw,82px);line-height:1.04;margin:9px 0 13px;letter-spacing:-.065em}
+h1 span{color:#c6d0db;font-weight:400;font-size:.35em;letter-spacing:.09em;vertical-align:middle}
+.lead p{max-width:770px;color:var(--muted);font-size:16px;margin:0}
+.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(275px,.75fr);gap:20px}
+.viewer{min-height:585px;position:relative;overflow:hidden;border-radius:20px;border:1px solid #344152;background:radial-gradient(ellipse at 55% 36%,#1c2936 0,#111a26 47%,#080c11 82%)}
+model-viewer{height:585px;width:100%;--poster-color:transparent;--progress-bar-color:#ff8d42}
+.stamp{position:absolute;top:18px;left:19px;pointer-events:none;font:700 11px/1.25 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:#ffd0a8;border:1px solid #75513e;background:#25170fde;padding:8px 11px;border-radius:8px}
+.corner{position:absolute;right:18px;top:18px;color:#9bb0c2;font:700 11px ui-monospace,Consolas,monospace;pointer-events:none}
+.hint{position:absolute;bottom:15px;left:17px;right:17px;text-align:center;background:#070d16ce;border:1px solid #263748;border-radius:8px;padding:8px 11px;color:#a6b8c9;font-size:12px;pointer-events:none}
+.panel{border:1px solid var(--line);background:#111a25d9;border-radius:20px;padding:22px}
+.panel h2{font-size:20px;letter-spacing:-.02em;margin:0 0 8px}.panel p{color:var(--muted);margin:0 0 18px}
+.line{height:1px;background:#304052;margin:22px 0}
+button{cursor:pointer;color:#f5e6d8;background:#3c261c;border:1px solid #85593a;border-radius:10px;padding:12px 15px;font-weight:700}
+button:hover{background:#553122}button:focus-visible,input:focus-visible{outline:2px solid #ffb076;outline-offset:3px}
+.controls{display:flex;gap:9px;flex-wrap:wrap}
+.controls button{flex:1;white-space:nowrap}
+.speed{display:flex;justify-content:space-between;align-items:center;color:#cfdae8;font-weight:700;font-size:13px;margin:22px 0 9px}
+input[type=range]{width:100%;accent-color:#ff994d;cursor:pointer}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.metric{padding:13px;border:1px solid #304052;background:#0b1420;border-radius:12px}
+.metric b{display:block;font-size:22px;letter-spacing:-.04em;color:#ffe6d3}.metric small{display:block;color:#9eaebe;font-size:11px;line-height:1.6}
+.note{margin-top:16px;color:#8d9aaa;font-size:12px;line-height:1.65}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
+.shot{overflow:hidden;border:1px solid #304052;border-radius:13px;background:#111922}
+.shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.shot strong{display:block;font-size:13px;margin:11px 13px 1px}.shot small{display:block;margin:0 13px 13px;color:#9aaabd}
+.footer{border-top:1px solid #26313d;margin-top:38px;padding-top:18px;color:#8f9db0;font-size:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.viewer{min-height:420px}model-viewer{height:450px}.panel{padding:18px}.gallery{gap:8px}.wrap{padding:14px 12px 35px}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr}.shot img{max-height:320px}.lead{padding-top:24px}.topbar{padding-bottom:16px}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="topbar"><div class="brand">GUSTAVA <strong>ZONE 2040</strong> &nbsp;/&nbsp; ARTIFACT LAB</div><a href="./index.html?v=48">Все 7 артефактов</a></div>
+<section class="lead">
+<div class="eyebrow">V48 · НОВЫЙ 3D-СКУЛЬПТ · ВЫБРАННЫЙ АРТЕФАКТ</div>
+<h1>ВЕЗУВИЙ <span>/ OBSIDIAN HEART</span></h1>
+<p>Цельный вулканический камень со сквозными тепловыми трещинами, глубоким жерлом и деформируемым магматическим ядром. Это реальная 3D-геометрия Blender, а не концепт-изображение.</p>
+</section>
+<section class="layout">
+ <div class="viewer">
+  <div class="stamp">3D · PBR · ANIMATED</div><div class="corner">TURN / ZOOM / INSPECT</div>
+  <model-viewer id="vesuvius"
+    src="models/Vesuvius.glb?v=48"
+    poster="images/GZ48_Vesuvius_Hero.jpg"
+    alt="Везувий V48 — объёмный анимированный артефакт из вулканического базальта с раскалёнными трещинами"
+    camera-controls auto-rotate rotation-per-second="7deg" auto-rotate-delay="2800"
+    autoplay animation-name="GZ45_8Sec_Complete_Loop"
+    camera-orbit="35deg 66deg 105%" min-camera-orbit="auto auto 45%" max-camera-orbit="auto auto 420%"
+    field-of-view="32deg" exposure="1.10" environment-image="neutral" shadow-intensity=".80"
+    tone-mapping="neutral" touch-action="pan-y" loading="eager" interaction-prompt="auto"></model-viewer>
+  <div class="hint">Проведи по модели пальцем · Увеличь двумя пальцами · Анимация повторяется каждые 8 секунд</div>
+ </div>
+ <aside class="panel">
+  <h2>Реальная анимация</h2>
+  <p>Пять независимых геометрических волн вздувают магму; микрочастицы поднимаются из жерла. Внешний корпус левитирует и медленно покачивается.</p>
+  <div class="controls"><button id="pause" type="button">⏸ Пауза</button><button id="reset" type="button">↺ Исходный ракурс</button></div>
+  <label class="speed" for="speed">Скорость цикла <span id="value">1×</span></label>
+  <input id="speed" type="range" min=".25" max="2" step=".25" value="1">
+  <div class="line"></div>
+  <h2>Проверяемые параметры</h2>
+  <div class="metrics">
+   <div class="metric"><b>132 960</b><small>полигонов базальта</small></div>
+   <div class="metric"><b>10 × 4K</b><small>PBR-карт в исходниках</small></div>
+   <div class="metric"><b>8 сек.</b><small>бесшовный цикл</small></div>
+   <div class="metric"><b>0</b><small>открытых рёбер корпуса</small></div>
+  </div>
+  <div class="note">Для мобильного 3D-просмотра используются облегчённые текстуры 768 px. Исходники 4K и полноразмерная модель сохраняются в Blender и Unreal. В игровом движке Niagara настраивается отдельно.</div>
+ </aside>
+</section>
+<div class="gallery">
+ <a href="images/GZ48_Vesuvius_Hero.jpg" class="shot"><img src="images/GZ48_Vesuvius_Hero.jpg" loading="lazy" alt="Рендер Везувия спереди"><strong>01 · Студийный ракурс</strong><small>Камень и раскалённые трещины</small></a>
+ <a href="images/GZ48_Vesuvius_Top.jpg" class="shot"><img src="images/GZ48_Vesuvius_Top.jpg" loading="lazy" alt="Рендер Везувия сверху"><strong>02 · Жерло сверху</strong><small>Магма и внутренняя геометрия</small></a>
+ <a href="images/GZ48_Vesuvius_Underside.jpg" class="shot"><img src="images/GZ48_Vesuvius_Underside.jpg" loading="lazy" alt="Рендер Везувия снизу"><strong>03 · Осмотр днища</strong><small>Непрерывная замкнутая оболочка</small></a>
+</div>
+<footer class="footer">GUSTAVA ZONE 2040 · Art pass V48. Технические проверки геометрии и импорт в Unreal пройдены; полноценный AAA-артревью и PIE-тестирование ещё требуются.</footer>
+</div>
+<script>
+const m=document.getElementById('vesuvius'),pause=document.getElementById('pause'),reset=document.getElementById('reset'),speed=document.getElementById('speed'),value=document.getElementById('value');
+let playing=true;
+m.addEventListener('load',()=>{try{m.animationName='GZ45_8Sec_Complete_Loop';m.timeScale=Number(speed.value);m.play();}catch(e){console.warn('Animation playback:',e.message)}});
+pause.addEventListener('click',()=>{playing=!playing;if(playing){m.play();pause.textContent='⏸ Пауза'}else{m.pause();pause.textContent='▶ Продолжить'}});
+reset.addEventListener('click',()=>{m.cameraOrbit='35deg 66deg 105%';m.fieldOfView='32deg'});
+speed.addEventListener('input',()=>{m.timeScale=Number(speed.value);value.textContent=speed.value+'×'});
+</script>
+</body></html>
