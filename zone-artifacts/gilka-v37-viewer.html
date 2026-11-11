@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Гилка | 3D-просмотр V37</title>
+<meta name="description" content="Интерактивный обзор реальной 3D-модели детектора V37 из игрового проекта GUSTAVA ZONA 2040.">
+<meta name="theme-color" content="#0b1013">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#e9f1ed;background:#080d10;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;overflow-x:hidden}
+body{background:radial-gradient(ellipse at 80% -15%,#19393a 0%,transparent 41%),radial-gradient(ellipse at 0 90%,#231b11 0%,transparent 50%),#080d10}
+a{color:#70efbd}a:hover{color:#befce6}
+.shell{max-width:1540px;margin:auto;padding:24px clamp(12px,3vw,40px) 48px}
+.top{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:8px 0 18px;border-bottom:1px solid #2b393c}
+.brand{font-weight:900;letter-spacing:.20em;font-size:12px;color:#89dbbc}
+.route{font-size:12px;letter-spacing:.09em;color:#9babb0}
+.titlewrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:25px 0 18px}
+h1{font-size:clamp(28px,4vw,55px);line-height:1.08;margin:0;font-weight:850;letter-spacing:-.045em}
+h1 span{font-weight:450;color:#80ab9b}
+.subtitle{color:#a3b5b3;font-size:14px;line-height:1.65;margin:12px 0 0;max-width:740px}
+.pill{border:1px solid #3f635b;background:#10251f;border-radius:100px;padding:9px 14px;font-size:11px;font-weight:750;letter-spacing:.08em;color:#92efc2;white-space:nowrap}
+.layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(320px,.88fr);gap:15px}
+.stage{position:relative;min-height: min(69vw,660px);overflow:hidden;border-radius:20px;background:radial-gradient(ellipse at 53% 43%,#213037 0%,#11181c 45%,#090f12 82%);border:1px solid #304147;box-shadow:0 25px 80px #0008}
+.stage:before{content:"";position:absolute;inset:0;background:linear-gradient(#9de5cb0b 1px,transparent 1px),linear-gradient(90deg,#9de5cb0b 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(ellipse at center,#0008,transparent 75%);pointer-events:none}
+model-viewer{width:100%;height:100%;min-height:610px;position:absolute;inset:0;outline:none;--poster-color:transparent}
+model-viewer::part(default-progress-bar){background-color:#63e6a7}
+.liveflag{position:absolute;left:20px;top:18px;display:flex;align-items:center;gap:8px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;color:#9ddcbd;pointer-events:none}
+.liveflag:before{content:"";height:7px;width:7px;background:#52ff9a;border-radius:100%;box-shadow:0 0 14px #52ff9a}
+.stage-north{position:absolute;right:19px;top:18px;color:#7b9596;font:11px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;text-align:right;pointer-events:none}
+.controlbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:absolute;bottom:18px;left:18px;right:18px;pointer-events:none}
+.controlbar .chip{border:1px solid #4a6265;background:#0b1419dc;color:#d1e4dc;border-radius:20px;padding:9px 12px;font-size:11px;backdrop-filter:blur(9px)}
+.card{border:1px solid #34484a;border-radius:20px;background:linear-gradient(155deg,#172326 0%,#10191b 60%,#0b1114);padding:23px;box-shadow:0 20px 60px #0003;min-width:0}
+.sectiontop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.eyebrow{font:700 11px/1.4 ui-monospace,Consolas,monospace;color:#8adcb6;letter-spacing:.16em}
+.lamp{width:8px;height:8px;border-radius:50%;background:#e4ad55;box-shadow:0 0 18px #e4ad55}
+h2{font-size:23px;line-height:1.2;margin:12px 0 6px}
+.hint{color:#9ab0af;font-size:12px;line-height:1.62}
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:19px 0}
+.mode{border:1px solid #375552;border-radius:10px;background:#152326;color:#a8c1bb;padding:12px 5px;font:700 13px/1.2 ui-monospace,Consolas,monospace;cursor:pointer;transition:.15s ease}
+.mode:hover{border-color:#95dcbf}
+.mode[aria-pressed=true]{background:#285449;color:#e2ffef;border-color:#85f4c0;box-shadow:inset 0 0 0 1px #7deabc44}
+.radar{position:relative;height:248px;border-radius:12px;overflow:hidden;border:1px solid #43645b;background:radial-gradient(circle at center,#1a3b32 0,#102a27 55%,#091c1e 100%)}
+.radar:before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at center,transparent 0,transparent 38px,#51b98c40 39px,#51b98c40 40px),linear-gradient(90deg,transparent calc(50% - .5px),#60ba9944 50%,transparent calc(50% + .5px)),linear-gradient(transparent calc(50% - .5px),#60ba9944 50%,transparent calc(50% + .5px))}
+.radar:after{content:"";position:absolute;inset:0;background:conic-gradient(from 30deg at center,transparent 0 260deg,#47d99704 300deg,#50ed9926 343deg,#69f4a740 360deg);animation:scan 4s linear infinite;mix-blend-mode:screen}
+@keyframes scan{to{transform:rotate(360deg)}}
+.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:#d2fff0;border-radius:50%;box-shadow:0 0 16px #d2fff0;z-index:2}
+.blip{position:absolute;width:10px;height:10px;background:#ffcb73;border:2px solid #fff4c7;border-radius:50%;box-shadow:0 0 18px #ffc76b;z-index:2;transition:top .4s,left .4s,opacity .4s}
+.blip.b{background:#83eee4;box-shadow:0 0 16px #83eee4}
+.blip.c{background:#dd9fff;box-shadow:0 0 16px #dd9fff}
+.data{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 0 10px;border-bottom:1px solid #2d4243}
+.data label{font:600 11px ui-monospace,Consolas,monospace;color:#8daaa7;letter-spacing:.05em}
+.big{font:750 26px ui-monospace,Consolas,monospace;color:#aff2ce}
+.capture{width:100%;margin:16px 0 5px;border:1px solid #c3b16b;background:linear-gradient(120deg,#6a4a24,#a2732e);color:#fff5df;border-radius:10px;padding:14px;cursor:pointer;font-weight:800;letter-spacing:.08em}
+.capture:active{transform:scale(.99)}
+.capture.pulsing{box-shadow:0 0 45px #e5b56eaa}
+.meta{color:#7f9c98;font:11px/1.6 ui-monospace,Consolas,monospace;margin-top:12px}
+.foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}
+.fact{border:1px solid #2e4042;border-radius:14px;padding:17px;background:#0e1619}
+.fact strong{display:block;font-size:12px;color:#d9e5e0;margin-bottom:6px}
+.fact p{font-size:12px;line-height:1.55;color:#8caaa4;margin:0}
+.asterisk{font-size:12px;line-height:1.6;color:#8ca39c;margin-top:17px}
+.asterisk b{color:#d0e0d8}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.stage{min-height:520px}model-viewer{min-height:520px}.foot{grid-template-columns:1fr}.card{padding:19px}}
+@media(max-width:510px){.stage{min-height:400px}model-viewer{min-height:400px}.controlbar .chip{font-size:10px;padding:6px 8px}h2{font-size:21px}.top{gap:8px}.route{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.radar:after{animation:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top"><div class="brand">GUSTAVA / ZONA 2040</div><div class="route">АРТЕФАКТЫ&nbsp; / &nbsp;ОБОРУДОВАНИЕ&nbsp; / &nbsp;GILKA</div></header>
+<div class="titlewrap"><div><h1>Детектор <span>ГИЛКА</span></h1><p class="subtitle">Интерактивный обзор текущего 3D-корпуса V37, экспортированного непосредственно из Unreal-проекта. Модель можно вращать и рассматривать со всех сторон.</p></div><span class="pill">V37 · ТЕКУЩАЯ ГЕОМЕТРИЯ</span></div>
+<main class="layout">
+<section class="stage">
+<model-viewer id="detector" src="./gilka-v37-preview.glb" alt="Оригинальная трёхмерная модель детектора V37 из проекта GUSTAVA ZONA 2040" camera-controls auto-rotate rotation-per-second="14deg" shadow-intensity=".9" shadow-softness=".7" exposure="1.35" environment-image="neutral" tone-mapping="aces" camera-orbit="32deg 70deg 108%" field-of-view="26deg" ar-status="not-presenting">
+<div slot="poster" style="color:#b2d8c7;padding:42px;text-align:center">Загрузка модели детектора…</div>
+</model-viewer>
+<div class="liveflag">3D MESH / LOCAL SOURCE V37</div>
+<div class="stage-north">DRAG / ROTATE<br>SCROLL / ZOOM<br>PINCH / MOBILE</div>
+<div class="controlbar"><span class="chip">↻ Вращайте мышью</span><span class="chip">⊕ Колесо — масштаб</span><span class="chip">Сенсор: жесты двумя пальцами</span></div>
+</section>
+<aside class="card">
+<div class="sectiontop"><span class="eyebrow">GILKA / SIGNAL SIMULATOR</span><i class="lamp"></i></div>
+<h2>α / β / γ</h2>
+<div class="hint">Переключите диапазон для демонстрации радара. Это браузерная иллюстрация интерфейса; фактический игровой захват проверяется в Unreal.</div>
+<div class="modes">
+<button class="mode" id="a" aria-pressed="true" data-band="0">α &nbsp; ALPHA</button>
+<button class="mode" id="b" aria-pressed="false" data-band="1">β &nbsp; BETA</button>
+<button class="mode" id="g" aria-pressed="false" data-band="2">γ &nbsp; GAMMA</button>
+</div>
+<div class="radar" aria-label="Пример изображения контактов радара"><div class="center"></div><div id="dot1" class="blip"></div><div id="dot2" class="blip b"></div><div id="dot3" class="blip c"></div></div>
+<div class="data"><label>ДИСТАНЦИЯ / ДЕМОНСТРАЦИЯ</label><strong class="big" id="distance">6.4 м</strong></div>
+<button id="capture" class="capture">⚡ ИМПУЛЬСНЫЙ ЗАХВАТ · ДЕМО</button>
+<p id="status" class="meta">Диапазон α. В реальной игре: Q, 1/2/3, F.</p>
+</aside>
+</main>
+<div class="foot">
+<div class="fact"><strong>Модель</strong><p>Настоящий экспорт исходного FBX V37 из GUSTAVA ZONA 2040. Металл, резина, акцентные клавиши, светящийся датчик.</p></div>
+<div class="fact"><strong>Сигнал в игре</strong><p>В C++ добавлены три диапазона, направление, несколько отметок и сигнал, учащающийся с уменьшением дистанции.</p></div>
+<div class="fact"><strong>Эффект захвата</strong><p>Запрограммирован электрический импульс к артефакту и передача в правую руку. В игровом рендере ещё требуется визуальная проверка.</p></div>
+</div>
+<p class="asterisk"><b>Важно:</b> это действующая 3D-геометрия V37 из проекта, а не оригинальная модель Gilka со Sketchfab. Кнопки на странице показывают пример поведения; они не передают команды в Unreal Engine. <a href="./gilka-v37-preview.glb" download>Скачать исходный для просмотра GLB</a>.</p>
+</div>
+<script>
+(function(){
+ const modes=document.querySelectorAll('[data-band]'),dots=['dot1','dot2','dot3'].map(x=>document.getElementById(x)),distance=document.getElementById('distance'),state=document.getElementById('status'),capture=document.getElementById('capture');
+ const targets=[[ [60,28],[26,66],[68,59] ],[ [28,38],[71,74] ],[ [44,24],[75,53],[22,78] ]];
+ const ds=['6.4 м','4.8 м','7.1 м'];let band=0,busy=false;
+ function select(n){
+   if(busy)return;
+   band=n;modes.forEach((v,i)=>v.setAttribute('aria-pressed',String(i===band)));
+   dots.forEach((d,i)=>{const p=targets[band][i];d.style.opacity=p?'1':'0';if(p){d.style.left=p[0]+'%';d.style.top=p[1]+'%';}});
+   distance.textContent=ds[band];state.textContent='Диапазон '+['α','β','γ'][band]+'. В реальной игре: Q, 1/2/3, F.';
+ }
+ modes.forEach(v=>v.addEventListener('click',()=>select(Number(v.dataset.band))));
+ capture.addEventListener('click',()=>{
+  if(busy)return;busy=true;capture.classList.add('pulsing');capture.textContent='⚡ ЗАРЯД · ЭЛЕКТРОМАГНИТНЫЙ ИМПУЛЬС';
+  state.textContent='Демонстрационный захват…';let elapsed=0;
+  let tick=setInterval(()=>{elapsed++; if(elapsed===2){dots[0].style.transform='scale(4)';dots[0].style.opacity='0';}
+   if(elapsed>=5){clearInterval(tick);capture.classList.remove('pulsing');capture.textContent='⚡ ИМПУЛЬСНЫЙ ЗАХВАТ · ДЕМО';state.textContent='Захват завершён (симуляция интерфейса).';dots[0].style.transform='';busy=false;setTimeout(()=>select(band),450);}},170);
+ });
+ const model=document.getElementById('detector');model.addEventListener('error',()=>{state.textContent='Модель не загрузилась. Проверьте интернет или ссылку на GLB ниже.'});
+ select(0);
+})();
+</script>
+</body></html>
