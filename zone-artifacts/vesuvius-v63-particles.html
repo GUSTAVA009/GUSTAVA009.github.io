@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Везувий V63 — искры из трещин и синхронный звук | GUSTAVA ZONE 2040</title>
+<title>Везувий V63 — приземление монеткой, бесшовный звук | GUSTAVA ZONE 2040</title>
 <meta name="theme-color" content="#0b1017">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#0a111a;color:#e9eef4;font:15px/1.5 system-ui,Arial,sans-serif}
@@ -23,17 +23,17 @@ audio{max-width:100%}#retry{margin-top:10px;width:100%}#retry[hidden]{display:no
 </head><body><main>
 <div class="top"><strong>GUSTAVA <span style="color:#fa9e5a">ZONE 2040</span> · ARTIFACT LAB</strong><a href="vesuvius-v62-natural-stone.html">Предыдущая V62</a></div>
 <h1>ВЕЗУВИЙ <span>V63</span></h1>
-<p>Оригинальный 3D-корпус V62, его 4K PBR-материалы и восьмисекундная анимация сохранены. Угольки убраны: теперь из светящихся трещин с обеих сторон вылетают только объёмные искры, ориентированные по направлению движения. Звук синхронизируется с анимацией, включая паузу и изменение скорости.</p>
+<p>Везувий вращается и приземляется как монетка: после переворота он наклоняется примерно на 15–20° и несколько раз обходит кант по кругу, постепенно успокаиваясь. Скорость по умолчанию 1,25×. Сохранены геометрия и 4K PBR-материалы V62, из трещин летят только искры. Магматический звук зациклен без паузы на стыке и смягчён по резким частотам.</p>
 <div class="layout">
 <div id="stage" role="img" aria-label="Интерактивная 3D-модель артефакта Везувий"><div id="status" class="status" role="status" aria-live="polite">Загрузка исходного артефакта 93,3 МБ…</div></div>
 <aside><h2 style="margin:0 0 12px">Управление просмотром</h2>
 <div class="controls"><button id="pause">⏸ Пауза</button><button id="macro">⌕ Макро</button><button id="hero">◉ Общий вид</button><button id="top">↑ Верх</button><button id="bottom">↓ Низ</button><button id="retry" hidden>↻ Повторить</button></div>
-<label for="speed">Скорость анимации <b id="speedVal">1.00×</b></label><input id="speed" type="range" min=".25" max="2" step=".25" value="1">
+<label for="speed">Скорость анимации <b id="speedVal">1.25×</b></label><input id="speed" type="range" min=".25" max="2" step=".25" value="1.25">
 <label for="exposure">Яркость <b id="exposureVal">130%</b></label><input id="exposure" type="range" min=".6" max="2.4" step=".1" value="1.3">
 <label class="toggle"><input id="sparkToggle" type="checkbox" checked> Объёмные искры (без ромбов)</label>
-<div class="metric"><div><b id="counter">520 искр</b><small>Только искры из трещин</small></div><div><b>8 секунд</b><small>Оригинальный переворот</small></div><div><b>4K</b><small id="source">V62 · настоящий камень</small></div><div><b>3D</b><small>Instanced Mesh, не спрайты</small></div></div>
+<div class="metric"><div><b id="counter">520 искр</b><small>Только искры из трещин</small></div><div><b>1.25×</b><small>Монетка на канте · 18°</small></div><div><b>4K</b><small id="source">V62 · настоящий камень</small></div><div><b>3D</b><small>Instanced Mesh, не спрайты</small></div></div>
 <label>Загрузка исходного GLB</label><progress id="progress" max="1" value="0"></progress>
 <div style="margin-top:16px"><button id="audioToggle" style="width:100%">🔈 Включить звук</button><label for="volume">Громкость</label><input id="volume" type="range" min="0" max="100" value="35"><audio id="audio" src="audio/Vesuvius_Magma_Heart_Original_8s.ogg" preload="none" loop></audio></div>
 </aside></div>
-<p class="note">Версия V63 — браузерный просмотр реальной модели V62 с искрами без угольной крошки. Положение искр вычисляется по emissive-текстуре трещин. Исходный GLB остаётся неизменным; перенос и проверка эффектов в Niagara Unreal Engine выполняются отдельно.</p>
-</main><script type="module" src="vesuvius-v63-particles.js?v=63b-sparks-audio"></script></body></html>
+<p class="note">Версия V63 — браузерный просмотр оригинальной модели V62. Покачивание при приземлении и улучшенный звуковой цикл реализованы в просмотрщике; исходный GLB не перезаписан. Для Unreal Engine движение, искры и звук нужно перенести и проверить отдельно.</p>
+</main><script type="module" src="vesuvius-v63-particles.js?v=63c-coin-warm-sound"></script></body></html>
