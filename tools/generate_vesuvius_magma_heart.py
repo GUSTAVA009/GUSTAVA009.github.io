@@ -61,13 +61,13 @@ wav=OUT/'Vesuvius_Magma_Heart_Original_8s_48k24.wav'
 ogg=OUT/'Vesuvius_Magma_Heart_Original_8s.ogg'
 mp3=OUT/'Vesuvius_Magma_Heart_Preview.mp3'
 sf.write(wav,audio,sr,subtype='PCM_24')
-for file,codec,args in [(ogg,'libvorbis',['-q:a','6']),(mp3,'libmp3lame',['-q:a','2'])]:
- subprocess.run(['ffmpeg','-nostats','-hide_banner','-loglevel','error','-y','-i',str(wav),'-c:a',codec,*args,str(file)],check=True)
+# SoundFile encodes Vorbis natively; GitHub runner does not need ffmpeg.
+sf.write(ogg,audio,sr,format='OGG',subtype='VORBIS')
 measured=float(meter.integrated_loudness(audio))
 assert measured<-24.0
 qa={'result':'PASS_ORIGINAL_MAGMA_HEART_SFX','duration_s':8,'channels':2,'sr':48000,
     'lufs':round(measured,2),'peak_dBFS':round(20*np.log10(np.max(np.abs(audio))),2),
     'loop_boundary_delta':float(np.max(np.abs(audio[0]-audio[-1]))),
-    'files':{p.name:p.stat().st_size for p in [wav,ogg,mp3]}}
+    'files':{p.name:p.stat().st_size for p in [wav,ogg]}}
 (OUT/'Vesuvius_Magma_Heart_QA.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2),encoding='utf8')
 print('MAGMA_HEART_QA',json.dumps(qa,ensure_ascii=False))
