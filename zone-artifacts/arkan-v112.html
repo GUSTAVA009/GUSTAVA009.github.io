@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АРКАН V112 — детектор GUSTAVA ZONA 2040 / интерактивная 3D-модель</title>
+<meta name="theme-color" content="#071114"><meta name="description" content="Реальная улучшенная 3D-модель V110 с живым радаром непосредственно на корпусе, одной физической кнопкой и имитацией магнитного импульса.">
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#dceae5;background:#070d10;color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 70% 1%,#133330 0,transparent 48%),#070d10}
+.site{max-width:1600px;margin:auto;padding:20px clamp(10px,2.4vw,34px) 40px}
+header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #253f3c;padding:7px 5px 17px;gap:12px;flex-wrap:wrap}
+.brand{font:800 13px ui-monospace,Consolas,monospace;letter-spacing:.21em;color:#9bf6c7}
+.sublabel{color:#709891;font:11px ui-monospace,Consolas,monospace;letter-spacing:.08em}
+.hero{display:flex;gap:18px;justify-content:space-between;align-items:end;margin:21px 0 18px;flex-wrap:wrap}
+h1{font-size:clamp(29px,4.2vw,53px);line-height:1.05;letter-spacing:-.06em;margin:0}h1 span{font-weight:400;color:#90aead}
+.hero p{color:#99b1ad;font-size:13px;line-height:1.65;max-width:700px;margin:11px 0 0}
+.version{border:1px solid #477663;color:#b1f9d3;background:#152d25;border-radius:100px;padding:8px 13px;white-space:nowrap;font:700 11px ui-monospace,Consolas,monospace}
+.layout{display:grid;grid-template-columns:minmax(0,1.92fr) minmax(300px,.67fr);gap:14px}
+.viewport{position:relative;height:min(76vh,760px);min-height:520px;overflow:hidden;background:radial-gradient(ellipse at 48% 35%,#263b3d 0%,#142023 50%,#090f13 95%);border-radius:18px;border:1px solid #36514d;box-shadow:0 27px 84px #0008}
+.viewport:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:18px;background:linear-gradient(90deg,#0002,transparent 18%,transparent 84%,#0003)}
+canvas.webgl{width:100%;height:100%;display:block;cursor:grab;touch-action:none}canvas.webgl:active{cursor:grabbing}
+.viewer-label{position:absolute;top:19px;left:18px;color:#c1f8dd;font:800 11px ui-monospace,Consolas,monospace;letter-spacing:.12em;pointer-events:none;text-shadow:0 0 10px #000}
+.viewer-label:before{content:"";display:inline-block;width:7px;height:7px;border-radius:100%;background:#5bffab;box-shadow:0 0 13px #5bffab;margin-right:9px}
+.viewer-info{position:absolute;top:17px;right:17px;color:#a4beb6;text-align:right;font:11px/1.5 ui-monospace,Consolas,monospace;pointer-events:none}
+.viewertools{position:absolute;left:14px;bottom:14px;right:14px;display:flex;gap:6px;flex-wrap:wrap}
+.tool{padding:9px 12px;border-radius:10px;border:1px solid #49675d;background:#0b1d1ae8;color:#d1eadf;font:700 11px ui-monospace,Consolas,monospace;cursor:pointer;backdrop-filter:blur(7px)}.tool:hover{border-color:#85e5b8;color:#fff}
+#load{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;background:#091316e8;color:#c4e9d5;font:13px ui-monospace,Consolas,monospace;text-align:center;transition:opacity .5s;pointer-events:none}
+.control{border:1px solid #344c45;background:linear-gradient(150deg,#17292a,#10191d);border-radius:18px;padding:23px;min-width:0}
+.eyebrow{font:700 11px ui-monospace,Consolas,monospace;color:#8adab6;letter-spacing:.15em}
+.control h2{font-size:23px;letter-spacing:-.03em;margin:11px 0 9px}
+.tip{font-size:12px;line-height:1.68;color:#a2b9b1;margin:0}
+.section{padding-top:22px;margin-top:19px;border-top:1px solid #2f4742}
+.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:15px}
+.mode{border:1px solid #34594f;background:#152726;color:#96bbb0;border-radius:10px;font:750 12px ui-monospace,Consolas,monospace;padding:13px 2px;cursor:pointer}
+.mode[aria-pressed=true]{color:#fff2cc;border-color:#d0ab63;background:linear-gradient(#63522b,#3c3b29);box-shadow:0 0 18px #ad8b3d28}
+.caption{color:#7caaa2;font:10px ui-monospace,Consolas,monospace;letter-spacing:.06em;margin-top:8px}
+.range-row{display:flex;justify-content:space-between;align-items:center;margin:15px 0 8px;font:12px ui-monospace,Consolas,monospace;color:#9bb2aa}
+.range-row strong{color:#dcffe9;font-size:20px}
+input[type=range]{width:100%;accent-color:#6fe7a4}
+.controlbtn{display:block;width:100%;padding:14px 10px;margin-top:13px;cursor:pointer;border-radius:10px;font-weight:800;letter-spacing:.03em}
+.pulse{border:1px solid #a27e42;color:#ffe9c2;background:linear-gradient(125deg,#72502a,#443b2a)}
+.audio{border:1px solid #46665d;color:#d4eee0;background:#162d28}
+.pulse:disabled{opacity:.55;cursor:wait}
+.readout{padding:13px;margin-top:17px;background:#081514;border:1px solid #2a5948;border-radius:11px;min-height:77px;font:11px/1.6 ui-monospace,Consolas,monospace;color:#c5e9db}
+.readout b{display:block;color:#75ffc3;margin-bottom:5px;font-size:12px}
+.caveat{margin-top:19px;color:#86a49d;font-size:11px;line-height:1.7}
+.bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0}
+.note{border:1px solid #29443e;border-radius:12px;padding:14px 16px;background:#0e191b}
+.note strong{color:#ddf3e8;font-size:12px}.note p{color:#8ba9a1;font-size:12px;line-height:1.6;margin:7px 0 0}
+.warning{color:#7e9891;font-size:11px;line-height:1.65;margin:16px 4px}a{color:#8deac1}
+@media(max-width:930px){.layout{grid-template-columns:1fr}.viewport{height:65vh;min-height:440px}.bottom{grid-template-columns:1fr}}
+@media(max-width:500px){.site{padding:12px 8px}.control{padding:18px}.viewport{min-height:400px;height:55vh}.viewer-info{font-size:10px}.tool{padding:7px 9px;font-size:10px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.178.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.178.0/examples/jsm/"}}</script>
+</head>
+<body><div class="site">
+<header><span class="brand">GUSTAVA / ZONA 2040</span><span class="sublabel">DEVICE ENGINEERING  /  AUTO ARTIFACT RETRIEVAL</span></header>
+<div class="hero"><div><h1>АРКАН-01 <span>V112 / 3D</span></h1><p>Встроенная индикация теперь находится <b style="color:#aef4cb">на экране самого 3D-детектора</b>. Поворачивайте прибор, нажимайте кнопку TAKE и наблюдайте, как данные меняются прямо на поверхности корпуса.</p></div><span class="version">REAL FBX → BLENDER → GLB</span></div>
+<main class="layout">
+<section class="viewport" id="stage">
+<div class="viewer-label">LIVE MFD / ON-MESH DISPLAY</div><div class="viewer-info">МЫШЬ / ПОВОРОТ<br>КОЛЕСО / МАСШТАБ<br>КЛИК / ФИЗИЧЕСКИЕ КНОПКИ</div>
+<div id="load">Загрузка детализированной модели с физическим дисплеем…</div>
+<div class="viewertools"><button class="tool" id="focus">ПРИБЛИЗИТЬ ЭКРАН</button><button class="tool" id="whole">ВЕСЬ ДЕТЕКТОР</button><button class="tool" id="spin">АВТОПОВОРОТ</button></div>
+</section>
+<aside class="control"><div class="eyebrow">CONTROL / ARKAN 111</div><h2>Контроль прибора</h2><p class="tip">Здесь проверочные команды. <b>Радар, расстояние, режим и контакты отображаются непосредственно на 3D-экране</b>, не в отдельном HUD.</p>
+<div class="section"><span class="eyebrow">ОДНА КНОПКА / AUTO</span><p class="tip">Детектор сам находит все классы артефактов. Нажмите кнопку TAKE непосредственно на 3D-приборе — запустится электромагнитный захват.</p></div>
+<div class="section"><span class="eyebrow">РАССТОЯНИЕ / ТЕСТОВАЯ СРЕДА</span><div class="range-row"><span>До ближайшего артефакта</span><strong id="meters">6.4 м</strong></div><input type="range" id="range" min=".5" max="30" step=".1" value="6.4"><p class="caption">ШКАЛА РАДАРА: 30 М / ЗАХВАТ: 8.5 М</p><button class="controlbtn audio" id="audio">🔉 ВКЛЮЧИТЬ ЗВУК ДЕТЕКЦИИ</button><button class="controlbtn pulse" id="pulse">⚡ TAKE / ЗАХВАТ</button></div>
+<div class="readout" aria-live="polite"><b id="statusTop">АВТОСКАНИРОВАНИЕ / АРКАН-01</b><span id="statusText">Сигналы всех типов артефактов отображаются на самом 3D-дисплее.</span></div>
+<p class="caveat">В браузере сигналы и захват демонстрационные. Модель V112 создана из исходного корпуса V37. Игровой захват и отображение реальных артефактов реализуются в Unreal отдельно.</p>
+</aside></main>
+<section class="bottom">
+<div class="note"><strong>3D-геометрия сохранена</strong><p>Использована исходная модель из игрового проекта, добавлены корпусные детали, герметичная рамка, механические клавиши и излучатель.</p></div>
+<div class="note"><strong>Дисплей — реальный материал меша</strong><p>Радарный экран имеет собственную UV-развёртку. Положение отметок, режим и расстояние меняются как текстура на поверхности модели.</p></div>
+<div class="note"><strong>Тест управления</strong><p>Режимы α/β/γ можно переключать одной физической кнопкой на модели. Импульс демонстрирует электрическую дугу и перемещение тестового артефакта.</p></div>
+</section>
+<p class="warning">Обзор и интерфейс — демонстрация рабочей 3D-модели, а не потоковое видео из Unreal. Использована собственная V112-модификация корпуса V37; чужая Sketchfab-модель не выдаётся за импортированную. <a href="./arkan-v112-draco.glb" download>Скачать GLB для проверки</a>.</p>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+
+const stage=document.querySelector('#stage'),load=document.querySelector('#load');
+const meters=document.querySelector('#meters'),range=document.querySelector('#range');
+const statusTop=document.querySelector('#statusTop'),statusText=document.querySelector('#statusText');
+const modeButtons=[...document.querySelectorAll('.mode')],pulseButton=document.querySelector('#pulse'),audioButton=document.querySelector('#audio');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(34,1,.012,30);
+camera.position.set(.25,.36,.41);
+const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});
+renderer.domElement.className='webgl';renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
+renderer.setClearColor(0x080f13,0);stage.insertBefore(renderer.domElement,stage.firstChild);
+const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.025).texture;
+scene.add(new THREE.HemisphereLight(0xbaffdf,0x223b45,1.4));
+const key=new THREE.DirectionalLight(0xe6f9ff,3.2);key.position.set(-.4,1,.6);scene.add(key);
+const rim=new THREE.DirectionalLight(0x83ffc1,2.2);rim.position.set(.5,.3,-.7);scene.add(rim);
+const warm=new THREE.DirectionalLight(0xffc17a,1.5);warm.position.set(.2,-.1,.6);scene.add(warm);
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;controls.dampingFactor=.09;controls.enablePan=false;controls.minDistance=.17;controls.maxDistance=1.6;controls.target.set(0,0,0);controls.update();
+const mfdCanvas=document.createElement('canvas');mfdCanvas.width=768;mfdCanvas.height=1200;
+const g=mfdCanvas.getContext('2d',{alpha:false});const mfdTex=new THREE.CanvasTexture(mfdCanvas);
+mfdTex.colorSpace=THREE.SRGBColorSpace;mfdTex.flipY=false;mfdTex.anisotropy=8;
+let model=null,screen=null,emitter=null;
+let currentBand=0,nearest=6.4,elapsed=0,scanSweep=0,captureTime=-1,lastBeep=0,audioEnabled=false,ctx=null;
+const buttonMeshes=[[]],baseY=new WeakMap(),sensors=['Экран / Подушка / Резина','Стабилизатор / Ледышка','Везувий / Проводник'];
+const contacts=[
+ [{bearing:-25,d:.52},{bearing:73,d:.80},{bearing:139,d:.42}],
+ [{bearing:-43,d:.44},{bearing:112,d:.78}],
+ [{bearing:40,d:.58},{bearing:-130,d:.90}]
+];
+const palette=['#98f9bd','#6fdbff','#ebb1ff'];
+const artifact=new THREE.Group();
+const crystal=new THREE.Mesh(new THREE.IcosahedronGeometry(.027,1),new THREE.MeshStandardMaterial({color:0xfbb25b,emissive:0xd64c0b,emissiveIntensity:1.9,metalness:.3,roughness:.23,flatShading:true}));
+artifact.add(crystal);
+const inner=new THREE.Mesh(new THREE.OctahedronGeometry(.015,0),new THREE.MeshBasicMaterial({color:0xffe7b4}));
+artifact.add(inner);
+const aring=new THREE.Mesh(new THREE.TorusGeometry(.045,.0018,8,42),new THREE.MeshBasicMaterial({color:0x7affce,transparent:true,opacity:.85}));
+aring.rotation.x=Math.PI/2;artifact.add(aring);
+const point=new THREE.PointLight(0xffbb55,1.5,.45);artifact.add(point);
+artifact.visible=false;artifact.position.set(.11,.13,-.31);scene.add(artifact);
+const arcs=[];
+for(let j=0;j<3;j++){
+ let positions=new Float32Array(72*3);
+ let geom=new THREE.BufferGeometry();
+ geom.setAttribute('position',new THREE.BufferAttribute(positions,3));
+ let mat=new THREE.LineBasicMaterial({color:j===1?0xffffff:0x5fffe0,transparent:true,opacity:j===1?.77:.65,depthWrite:false});
+ const arc=new THREE.Line(geom,mat);arc.frustumCulled=false;arc.visible=false;arcs.push(arc);scene.add(arc);
+}
+let grab=false,raycastDown=null;
+const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
+const names=['ALPHA','BETA','GAMMA'];
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const ease=x=>x*x*(3-2*x);
+function note(title,msg){statusTop.textContent=title;statusText.textContent=msg;}
+function setBand(b){
+ if(captureTime>=0)return;
+ currentBand=b;modeButtons.forEach((x,i)=>x.setAttribute('aria-pressed',String(i===b)));
+ note('РЕЖИМ '+['АЛЬФА','БЕТА','ГАММА'][b]+' / ВЫБРАН','Контакты обновляются непосредственно на физическом дисплее 3D-детектора. '+sensors[b]+'.');
+}
+modeButtons.forEach((button,i)=>button.addEventListener('click',()=>setBand(i)));
+range.addEventListener('input',()=>{nearest=Number(range.value);meters.textContent=nearest.toFixed(1)+' м';});
+function playPing(){
+ if(!audioEnabled)return;
+ try{
+ ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();
+ if(ctx.state==='suspended')ctx.resume();
+ const a=ctx.createOscillator(),b=ctx.createGain(),n=ctx.currentTime;
+ const p=1-clamp(nearest/30,0,1);
+ a.type='sine';a.frequency.setValueAtTime(590+p*360,n);a.frequency.exponentialRampToValueAtTime(960+p*680,n+.095);
+ const vol=.012+.09*Math.pow(p,1.4);
+ b.gain.setValueAtTime(.001,n);b.gain.linearRampToValueAtTime(vol,n+.008);b.gain.exponentialRampToValueAtTime(.001,n+.12);
+ a.connect(b);b.connect(ctx.destination);a.start(n);a.stop(n+.14);
+ }catch(e){console.warn('Audio not supported',e);}
+}
+audioButton.addEventListener('click',async()=>{
+ audioEnabled=!audioEnabled;
+ audioButton.textContent=audioEnabled?'🔊 ЗВУК ВКЛЮЧЁН':'🔉 ВКЛЮЧИТЬ ЗВУК ДЕТЕКЦИИ';
+ if(audioEnabled){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();await ctx.resume();}catch(e){}playPing();}
+});
+pulseButton.addEventListener('click',()=>{
+ if(!model||captureTime>=0)return;
+ if(nearest>8.5){note('НЕТ ЗАХВАТА','Подойдите ближе 8.5 м: уменьшите расстояние на шкале.');return;}
+ captureTime=0;artifact.position.set(.11,.16,-.32);artifact.visible=true;pulseButton.disabled=true;
+ note('ИМПУЛЬС / ЗАРЯД','Демонстрация: энергия накапливается в излучателе, артефакт притягивается к прибору.');
+});
+document.getElementById('focus').addEventListener('click',()=>{
+ if(!screen)return;
+ const box=new THREE.Box3().setFromObject(screen),c=box.getCenter(new THREE.Vector3());
+ controls.target.copy(c);camera.position.copy(c).add(new THREE.Vector3(.11,.18,.15));controls.update();
+});
+document.getElementById('whole').addEventListener('click',()=>{controls.target.set(0,0,0);camera.position.set(.25,.36,.41);controls.update();});
+document.getElementById('spin').addEventListener('click',e=>{controls.autoRotate=!controls.autoRotate;controls.autoRotateSpeed=.8;e.currentTarget.textContent=controls.autoRotate?'ОСТАНОВИТЬ ВРАЩЕНИЕ':'АВТОПОВОРОТ';});
+
+function circle(x,y,r,color,thickness=1){
+ g.beginPath();g.arc(x,y,r,0,Math.PI*2);g.strokeStyle=color;g.lineWidth=thickness;g.stroke();
+}
+function paint(now){
+ const W=768,H=1200,p=Math.min(1,Math.max(0,1-nearest/30));
+ g.fillStyle='#031113';g.fillRect(0,0,W,H);
+ g.fillStyle='rgba(10,34,31,.65)';
+ for(let y=0;y<H;y+=8)g.fillRect(0,y,W,1);
+ g.strokeStyle='#2a6450';g.lineWidth=3;g.strokeRect(12,12,W-24,H-24);
+ g.fillStyle='#c4ffde';g.font='700 27px monospace';g.fillText('ARKAN / 01',32,58);
+ g.fillStyle='#598e7b';g.font='19px monospace';g.fillText('AUTO ARTIFACT RETRIEVAL',33,91);
+ g.strokeStyle='#4cf9a1';g.lineWidth=3;g.beginPath();g.moveTo(30,113);g.lineTo(W-30,113);g.stroke();
+ g.fillStyle=palette[currentBand];g.font='bold 36px monospace';
+ g.fillText('AUTO SCAN',37,170);
+ g.font='700 43px monospace';g.fillStyle='#ffd27c';g.textAlign='right';g.fillText(nearest.toFixed(1)+' M',W-39,172);g.textAlign='left';
+ g.font='19px monospace';g.fillStyle='#80bda4';g.fillText('CONTACTS: '+contacts[currentBand].length.toString().padStart(2,'0'),37,215);
+ g.fillText('SCAN / 30 METERS',36,248);
+ // The radar is a texture on the actual GLB UV plane, never a floating DOM overlay.
+ const x=384,y=637,R=277;
+ for(let k=1;k<=3;k++)circle(x,y,R*k/3,'rgba(81,199,143,.26)',3);
+ g.beginPath();g.moveTo(x-R-12,y);g.lineTo(x+R+12,y);g.moveTo(x,y-R-12);g.lineTo(x,y+R+12);g.strokeStyle='rgba(69,166,127,.22)';g.lineWidth=2;g.stroke();
+ scanSweep=now*.0012;
+ const a=scanSweep;
+ g.save();g.translate(x,y);g.rotate(a);
+ const grad=g.createLinearGradient(0,0,R,0);grad.addColorStop(0,'rgba(65,233,154,.04)');grad.addColorStop(.6,'rgba(64,224,147,.08)');grad.addColorStop(1,'rgba(81,247,161,.24)');
+ g.beginPath();g.moveTo(0,0);g.arc(0,0,R,-.35,0);g.closePath();g.fillStyle=grad;g.fill();
+ g.strokeStyle='rgba(130,255,193,.78)';g.lineWidth=4;g.beginPath();g.moveTo(0,0);g.lineTo(R,0);g.stroke();
+ g.restore();
+ const cs=contacts[currentBand];
+ cs.forEach((c,i)=>{
+  let r=clamp((i===0?nearest:nearest+8+i*4)/30,.055,.96)*R;
+  const rad=c.bearing*Math.PI/180;
+  const px=x+Math.sin(rad)*r,py=y-Math.cos(rad)*r;
+  const col=i===0?'#ffd276':palette[currentBand];
+  g.shadowBlur=23;g.shadowColor=col;g.fillStyle=col;g.beginPath();g.arc(px,py,i===0?8:6,0,Math.PI*2);g.fill();g.shadowBlur=0;
+  circle(px,py,i===0?17:13,col,2);
+ });
+ g.fillStyle='#e5ffe8';g.beginPath();g.arc(x,y,7,0,Math.PI*2);g.fill();
+ g.font='19px monospace';g.fillStyle='#6ea58c';g.fillText('BEARING / N',38,987);
+ g.textAlign='right';g.fillText('SIG  '+String(Math.round(p*100)).padStart(2,'0')+'%',W-38,987);g.textAlign='left';
+ for(let i=0;i<18;i++){
+  const t=(i+1)/18;
+  g.fillStyle=t<=p?'#68ffa7':'#204239';g.fillRect(36+i*39,1010,28,32);
+ }
+ g.strokeStyle='#3d8b75';g.beginPath();g.moveTo(37,1072);g.lineTo(W-37,1072);g.stroke();
+ g.font='bold 21px monospace';g.fillStyle=captureTime>=0?'#ffbd7d':nearest<=8.5?'#93ffb8':'#8aa69a';
+ g.fillText(captureTime>=0?'CAPTURE / ELECTROMAGNETIC PULSE':nearest<=8.5?'READY / PRESS F TO CAPTURE':'APPROACH TO 8.5 M',38,1110);
+ g.font='19px monospace';g.fillStyle='#7dbb9d';g.fillText('BAT 84%  •  FIELD LINK ACTIVE',38,1152);
+ mfdTex.needsUpdate=true;
+}
+function onPointer(e,down){
+ if(!model)return;
+ const rect=renderer.domElement.getBoundingClientRect();
+ const x=((e.clientX-rect.left)/rect.width)*2-1,y=-((e.clientY-rect.top)/rect.height)*2+1;
+ if(down){raycastDown={x:e.clientX,y:e.clientY};return;}
+ if(!raycastDown||Math.hypot(e.clientX-raycastDown.x,e.clientY-raycastDown.y)>8){raycastDown=null;return;}
+ raycastDown=null;mouse.set(x,y);raycaster.setFromCamera(mouse,camera);
+ const hits=raycaster.intersectObject(model,true);
+ for(const hit of hits){
+  const name=hit.object.name;
+  if(name.startsWith('GZ112_CAPTURE_')){pulseButton.click();return;}
+ }
+}
+renderer.domElement.addEventListener('pointerdown',e=>onPointer(e,true));
+renderer.domElement.addEventListener('pointerup',e=>onPointer(e,false));
+function resize(){
+ const w=stage.clientWidth,h=stage.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);
+}
+new ResizeObserver(resize).observe(stage);resize();
+const loader=new GLTFLoader(),draco=new DRACOLoader();
+draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+loader.setDRACOLoader(draco);
+loader.load('./arkan-v112-draco.glb',gltf=>{
+ model=gltf.scene;scene.add(model);
+ const bbox=new THREE.Box3().setFromObject(model),center=bbox.getCenter(new THREE.Vector3());
+ model.position.sub(center);model.updateMatrixWorld(true);
+ model.traverse(child=>{
+  if(!child.isMesh)return;
+  if(child.name==='GZ110_MFD_SCREEN'){
+   screen=child;
+   child.material=new THREE.MeshBasicMaterial({map:mfdTex,side:THREE.DoubleSide,color:0xffffff,toneMapped:false,depthWrite:true});
+   child.renderOrder=3;
+  }
+  if(child.name.startsWith('GZ112_CAPTURE_')){
+   buttonMeshes[0].push(child);baseY.set(child,child.position.y);
+  }
+  if(child.name.startsWith('GZ110_Emitter_OpticalGlass')&& !emitter)emitter=child;
+ });
+ if(!screen)note('ОШИБКА ЭКРАНА','В 3D-файле отсутствует именованная геометрия MFD.');
+ else note('ИНДИКАЦИЯ АКТИВНА','Живой радар размещён на 3D-экране. Кликните единственную кнопку TAKE.');
+ load.style.opacity='0';setTimeout(()=>load.remove(),600);
+},e=>{if(e.total)load.textContent='Загрузка: '+Math.round(e.loaded/e.total*100)+'%';},err=>{
+ load.textContent='Не удалось открыть GLB: '+err.message;
+ console.error(err);
+});
+let last=performance.now(),frame=0;
+function animate(t){
+ requestAnimationFrame(animate);
+ const dt=Math.min(.06,(t-last)/1000);last=t;elapsed+=dt;
+ controls.update();
+ if(model){
+  for(const obj of buttonMeshes[0]){
+   const target=baseY.get(obj)-(captureTime>=0?.0022:0);
+   obj.position.y=THREE.MathUtils.lerp(obj.position.y,target,Math.min(1,dt*20));
+  }
+ }
+ if(++frame%2===0)paint(t);
+ if(audioEnabled&&captureTime<0&&model){
+  const p=1-clamp(nearest/30,0,1);
+  const cadence=2.35*(1-p)+.12*p;
+  if(elapsed-lastBeep>=cadence){lastBeep=elapsed;playPing();}
+ }
+ if(captureTime>=0){
+  captureTime+=dt;artifact.visible=true;
+  const c=clamp((captureTime-.28)/1.00,0,1),u=ease(c);
+  const start=new THREE.Vector3(.11,.16,-.32);
+  const goal=emitter?(new THREE.Box3().setFromObject(emitter).getCenter(new THREE.Vector3())):new THREE.Vector3(0,.04,-.17);
+  artifact.position.copy(start).lerp(goal,u);
+  artifact.position.y+=.04*Math.sin(Math.PI*c);
+  artifact.rotation.x+=dt*5;artifact.rotation.y+=dt*7;aring.rotation.z+=dt*4;
+  point.intensity=2+Math.sin(elapsed*45)*.8;
+  for(let j=0;j<arcs.length;j++){
+   const arc=arcs[j];arc.visible=captureTime>.09&&captureTime<1.30;
+   if(!arc.visible)continue;
+   const a=arc.geometry.attributes.position;
+   const source=emitter?(new THREE.Box3().setFromObject(emitter).getCenter(new THREE.Vector3())):new THREE.Vector3(0,.04,-.17);
+   const end=artifact.position;
+   for(let i=0;i<a.count;i++){
+    const v=i/(a.count-1);
+    const fluct=Math.sin(v*33+j*1.9+elapsed*49)*Math.sin(Math.PI*v)*(.013+j*.003);
+    const px=THREE.MathUtils.lerp(source.x,end.x,v)+fluct;
+    const py=THREE.MathUtils.lerp(source.y,end.y,v)+Math.sin(v*29+elapsed*63+j)*.01*Math.sin(Math.PI*v);
+    const pz=THREE.MathUtils.lerp(source.z,end.z,v)+fluct*.5;
+    a.setXYZ(i,px,py,pz);
+   }
+   a.needsUpdate=true;
+  }
+  if(captureTime>1.35){captureTime=-1;artifact.visible=false;arcs.forEach(x=>x.visible=false);pulseButton.disabled=false;
+   note('АРТЕФАКТ ПРИТЯНУТ / ДЕМО','Дуга и движение показаны в 3D. В Unreal цель должна попасть в правую руку персонажа.');
+  }
+ }
+ renderer.render(scene,camera);
+}
+requestAnimationFrame(animate);
+</script>
+</body></html>
