@@ -42,7 +42,7 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 </style>
 </head>
 <body><main class="wrap">
-<nav><strong>GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</strong><a href="index.html?v=55a">Все артефакты</a></nav>
+<nav><strong>GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</strong><a href="index.html?v=55d">Все артефакты</a></nav>
 <header>
 <div class="kicker">V55 · ДОВОДКА ОРИГИНАЛЬНОГО 3D-МЕША · УГОЛЬНАЯ ФАКТУРА 4K · ОБЪЁМНАЯ МАГМА</div>
 <h1>ВЕЗУВИЙ <span>/ NATURAL CHARCOAL</span></h1>
@@ -52,8 +52,8 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <div class="stage">
 <div class="corner">WEB 3D · PNG NORMALS · 4096 PBR · 8s LOOP</div>
 <model-viewer id="artifact"
- src="models/Vesuvius_V55_PBR.glb?v=55c"
- poster="images/GZ55_Hero_TrueNormals.jpg?v=55b"
+ src="models/Vesuvius_V55_PBR.glb?v=55d"
+ poster="images/GZ55_UVRegistered_Hero.jpg?v=55d"
  alt="Везувий V55 — интерактивная 3D-модель вулканического артефакта GUSTAVA ZONE 2040"
  camera-controls autoplay auto-rotate animation-name="GZ45_8Sec_Complete_Loop"
  camera-orbit="25deg 64deg 80%" min-camera-orbit="auto auto 25%" max-camera-orbit="auto auto 500%"
@@ -84,12 +84,12 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <p class="note">Размер высококачественного GLB: 81 МБ. Первая загрузка зависит от соединения. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
 </aside>
 </section>
-<h3>Рендеры до UV-исправления · актуальная 3D-модель выше</h3>
+<h3>Актуальные рендеры V55 · Blender Eevee</h3>
 <div class="gallery">
-<a class="shot" href="images/GZ55_Hero_TrueNormals.jpg?v=55b"><img src="images/GZ55_Hero_TrueNormals.jpg?v=55b" alt="Общий ракурс" loading="lazy"><strong>Главный ракурс</strong><small>Силуэт и мягкий геологический рельеф</small></a>
-<a class="shot" href="images/GZ55_Macro_TrueNormals.jpg?v=55a"><img src="images/GZ55_Macro_TrueNormals.jpg?v=55a" alt="Макро" loading="lazy"><strong>Макро PBR</strong><small>Поверхность, свечение и сколы</small></a>
-<a class="shot" href="images/GZ55_Top_TrueNormals.jpg?v=55a"><img src="images/GZ55_Top_TrueNormals.jpg?v=55a" alt="Верхняя сторона" loading="lazy"><strong>Верхняя сторона</strong><small>Предыдущий рендер, до исправления координат</small></a>
-<a class="shot" href="images/GZ55_Bottom_TrueNormals.jpg?v=55a"><img src="images/GZ55_Bottom_TrueNormals.jpg?v=55a" alt="Обратная сторона" loading="lazy"><strong>Обратная сторона</strong><small>Предыдущий рендер, до исправления координат</small></a>
+<a class="shot" href="images/GZ55_UVRegistered_Hero.jpg?v=55d"><img src="images/GZ55_UVRegistered_Hero.jpg?v=55d" alt="Общий ракурс" loading="lazy"><strong>Главный ракурс</strong><small>Силуэт и мягкий геологический рельеф</small></a>
+<a class="shot" href="images/GZ55_UVRegistered_Macro.jpg?v=55d"><img src="images/GZ55_UVRegistered_Macro.jpg?v=55d" alt="Макро" loading="lazy"><strong>Макро PBR</strong><small>Поверхность, свечение и сколы</small></a>
+<a class="shot" href="images/GZ55_UVRegistered_Top.jpg?v=55d"><img src="images/GZ55_UVRegistered_Top.jpg?v=55d" alt="Верхняя сторона" loading="lazy"><strong>Верхняя сторона</strong><small>Геометрические трещины совмещены с лавой</small></a>
+<a class="shot" href="images/GZ55_UVRegistered_Bottom.jpg?v=55d"><img src="images/GZ55_UVRegistered_Bottom.jpg?v=55d" alt="Обратная сторона" loading="lazy"><strong>Обратная сторона</strong><small>Геометрические трещины совмещены с лавой</small></a>
 </div>
 <details><summary>Что именно исправлено относительно V54b</summary>
 <p>В V54b при GLB-экспорте normalTexture ошибочно содержала карту высот. В V55 она подключена напрямую к корректному Normal Map-шейдеру, подтверждён исходник NormalGL, а карты изображений передаются как PNG. Силуэт и поверхности исходного меша сглажены без нарушения замкнутой топологии. Техника снижает технические артефакты, но не заменяет финальную ручную скульптуру.</p>
