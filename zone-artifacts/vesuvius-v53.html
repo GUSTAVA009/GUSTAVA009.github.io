@@ -14,7 +14,7 @@ header{padding:30px 0 20px}.kicker{color:#fca265;letter-spacing:.18em;font-size:
 h1{font-size:clamp(40px,6vw,76px);letter-spacing:-.07em;line-height:1.03;margin:8px 0 12px}
 h1 span{font-weight:400;color:#a9b4bf;letter-spacing:.055em;font-size:.34em;vertical-align:middle}
 header p{margin:0;color:var(--muted);max-width:900px;font-size:15px}
-.layout{display:grid;grid-template-columns:minmax(0,1.70fr) minmax(480px,.8fr);gap:18px}
+.layout{display:grid;grid-template-columns:minmax(0,1.70fr) minmax(280px,.8fr);gap:18px}
 .stage{position:relative;border-radius:19px;overflow:hidden;min-height:635px;border:1px solid #354655;
 background:radial-gradient(ellipse at 55% 40%,#232f3b 0,#111921 51%,#07090f 85%)}
 model-viewer{display:block;width:100%;height:635px;--poster-color:transparent;--progress-bar-color:#f3a36b}
@@ -43,14 +43,14 @@ footer{border-top:1px solid #2d3b49;margin-top:34px;padding-top:19px;color:#93a3
 @media(max-width:480px){.main{padding:12px 12px 35px}header{padding-top:25px}h1 span{display:block;margin-top:8px}.stage{min-height:410px}model-viewer{height:420px}.side{padding:15px}.gallery{gap:8px}}
 </style></head><body><div class="main">
 <nav><div class="logo">GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</div><a href="index.html?v=52">Все артефакты</a></nav>
-<header><div class="kicker">V53 · ФОТОСКАН 4K · ГЛАДКИЕ ПЕРЕХОДЫ МАГМЫ · ДВУСТОРОННЯЯ 3D-ГЕОМЕТРИЯ</div>
-<h1>ВЕЗУВИЙ <span>/ PHOTOREAL CARBON</span></h1>
-<p>Новая объёмная выпуклая плита из угольно-пепельной породы. Разные рисунки трещин на каждой стороне, глубинные разломы, расплавленный кант и восходящие потоки пепла и искр. Это настоящий трёхмерный прототип Blender, а не отдельно сгенерированный рендер.</p></header>
+<header><div class="kicker">V53 · МИКРОСКУЛЬПТ · ОРГАНИЧЕСКИЙ РАЗЛОМ · ЭМИССИЯ 2K · АКТИВНАЯ МАГМА</div>
+<h1>ВЕЗУВИЙ <span>/ ORGANIC FRACTURE</span></h1>
+<p>Новая объёмная выпуклая плита из угольно-пепельной породы. Разные рисунки трещин на каждой стороне, глубинные разломы, расплавленный кант и восходящие потоки пепла и искр. Трещины теперь имеют плавную эмиссию, а веб-версия получает отдельные запечённые текстуры для обеих сторон и канта. Это настоящий 3D-меш, а не отдельно сгенерированный рендер.</p></header>
 <section class="layout">
-<div class="stage"><div class="corner">REAL 3D · 2048 PBR WEB · 8s LOOP</div>
+<div class="stage"><div class="corner">REAL 3D · 1536 PBR + BAKED THERMAL MASKS · 8s LOOP</div>
 <model-viewer id="model"
- src="models/Vesuvius_V53.glb?v=53b" poster="images/GZ53_Hero_PhotoStudio.jpg?v=53b"
- alt="Везувий V53: реалистичный объёмный каменный диск из тёмного фотосканированного угля с магмой в трещинах и по окружности"
+ src="models/Vesuvius_V53.glb?v=53a" poster="images/GZ52_FinalHero.jpg"
+ alt="Везувий V53: реалистичный объёмный каменный диск из тёмного угля с магмой в трещинах и по окружности"
  camera-controls auto-rotate autoplay animation-name="GZ45_8Sec_Complete_Loop"
  camera-orbit="32deg 66deg 112%" min-camera-orbit="auto auto 30%" max-camera-orbit="auto auto 450%"
  rotation-per-second="9deg" auto-rotate-delay="3000" field-of-view="32deg" exposure="1.25"
@@ -71,19 +71,19 @@ footer{border-top:1px solid #2d3b49;margin-top:34px;padding-top:19px;color:#93a3
 <label class="sliderhead" for="light">Экспозиция просмотра <span id="lightval">125%</span></label>
 <input type="range" id="light" min=".6" max="2" step=".1" value="1.25">
 <div class="metrics">
-<div class="metric"><b>468 160</b><small>полигонов цельной плиты</small></div>
-<div class="metric"><b>480</b><small>анимированных 3D-искр</small></div>
-<div class="metric"><b>920</b><small>3D-частиц пепла</small></div>
-<div class="metric"><b>14 × 4K</b><small>исходных PBR-карт</small></div>
+<div class="metric"><b>141 600</b><small>полигонов цельной плиты</small></div>
+<div class="metric"><b>280</b><small>анимированных 3D-искр</small></div>
+<div class="metric"><b>560</b><small>3D-частиц пепла</small></div>
+<div class="metric"><b>9 × 4K</b><small>исходных PBR-карт</small></div>
 </div>
-<div class="note">Полноразмерная модель и Blender-исходники сохранены отдельно. Для быстрой загрузки браузер использует текстуры 1536px. В браузере используется 2K-версия фотосканированных PBR-карт; в Blender и Unreal — 4K. До окончательного AAAA-уровня требуется отдельное художественное QA в игровом освещении.</div>
+<div class="note">Полноразмерная модель и Blender-исходники сохранены отдельно. Для быстрой загрузки браузер использует текстуры 1536px. Переработаны тепловые маски и переходы материала, но это ещё не финальный AAAA-ассет.</div>
 </aside></section>
 <h3>Настоящие Blender-рендеры</h3>
 <div class="gallery">
-<a class="shot" href="images/GZ53_Hero_PhotoStudio.jpg?v=53b"><img src="images/GZ53_Hero_PhotoStudio.jpg?v=53b" loading="lazy" alt="Рендер Везувия спереди"><strong>01 · Студийный ракурс</strong><small>Выпуклость и светящийся кант</small></a>
-<a class="shot" href="images/GZ53_Top_PhotoStudio.jpg"><img src="images/GZ53_Top_PhotoStudio.jpg" loading="lazy" alt="Рендер сверху"><strong>02 · Верхняя сторона</strong><small>Первый рисунок разломов</small></a>
-<a class="shot" href="images/GZ53_Bottom_PhotoStudio.jpg"><img src="images/GZ53_Bottom_PhotoStudio.jpg" loading="lazy" alt="Рендер снизу"><strong>03 · Нижняя сторона</strong><small>Второй рисунок разломов</small></a>
-<a class="shot" href="images/GZ53_Macro_PhotoStudio.jpg"><img src="images/GZ53_Macro_PhotoStudio.jpg" loading="lazy" alt="Крупный план геометрии"><strong>04 · Макро</strong><small>Геометрия лавового разлома</small></a>
+<a class="shot" href="images/GZ52_FinalHero.jpg"><img src="images/GZ52_FinalHero.jpg" loading="lazy" alt="Рендер Везувия спереди"><strong>01 · Студийный ракурс</strong><small>Выпуклость и светящийся кант</small></a>
+<a class="shot" href="images/GZ52_FinalTop.jpg"><img src="images/GZ52_FinalTop.jpg" loading="lazy" alt="Рендер сверху"><strong>02 · Верхняя сторона</strong><small>Первый рисунок разломов</small></a>
+<a class="shot" href="images/GZ52_FinalBottom.jpg"><img src="images/GZ52_FinalBottom.jpg" loading="lazy" alt="Рендер снизу"><strong>03 · Нижняя сторона</strong><small>Второй рисунок разломов</small></a>
+<a class="shot" href="images/GZ52_FinalMacro.jpg"><img src="images/GZ52_FinalMacro.jpg" loading="lazy" alt="Крупный план геометрии"><strong>04 · Макро</strong><small>Геометрия лавового разлома</small></a>
 </div>
 <footer>GUSTAVA ZONE 2040 · Везувий V53. Технические проверки топологии и анимации — только часть производственного QA. Художественное соответствие референсу требует дальнейшей доводки скульптинга, материалов, свечения и Niagara в Unreal Engine.</footer>
 </div><script>
