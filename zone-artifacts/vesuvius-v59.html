@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<title>Везувий V59 — настоящая 3D-модель PBR 2.5K | GUSTAVA ZONE 2040</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#080c12;--surface:#121c26;--line:#344453;--text:#f0f1f3;--muted:#a9b9c7;--orange:#ffae78}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -20%,#293442 0,#101820 50%,#080c12 84%);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--text)}
+a{color:#ffc197;text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1390px;padding:18px 22px 56px;margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:6px 0 22px;border-bottom:1px solid #2d3b4c}
+nav strong{font-size:12px;font-weight:850;letter-spacing:.17em}nav strong b{color:#ffa56c}nav a{color:#afbdca;font-size:12px}
+header{padding:28px 0 20px}.kicker{font-weight:850;font-size:11px;letter-spacing:.16em;color:#ffa775}
+h1{font-size:clamp(44px,6vw,80px);font-weight:900;letter-spacing:-.07em;line-height:1.04;margin:10px 0}
+h1 span{font-size:.30em;letter-spacing:.015em;font-weight:500;color:#b8c6cf;vertical-align:middle}
+header p{font-size:14px;color:#b8c5cf;max-width:1030px;margin:10px 0}
+.layout{display:grid;grid-template-columns:minmax(0,1.72fr) minmax(310px,.88fr);gap:15px}
+.stage{border:1px solid #45596c;min-height:655px;border-radius:15px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#243240,#111c27 54%,#080e16)}
+model-viewer{display:block;width:100%;height:660px;--poster-color:transparent;--progress-bar-color:#ffa266}
+.corner{position:absolute;z-index:2;pointer-events:none;left:13px;top:13px;border:1px solid #9b6b44;border-radius:7px;background:#2b1c17db;color:#ffd0a5;font:700 11px ui-monospace,Consolas,monospace;padding:7px 10px}
+.hint{position:absolute;z-index:2;pointer-events:none;bottom:13px;left:13px;right:13px;border:1px solid #334656;border-radius:7px;background:#0b131de0;text-align:center;color:#c3cdd6;font-size:11px;padding:8px}
+.aside{border:1px solid #324758;border-radius:15px;padding:20px;background:linear-gradient(146deg,#1c2937,#0c1620)}
+.aside h2{font-size:18px;letter-spacing:-.025em;margin:0 0 9px}.aside p{color:#b8c7d2;font-size:13px;margin:0 0 16px}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button{border:1px solid #946345;border-radius:8px;background:#38281f;cursor:pointer;color:#ffdcc7;font-size:12px;font-weight:760;padding:10px 6px;min-height:42px}
+button:hover{background:#55382a}button:focus-visible,input:focus-visible{outline:2px solid #ffac77;outline-offset:2px}
+label{display:flex;justify-content:space-between;margin:16px 0 5px;color:#c3d0d9;font-size:12px;font-weight:700}
+input[type=range]{width:100%;accent-color:#f79a61}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px;border-top:1px solid #344757;padding-top:17px}
+.metric{border:1px solid #304454;border-radius:8px;background:#101b27;padding:12px}
+.metric b{font-size:19px;color:#ffcfaa;display:block}.metric small{font-size:11px;color:#aebfca;display:block;margin-top:3px;line-height:1.35}
+.note{margin-top:14px!important;font-size:11px!important;line-height:1.65!important;color:#9fb1bc!important}
+h3{font-size:20px;letter-spacing:-.025em;margin:29px 0 14px}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.shot{display:block;overflow:hidden;border:1px solid #354b5d;border-radius:10px;background:#121e28}
+.shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.shot strong{display:block;font-size:13px;color:#e9eff2;padding:9px 10px 0}.shot small{font-size:11px;color:#a9bdca;display:block;padding:2px 10px 10px}
+details{border-top:1px solid #344759;padding-top:15px;margin-top:27px;color:#afbecb;font-size:13px}details summary{cursor:pointer;color:#dce8ef;font-weight:700}
+footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18px;font-size:12px}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.stage{min-height:480px}model-viewer{height:530px}.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.wrap{padding:12px 12px 37px}header{padding-top:24px}h1 span{display:block;margin:8px 0}.stage{min-height:430px}model-viewer{height:450px}.aside{padding:14px}}
+</style>
+</head>
+<body><main class="wrap">
+<nav><strong>GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</strong><a href="index.html?v=59a">Все артефакты</a></nav>
+<header>
+<div class="kicker">V59 · 1400 ЧАСТИЦ ПРИВЯЗАНЫ К РАЗЛОМАМ С ДВУХ СТОРОН · 8 СЕКУНД</div>
+<h1>ВЕЗУВИЙ <span>/ DUAL CRACK VFX</span></h1>
+<p>Версия V59 продолжает существующую модель V58: искры и частицы пепла рождаются только внутри реальных магматических трещин, по 700 частиц с каждой стороны. Оба потока связаны с анимированным корневым объектом и переворачиваются вместе с камнем. Разломы и PBR-материалы сохранены.</p>
+</header>
+<section class="layout">
+<div class="stage">
+<div class="corner">WEB 3D · PNG NORMALS · 2560 PBR · 8s LOOP</div>
+<model-viewer id="artifact"
+ src="models/Vesuvius_V59_DualCrack_Animated.glb?v=59a"
+ poster="images/GZ59_Hero_At_Start.png?v=59a"
+ alt="Везувий V59 — интерактивная 3D-модель вулканического артефакта GUSTAVA ZONE 2040"
+ camera-controls autoplay auto-rotate animation-name="GZ59_DualCrack_8Second_Loop"
+ camera-orbit="25deg 64deg 105%" min-camera-orbit="auto auto 25%" max-camera-orbit="auto auto 500%"
+ auto-rotate-delay="3500" rotation-per-second="8deg" field-of-view="32deg"
+ environment-image="neutral" tone-mapping="neutral" exposure="1.10"
+ shadow-intensity=".62" loading="eager" touch-action="pan-y"></model-viewer>
+<div id="status" class="hint">Загружается настоящая 3D-модель (89 МБ) · Вращай мышью, приближай колесом</div>
+</div>
+<aside class="aside">
+<h2>Просмотр высокого качества</h2>
+<p>Проверьте работу обоих потоков: переключайте верхнюю и нижнюю стороны. Важно, чтобы искры оставались при трещинах во время переворота, а не висели в неподвижном мировом пространстве.</p>
+<div class="buttons">
+<button id="pause" type="button">⏸ Пауза</button>
+<button id="macro" type="button">⌕ Крупный план</button>
+<button id="top" type="button">↑ Верхняя сторона</button>
+<button id="bottom" type="button">↓ Нижняя сторона</button>
+</div>
+<label for="speed">Скорость движения <span id="speedValue">1×</span></label>
+<input type="range" id="speed" min=".25" max="2" step=".25" value="1"/>
+<label for="exposure">Экспозиция <span id="exposureValue">110%</span></label>
+<input type="range" id="exposure" min=".60" max="2.0" step=".10" value="1.1"/>
+<div class="metrics">
+<div class="metric"><b>2560 px</b><small>lossless PNG PBR в веб-просмотре</small></div>
+<div class="metric"><b>487 008</b><small>полигонов сглаженного 3D-корпуса</small></div>
+<div class="metric"><b>480</b><small>объёмных раскалённых искр</small></div>
+<div class="metric"><b>920</b><small>3D-частиц вулканического пепла</small></div>
+</div>
+<p class="note">Размер высококачественного GLB: 89 МБ. Первая загрузка зависит от соединения. Изображения ниже — реальные Blender Cycles-рендеры V59, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
+</aside>
+</section>
+<h3>Реальные рендеры V59 · обе стороны и кадры переворота · Blender Cycles</h3>
+<div class="gallery">
+<a class="shot" href="images/GZ59_Hero_At_Start.png?v=59a"><img src="images/GZ59_Hero_At_Start.png?v=59a" alt="Общий ракурс" loading="lazy"><strong>Главный ракурс</strong><small>Реальная сцена с локальными потоками искр и пепла</small></a>
+<a class="shot" href="images/GZ59_Mid_Flip.png?v=59a"><img src="images/GZ59_Mid_Flip.png?v=59a" alt="Макро" loading="lazy"><strong>Переворот · кадр 105</strong><small>Кадр во время переворота артефакта</small></a>
+<a class="shot" href="images/GZ59_Top_Cracks.png?v=59a"><img src="images/GZ59_Top_Cracks.png?v=59a" alt="Верхняя сторона" loading="lazy"><strong>Верхняя сторона</strong><small>Искры и пепел из верхних трещин</small></a>
+<a class="shot" href="images/GZ59_Bottom_Cracks.png?v=59a"><img src="images/GZ59_Bottom_Cracks.png?v=59a" alt="Обратная сторона" loading="lazy"><strong>Обратная сторона</strong><small>Искры и пепел из нижних трещин</small></a>
+<a class="shot" href="images/GZ59_Full_Flip.png?v=59a"><img src="images/GZ59_Full_Flip.png?v=59a" alt="Поздняя фаза переворота" loading="lazy"><strong>Переворот · кадр 170</strong><small>Реальная позиция обоих потоков во время вращения</small></a>
+</div>
+<details><summary>Что именно исправлено относительно V58</summary>
+<p>V59 использует существующий замкнутый корпус из V58 (487 008 полигонов, 486 098 вершин) и перераспределяет 920 частиц пепла и 480 искр по реальным магматическим поверхностям. Корневое вращение и 24 morph-положения каждого потока сохранены, а в GLB оба потока являются дочерними объектами вращающегося корня. Игровой Niagara-эффект проверяется отдельно.</p>
+<p><a href="vesuvius-v56.html?v=56a">Сравнить с предыдущей веб-версией V56</a></p>
+</details>
+<footer>GUSTAVA ZONE 2040 · ВЕЗУВИЙ V59 · корректировка существующей 3D-модели V58; 1400 локальных частиц из двух сторон; real-time GLB 8s. Исходные камень и материалы ambientCG Lava001 (CC0) сохранены. В Unreal Niagara пока не обновлена.</footer>
+</main>
+<script>
+const v=document.querySelector('#artifact'),status=document.querySelector('#status'),p=document.querySelector('#pause');
+let playing=true;
+v.addEventListener('progress',e=>{const n=Math.round(e.detail.totalProgress*100);if(n<100)status.textContent='Загрузка 3D-модели: '+n+'% · PNG PBR, 2.5K, 89 МБ';});
+v.addEventListener('load',()=>{try{v.animationName='GZ59_DualCrack_8Second_Loop';v.timeScale=Number(document.querySelector('#speed').value);v.play();status.textContent='3D-модель загружена · Вращай, приближай и переворачивай';}catch(e){console.warn(e)}});
+v.addEventListener('error',()=>{status.textContent='Не удалось загрузить GLB. Обнови страницу или проверь соединение.';});
+p.addEventListener('click',()=>{playing=!playing;playing?v.play():v.pause();p.textContent=playing?'⏸ Пауза':'▶ Продолжить';});
+document.querySelector('#macro').addEventListener('click',()=>{v.cameraOrbit='25deg 60deg 48%';v.fieldOfView='28deg';});
+document.querySelector('#top').addEventListener('click',()=>{v.cameraOrbit='15deg 12deg 102%';v.fieldOfView='32deg';});
+document.querySelector('#bottom').addEventListener('click',()=>{v.cameraOrbit='15deg 168deg 102%';v.fieldOfView='32deg';});
+document.querySelector('#speed').addEventListener('input',e=>{v.timeScale=Number(e.target.value);document.querySelector('#speedValue').textContent=Number(e.target.value)+'×';});
+document.querySelector('#exposure').addEventListener('input',e=>{v.exposure=Number(e.target.value);document.querySelector('#exposureValue').textContent=Math.round(Number(e.target.value)*100)+'%';});
+</script></body></html>
