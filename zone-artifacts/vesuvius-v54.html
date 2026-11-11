@@ -1,99 +1,90 @@
-<!doctype html><html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080a0e">
-<title>Везувий V54 — двусторонний лавовый артефакт | GUSTAVA ZONE 2040</title>
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#090c11"/><title>Везувий V54 — трёхмерный артефакт | GUSTAVA ZONE 2040</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 <style>
-:root{color-scheme:dark;--paper:#080b10;--ink:#ebf0f4;--muted:#a9b7c3;--line:#344251;--orange:#ff9b55}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 55% -24%,#27313d 0,#111923 45%,#080b10 85%);font:15px/1.54 Inter,Segoe UI,system-ui,Arial,sans-serif;color:var(--ink)}
-a{color:#ffba7e;text-decoration:none}a:hover{text-decoration:underline}.main{max-width:1370px;margin:auto;padding:18px 21px 50px}
-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0 22px;border-bottom:1px solid #2b3948}
-.logo{font-size:12px;letter-spacing:.16em;font-weight:900}.logo b{color:#f9a879}
-nav a{color:#a6b9cc;font-size:13px}
-header{padding:30px 0 20px}.kicker{color:#fca265;letter-spacing:.18em;font-size:12px;font-weight:900}
-h1{font-size:clamp(40px,6vw,76px);letter-spacing:-.07em;line-height:1.03;margin:8px 0 12px}
-h1 span{font-weight:400;color:#a9b4bf;letter-spacing:.055em;font-size:.34em;vertical-align:middle}
-header p{margin:0;color:var(--muted);max-width:900px;font-size:15px}
-.layout{display:grid;grid-template-columns:minmax(0,1.70fr) minmax(280px,.8fr);gap:18px}
-.stage{position:relative;border-radius:19px;overflow:hidden;min-height:635px;border:1px solid #354655;
-background:radial-gradient(ellipse at 55% 40%,#232f3b 0,#111921 51%,#07090f 85%)}
-model-viewer{display:block;width:100%;height:635px;--poster-color:transparent;--progress-bar-color:#f3a36b}
-.corner{position:absolute;left:18px;top:17px;background:#200f08d6;border:1px solid #945834;padding:7px 12px;border-radius:8px;font:800 11px ui-monospace,Consolas,monospace;color:#ffcd9a;pointer-events:none}
-.guide{position:absolute;bottom:14px;left:16px;right:16px;text-align:center;background:#070d15dd;border:1px solid #344252;padding:8px 12px;border-radius:9px;color:#bcc8d3;font-size:12px;pointer-events:none}
-.side{background:linear-gradient(145deg,#17222e,#0c141d);border:1px solid #324353;border-radius:19px;padding:21px}
-.side h2{font-size:19px;letter-spacing:-.03em;margin:0 0 8px}.side p{color:var(--muted);margin:0 0 18px}
-.controls{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-button{cursor:pointer;background:#3a281f;color:#ffddc2;font-size:12px;font-weight:800;border:1px solid #865b3c;border-radius:9px;padding:11px 7px;min-height:43px}
-button:hover{background:#5d3827}button:focus-visible,input:focus-visible{outline:2px solid #fcb379;outline-offset:3px}
-.sliderhead{display:flex;justify-content:space-between;color:#c5d1dc;font-weight:800;font-size:12px;margin:19px 0 5px}
-input[type=range]{display:block;width:100%;accent-color:#f8a067}
-.metrics{border-top:1px solid #34414c;margin-top:23px;padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.metric{padding:12px;border:1px solid #354454;background:#0c151f;border-radius:11px}
-.metric b{color:#ffd9b8;display:block;font-size:21px;letter-spacing:-.02em}
-.metric small{font-size:11px;color:#a5b1bd;display:block;line-height:1.6;margin-top:3px}
-.note{font-size:12px;color:#9caaba;line-height:1.7;margin-top:16px}
-h3{font-size:20px;margin:32px 0 13px;letter-spacing:-.03em}
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
-.shot{overflow:hidden;border-radius:12px;border:1px solid #354352;background:#121a23}
-.shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
-.shot strong{display:block;font-size:13px;margin:10px 12px 0}
-.shot small{display:block;font-size:11px;color:#a7b6c6;margin:3px 12px 12px}
-footer{border-top:1px solid #2d3b49;margin-top:34px;padding-top:19px;color:#93a3b1;font-size:12px;line-height:1.6}
-@media(max-width:950px){.layout{grid-template-columns:1fr}.stage{min-height:460px}model-viewer{height:485px}.gallery{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.main{padding:12px 12px 35px}header{padding-top:25px}h1 span{display:block;margin-top:8px}.stage{min-height:410px}model-viewer{height:420px}.side{padding:15px}.gallery{gap:8px}}
-</style></head><body><div class="main">
-<nav><div class="logo">GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</div><a href="index.html?v=52">Все артефакты</a></nav>
-<header><div class="kicker">V54 · МИКРОСКУЛЬПТ · ОРГАНИЧЕСКИЙ РАЗЛОМ · ЭМИССИЯ 2K · АКТИВНАЯ МАГМА</div>
-<h1>ВЕЗУВИЙ <span>/ ORGANIC FRACTURE</span></h1>
-<p>Новая объёмная выпуклая плита из угольно-пепельной породы. Разные рисунки трещин на каждой стороне, глубинные разломы, расплавленный кант и восходящие потоки пепла и искр. Трещины теперь имеют плавную эмиссию, а веб-версия получает отдельные запечённые текстуры для обеих сторон и канта. Это настоящий 3D-меш, а не отдельно сгенерированный рендер.</p></header>
+:root{color-scheme:dark;--bg:#090d13;--panel:#121a24;--line:#344452;--text:#e9edf1;--muted:#aeb9c3;--fire:#ff995a}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 47% -22%,#34404d,#121a23 48%,#080b11 80%);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--text)}
+.wrap{max-width:1320px;margin:auto;padding:16px 23px 46px}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #33404d;padding:10px 0 20px}
+.brand{letter-spacing:.14em;font-size:12px;font-weight:850}.brand b{color:#f59b60}a{color:#ffbc88;text-decoration:none}a:hover{text-decoration:underline}.nav a{font-size:13px;color:#b8c5d1}
+header{padding:28px 0 23px}.tag{font-weight:800;color:#f9a06c;font-size:11px;letter-spacing:.19em}
+h1{font-weight:850;letter-spacing:-.065em;font-size:clamp(42px,5.7vw,73px);margin:10px 0 5px;line-height:1.07}h1 span{font-size:.34em;letter-spacing:0;font-weight:500;color:#b5c2cd;vertical-align:middle}
+header p{max-width:890px;color:#bac7d2;font-size:14px;margin:7px 0 0}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,.85fr);gap:16px}
+.view{border:1px solid #405166;border-radius:17px;overflow:hidden;position:relative;min-height:635px;background:radial-gradient(ellipse at 50% 45%,#232f3d,#0e1720 57%,#080b10)}
+model-viewer{display:block;width:100%;height:635px;--poster-color:transparent;--progress-bar-color:#fb9a5c}
+.corner{position:absolute;top:14px;left:14px;background:#25170fcc;border:1px solid #9c5f3e;padding:7px 11px;border-radius:7px;pointer-events:none;font:700 11px ui-monospace,Consolas,monospace;color:#ffbd89}
+.hint{position:absolute;bottom:14px;left:14px;right:14px;border-radius:8px;border:1px solid #354455;background:#08111bda;text-align:center;font-size:12px;color:#c1cbd5;padding:8px 10px;pointer-events:none}
+.side{border:1px solid #34495b;background:linear-gradient(148deg,#1b2837,#0d151e);border-radius:17px;padding:20px}
+.side h2{font-size:19px;letter-spacing:-.03em;margin:0 0 8px}.side>p{font-size:13px;color:#b9c6d2;margin:0 0 16px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px}button{cursor:pointer;border-radius:9px;border:1px solid #956141;background:#38261e;color:#ffd8bb;min-height:43px;font-size:12px;font-weight:750;padding:8px}
+button:hover{background:#61402f}button:focus-visible,input:focus-visible{outline:2px solid var(--fire);outline-offset:2px}
+.lbl{display:flex;justify-content:space-between;font-size:12px;font-weight:750;color:#c2cfda;margin:18px 0 5px}
+input[type=range]{accent-color:#f58f56;width:100%}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;border-top:1px solid #3a4c5d;margin-top:21px;padding-top:20px}
+.stat{border:1px solid #34495b;background:#101c28;border-radius:9px;padding:12px}.stat b{display:block;font-size:21px;color:#ffcfaa;line-height:1.1}.stat small{display:block;font-size:11px;color:#a6b9c9;line-height:1.4;margin-top:4px}
+.fine{font-size:12px;color:#9aabba;margin:16px 0 0;line-height:1.6}
+h3{font-size:20px;letter-spacing:-.03em;margin:30px 0 14px}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.shot{display:block;overflow:hidden;border:1px solid #394959;border-radius:11px;background:#121a24}.shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.shot strong{display:block;color:#e5edf2;font-size:13px;margin:9px 10px 0}.shot small{display:block;color:#abbac6;font-size:11px;margin:3px 10px 12px}
+footer{border-top:1px solid #344454;margin-top:34px;padding:17px 0;color:#97aab7;font-size:12px}
+@media(max-width:950px){.layout{grid-template-columns:1fr}.view{min-height:470px}model-viewer{height:500px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.wrap{padding:12px 12px 34px}.view{min-height:400px}model-viewer{height:430px}.side{padding:14px}h1 span{display:block;margin:8px 0}}
+</style></head>
+<body><main class="wrap">
+<nav class="nav"><div class="brand">GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</div><a href="index.html?v=54b">Все артефакты</a></nav>
+<header><div class="tag">V54 · НОВАЯ ГЕОМЕТРИЯ · 4K PBR · ПЛАВНАЯ 8-СЕКУНДНАЯ АНИМАЦИЯ</div>
+<h1>ВЕЗУВИЙ <span>/ NATURAL MOLTEN FRACTURE</span></h1>
+<p>Двусторонняя выпуклая вулканическая плита из обугленной породы. На верхней и нижней сторонах — независимые природные разломы, углублённые в реальную геометрию; вдоль канта — неоднородное свечение застывающей магмы. Восходящий вулканический пепел и искры представлены анимированными 3D-частицами.</p></header>
 <section class="layout">
-<div class="stage"><div class="corner">REAL 3D · 1536 PBR + BAKED THERMAL MASKS · 8s LOOP</div>
-<model-viewer id="model"
- src="models/Vesuvius_V54.glb?v=53a" poster="images/GZ52_FinalHero.jpg"
- alt="Везувий V54: реалистичный объёмный каменный диск из тёмного угля с магмой в трещинах и по окружности"
+<div class="view">
+<div class="corner">REAL 3D · 2K WEB PBR · 24 MORPH POSES · 8s LOOP</div>
+<model-viewer id="model" src="models/Vesuvius_V54.glb?v=54b" poster="images/GZ54_Hero_Polished.jpg?v=54b"
+ alt="Везувий V54 — интерактивная объёмная модель двустороннего вулканического артефакта"
  camera-controls auto-rotate autoplay animation-name="GZ45_8Sec_Complete_Loop"
- camera-orbit="32deg 66deg 112%" min-camera-orbit="auto auto 30%" max-camera-orbit="auto auto 450%"
- rotation-per-second="9deg" auto-rotate-delay="3000" field-of-view="32deg" exposure="1.25"
- environment-image="neutral" tone-mapping="neutral" shadow-intensity=".7" touch-action="pan-y"
- loading="eager"></model-viewer>
-<div class="guide">Вращай мышью или пальцем · Приближай двумя пальцами · Переверни модель на обратную сторону</div>
+ camera-orbit="25deg 62deg 105%" min-camera-orbit="auto auto 30%" max-camera-orbit="auto auto 450%"
+ auto-rotate-delay="3000" rotation-per-second="8deg" field-of-view="32deg"
+ exposure="1.25" environment-image="neutral" shadow-intensity=".7" touch-action="pan-y" loading="eager"></model-viewer>
+<div id="viewer-status" class="hint">Вращай мышью или пальцем · Колесо мыши — приближение · Переверни на обратную сторону</div>
 </div>
-<aside class="side"><h2>Настоящая 3D-модель</h2>
-<p>Верх и низ получили отдельную геометрическую сеть трещин с UV-совпадающими светящимися картами. Замкнутый выпуклый корпус, укороченные искры, 24 последовательных морф-положения без пауз на концах цикла.</p>
+<aside class="side"><h2>Реальная 3D-модель</h2>
+<p>Ускоренные восходящие искры заменены объёмными светящимися крупицами. Цикл пересобран с 24 положениями вместо семи, экспортирован в единую анимацию без паузы между кадрами 0 и 240.</p>
 <div class="controls">
-<button type="button" id="pause">⏸ Пауза</button>
-<button type="button" id="macro">⌕ Крупный план</button>
-<button type="button" id="top">⬆ Верхняя сторона</button>
-<button type="button" id="bottom">⬇ Обратная сторона</button>
+<button id="pause" type="button">⏸ Пауза</button>
+<button id="macro" type="button">⌕ Крупный план</button>
+<button id="top" type="button">↑ Верхняя сторона</button>
+<button id="bottom" type="button">↓ Нижняя сторона</button>
 </div>
-<label class="sliderhead" for="speed">Скорость анимации <span id="speedval">1×</span></label>
-<input type="range" id="speed" min=".25" max="2" step=".25" value="1">
-<label class="sliderhead" for="light">Экспозиция просмотра <span id="lightval">125%</span></label>
-<input type="range" id="light" min=".6" max="2" step=".1" value="1.25">
-<div class="metrics">
-<div class="metric"><b>141 600</b><small>полигонов цельной плиты</small></div>
-<div class="metric"><b>280</b><small>анимированных 3D-искр</small></div>
-<div class="metric"><b>560</b><small>3D-частиц пепла</small></div>
-<div class="metric"><b>9 × 4K</b><small>исходных PBR-карт</small></div>
+<label class="lbl" for="speed">Скорость анимации <span id="speedval">1×</span></label>
+<input type="range" id="speed" min=".25" max="2" step=".25" value="1"/>
+<label class="lbl" for="exposure">Экспозиция просмотра <span id="exposureval">125%</span></label>
+<input type="range" id="exposure" min=".6" max="2" step=".1" value="1.25"/>
+<div class="stats">
+<div class="stat"><b>468 160</b><small>полигонов корпуса</small></div>
+<div class="stat"><b>480</b><small>объёмных искр</small></div>
+<div class="stat"><b>920</b><small>3D-частиц пепла</small></div>
+<div class="stat"><b>9 × 4K</b><small>исходных игровых PBR-карт</small></div>
 </div>
-<div class="note">Полноразмерная модель и Blender-исходники сохранены отдельно. Для быстрой загрузки браузер использует текстуры 1536px. Переработаны тепловые маски и переходы материала, но это ещё не финальный AAAA-ассет.</div>
+<p class="fine">Веб-GLB использует текстуры до 2K для быстрого просмотра. Отдельно сохранены 4K-текстуры, исходник Blender и FBX для Unreal Engine 5.8. Это новая рабочая итерация — окончательное художественное соответствие AAA-референсу требует проверки в игровом освещении.</p>
 </aside></section>
-<h3>Настоящие Blender-рендеры</h3>
+<h3>Рендеры реальной Blender-модели</h3>
 <div class="gallery">
-<a class="shot" href="images/GZ52_FinalHero.jpg"><img src="images/GZ52_FinalHero.jpg" loading="lazy" alt="Рендер Везувия спереди"><strong>01 · Студийный ракурс</strong><small>Выпуклость и светящийся кант</small></a>
-<a class="shot" href="images/GZ52_FinalTop.jpg"><img src="images/GZ52_FinalTop.jpg" loading="lazy" alt="Рендер сверху"><strong>02 · Верхняя сторона</strong><small>Первый рисунок разломов</small></a>
-<a class="shot" href="images/GZ52_FinalBottom.jpg"><img src="images/GZ52_FinalBottom.jpg" loading="lazy" alt="Рендер снизу"><strong>03 · Нижняя сторона</strong><small>Второй рисунок разломов</small></a>
-<a class="shot" href="images/GZ52_FinalMacro.jpg"><img src="images/GZ52_FinalMacro.jpg" loading="lazy" alt="Крупный план геометрии"><strong>04 · Макро</strong><small>Геометрия лавового разлома</small></a>
+<a class="shot" href="images/GZ54_Hero_Polished.jpg?v=54b"><img src="images/GZ54_Hero_Polished.jpg?v=54b" alt="Везувий основной ракурс" loading="lazy"/><strong>01 · Студийный ракурс</strong><small>Геометрия, магматический кант</small></a>
+<a class="shot" href="images/GZ54_Top_Polished.jpg?v=54b"><img src="images/GZ54_Top_Polished.jpg?v=54b" alt="Везувий сверху" loading="lazy"/><strong>02 · Верхняя сторона</strong><small>Своя сеть трещин</small></a>
+<a class="shot" href="images/GZ54_Back_Polished.jpg?v=54b"><img src="images/GZ54_Back_Polished.jpg?v=54b" alt="Везувий снизу" loading="lazy"/><strong>03 · Нижняя сторона</strong><small>Отдельный рисунок разломов</small></a>
+<a class="shot" href="images/GZ54_Macro_Polished.jpg?v=54b"><img src="images/GZ54_Macro_Polished.jpg?v=54b" alt="Везувий крупный план" loading="lazy"/><strong>04 · Макро</strong><small>Поры, сколы, слоистый уголь</small></a>
 </div>
-<footer>GUSTAVA ZONE 2040 · Везувий V54. Технические проверки топологии и анимации — только часть производственного QA. Художественное соответствие референсу требует дальнейшей доводки скульптинга, материалов, свечения и Niagara в Unreal Engine.</footer>
-</div><script>
-const v=document.getElementById('model'),p=document.getElementById('pause');
+<footer>GUSTAVA ZONE 2040 · Везувий V54. Авторские 3D-модель и разломы; фотоскан Dark Rock от Poly Haven (CC0) используется как исходный PBR-материал. Визуализация не является копией кадров S.T.A.L.K.E.R. 2.</footer>
+</main>
+<script>
+const v=document.getElementById('model'),pause=document.getElementById('pause');
 let playing=true;
-v.addEventListener('load',()=>{try{v.animationName='GZ45_8Sec_Complete_Loop';v.timeScale=Number(document.getElementById('speed').value);v.play()}catch(e){console.warn(e)}});
-p.addEventListener('click',()=>{playing=!playing;if(playing){v.play();p.textContent='⏸ Пауза'}else{v.pause();p.textContent='▶ Продолжить'}});
-document.getElementById('macro').addEventListener('click',()=>{v.cameraOrbit='32deg 64deg 54%';v.fieldOfView='27deg'});
-document.getElementById('top').addEventListener('click',()=>{v.cameraOrbit='15deg 12deg 110%';v.fieldOfView='32deg'});
-document.getElementById('bottom').addEventListener('click',()=>{v.cameraOrbit='15deg 168deg 110%';v.fieldOfView='32deg'});
-document.getElementById('speed').addEventListener('input',e=>{v.timeScale=Number(e.target.value);document.getElementById('speedval').textContent=e.target.value+'×'});
-document.getElementById('light').addEventListener('input',e=>{v.exposure=Number(e.target.value);document.getElementById('lightval').textContent=Math.round(Number(e.target.value)*100)+'%'});
+v.addEventListener('load',()=>{try{v.animationName='GZ45_8Sec_Complete_Loop';v.timeScale=Number(document.getElementById('speed').value);v.play();document.getElementById('viewer-status').textContent='3D-модель загружена · Вращай и приближай · Анимация зациклена';}catch(err){console.warn(err);}});
+v.addEventListener('error',()=>{document.getElementById('viewer-status').textContent='Не удалось загрузить модель. Попробуй обновить страницу.';});
+pause.addEventListener('click',()=>{playing=!playing;if(playing){v.play();pause.textContent='⏸ Пауза';}else{v.pause();pause.textContent='▶ Продолжить';}});
+document.getElementById('macro').addEventListener('click',()=>{v.cameraOrbit='25deg 58deg 54%';v.fieldOfView='27deg';});
+document.getElementById('top').addEventListener('click',()=>{v.cameraOrbit='15deg 14deg 105%';v.fieldOfView='32deg';});
+document.getElementById('bottom').addEventListener('click',()=>{v.cameraOrbit='15deg 166deg 105%';v.fieldOfView='32deg';});
+document.getElementById('speed').addEventListener('input',e=>{v.timeScale=Number(e.target.value);document.getElementById('speedval').textContent=Number(e.target.value).toFixed(2).replace(/0+$/,'').replace(/\.$/,'')+'×';});
+document.getElementById('exposure').addEventListener('input',e=>{v.exposure=Number(e.target.value);document.getElementById('exposureval').textContent=Math.round(Number(e.target.value)*100)+'%';});
 </script></body></html>
