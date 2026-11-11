@@ -47,17 +47,22 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <div class="kicker">V55 · ДОВОДКА ОРИГИНАЛЬНОГО 3D-МЕША · УГОЛЬНАЯ ФАКТУРА 4K · ОБЪЁМНАЯ МАГМА</div>
 <h1>ВЕЗУВИЙ <span>/ NATURAL CHARCOAL</span></h1>
 <p>Доработанная на месте исходная 3D-модель V55 с теми же анимациями, UV-развёрткой и игровым мешем. Корректные tangent-space normal maps и обновлённый 4K материал угольной породы. Убрано JPEG-сжатие карт, уменьшена ступенчатость геометрии и сохранены независимые вулканические разломы на обеих сторонах. Настоящий 3D GLB с восходящими анимированными искрами и пеплом.</p>
-</header>
+<p style="color:#ffca9e;font-weight:600;max-width:1040px">
+  Новая анимация существующей 3D-модели V55: парение в полуметре над землёй,
+  подброс на 34 см и полный плавный переворот на 360° за 8-секундный цикл.
+  Верхняя и нижняя стороны светятся независимо, пепел и искры всегда летят вверх.
+  Камера больше не вращается сама, чтобы было видно движение именно артефакта.
+  </p></header>
 <section class="layout">
 <div class="stage">
 <div class="corner">WEB 3D · PNG NORMALS · 4096 PBR · 8s LOOP</div>
 <model-viewer id="artifact"
- src="models/Vesuvius_V55_PBR.glb?v=55d"
+ src="models/Vesuvius_V55_PBR.glb?v=55e"
  poster="images/GZ55_UVRegistered_Hero.jpg?v=55d"
  alt="Везувий V55 — интерактивная 3D-модель вулканического артефакта GUSTAVA ZONE 2040"
- camera-controls autoplay auto-rotate animation-name="GZ45_8Sec_Complete_Loop"
- camera-orbit="25deg 64deg 80%" min-camera-orbit="auto auto 25%" max-camera-orbit="auto auto 500%"
- auto-rotate-delay="3500" rotation-per-second="8deg" field-of-view="32deg"
+ camera-controls autoplay animation-name="GZ45_8Sec_Complete_Loop"
+ camera-orbit="28deg 63deg 97%" min-camera-orbit="auto auto 25%" max-camera-orbit="auto auto 500%"
+ camera-target="0m 0.64m 0m" field-of-view="32deg"
  environment-image="neutral" tone-mapping="neutral" exposure="1.10"
  shadow-intensity=".62" loading="eager" touch-action="pan-y"></model-viewer>
 <div id="status" class="hint">Загружается настоящая 3D-модель (81 МБ) · Вращай мышью, приближай колесом</div>
@@ -80,6 +85,8 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <div class="metric"><b>468 160</b><small>полигонов сглаженного 3D-корпуса</small></div>
 <div class="metric"><b>480</b><small>объёмных раскалённых искр</small></div>
 <div class="metric"><b>920</b><small>3D-частиц вулканического пепла</small></div>
+<div class="metric"><b>≈ 50 см</b><small>просвет над землёй в спокойном положении</small></div>
+<div class="metric"><b>360° / 8 с</b><small>полный переворот с плавным подбросом</small></div>
 </div>
 <p class="note">Размер высококачественного GLB: 81 МБ. Первая загрузка зависит от соединения. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
 </aside>
@@ -101,10 +108,10 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 const v=document.querySelector('#artifact'),status=document.querySelector('#status'),p=document.querySelector('#pause');
 let playing=true;
 v.addEventListener('progress',e=>{const n=Math.round(e.detail.totalProgress*100);if(n<100)status.textContent='Загрузка 3D-модели: '+n+'% · PBR 4K, 81 МБ';});
-v.addEventListener('load',()=>{try{v.animationName='GZ45_8Sec_Complete_Loop';v.timeScale=Number(document.querySelector('#speed').value);v.play();status.textContent='3D-модель загружена · Вращай, приближай и переворачивай';}catch(e){console.warn(e)}});
+v.addEventListener('load',()=>{try{v.animationName='GZ45_8Sec_Complete_Loop';v.timeScale=Number(document.querySelector('#speed').value);v.play();status.textContent='V55: парение и полный переворот каждые 8 секунд · Камера управляется мышью';}catch(e){console.warn(e)}});
 v.addEventListener('error',()=>{status.textContent='Не удалось загрузить GLB. Обнови страницу или проверь соединение.';});
 p.addEventListener('click',()=>{playing=!playing;playing?v.play():v.pause();p.textContent=playing?'⏸ Пауза':'▶ Продолжить';});
-document.querySelector('#macro').addEventListener('click',()=>{v.cameraOrbit='25deg 60deg 48%';v.fieldOfView='28deg';});
+document.querySelector('#macro').addEventListener('click',()=>{v.cameraOrbit='25deg 62deg 68%';v.fieldOfView='28deg';});
 document.querySelector('#top').addEventListener('click',()=>{v.cameraOrbit='15deg 12deg 102%';v.fieldOfView='32deg';});
 document.querySelector('#bottom').addEventListener('click',()=>{v.cameraOrbit='15deg 168deg 102%';v.fieldOfView='32deg';});
 document.querySelector('#speed').addEventListener('input',e=>{v.timeScale=Number(e.target.value);document.querySelector('#speedValue').textContent=Number(e.target.value)+'×';});
