@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080b10">
-<title>Везувий V61 — исходная V55 / V60, исправлен только торец · настоящая 3D-модель 4K | GUSTAVA ZONE 2040</title>
+<title>Везувий — восстановлен оригинальный торец V60, звук и анимация | GUSTAVA ZONE 2040</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080c12;--surface:#121c26;--line:#344453;--text:#f0f1f3;--muted:#a9b9c7;--orange:#ffae78}
@@ -53,23 +53,23 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <body><main class="wrap">
 <nav><strong>GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</strong><a href="index.html?v=55d">Все артефакты</a></nav>
 <header>
-<div class="kicker">V61 · ИМЕННО ОРИГИНАЛЬНАЯ V55 · ИСПРАВЛЕН ТОЛЬКО БОКОВОЙ ТОРЕЦ · 4K PBR</div>
-<h1>ВЕЗУВИЙ <span>/ ORIGINAL V55 · EDGE FIX</span></h1>
-<p>Доработанная на месте исходная 3D-модель V55 с теми же анимациями, UV-развёрткой и игровым мешем. Корректные tangent-space normal maps и обновлённый 4K материал угольной породы. Убрано JPEG-сжатие карт, уменьшена ступенчатость геометрии и сохранены независимые вулканические разломы на обеих сторонах. Настоящий 3D GLB с локально привязанными к двусторонним трещинам искрами и пеплом.</p>
-<p style="color:#ffca9e;font-weight:600;max-width:1040px">Это исправление именно исходной V55/V60, а не V59. Верхняя и нижняя стороны, все 468 160 полигонов, UV и восьмисекундный переворот остались без изменений. На торце убрана сплошная светящаяся лента: теперь 8 локальных вулканических прожилок, физически привязанных к направлениям разломов сверху и снизу; добавлены новые 4K PBR normal, угольная фактура и локальная эмиссия. Искры и пепел V60 сохранены. <a href="vesuvius-v60-original-v55.html?v=60b">Сравнить с прежней V60</a>.</p></header>
+<div class="kicker">ОРИГИНАЛ V55 / V60 · ТОРЕЦ ВОССТАНОВЛЕН · ЧАСТИЦЫ И АНИМАЦИЯ СОХРАНЕНЫ</div>
+<h1>ВЕЗУВИЙ <span>/ ОРИГИНАЛ V60 · ОТКАТ ТОРЦА</span></h1>
+<p>Возвращена точная исходная 3D-модель V60 на базе V55: торцевая кромка с прежним рисунком породы и магматическим поясом. Изменения бокового материала V61 отменены. Верх, низ, искры и пепел из обеих сторон, восьмисекундный переворот — сохранены.</p>
+<p style="color:#ffca9e;font-weight:600;max-width:1040px"><b>Откат торца:</b> отображается ровно тот же GLB, что использовался в исходной V60. Веб-загрузчик исправлен; тихий вулканический звук доступен по кнопке. <a href="vesuvius-v60-original-v55.html?v=60b">Открыть оригинальный просмотр V60 для сравнения</a>.</p></header>
 <section class="layout">
 <div class="stage">
 <div class="corner">WEB 3D · PNG NORMALS · 4096 PBR · 8s LOOP</div>
 <model-viewer id="artifact"
- data-v61-model="rim-only-refined"
- poster="images/V61_Refined_Rim_FRONT.png?v=61a"
+ data-base-model="original-v60"
+ poster="images/GZ60_Hero_OriginalV55.png?v=61a"
  alt="Везувий V60 — исходная геометрия V55 с исправленными частицами вулканического артефакта GUSTAVA ZONE 2040"
- camera-controls autoplay animation-name="GZ61_OriginalV55_RimPBR_8Second_Loop"
+ camera-controls autoplay animation-name="GZ60_V55_DualCrack_8Second_Loop"
  camera-orbit="28deg 63deg 97%" min-camera-orbit="auto auto 25%" max-camera-orbit="auto auto 500%"
  camera-target="0m 0.64m 0m" field-of-view="32deg"
  environment-image="neutral" tone-mapping="neutral" exposure="1.10"
  shadow-intensity=".62" loading="eager" touch-action="pan-y"></model-viewer>
-<div id="status" class="hint" role="status" aria-live="polite">Загружается настоящая 3D-модель (86 МБ) · Вращай мышью, приближай колесом</div>
+<div id="status" class="hint" role="status" aria-live="polite">Загружается настоящая 3D-модель (81 МБ) · Вращай мышью, приближай колесом</div>
 </div>
 <aside class="aside">
 <h2>Просмотр высокого качества</h2>
@@ -104,27 +104,27 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <div class="metric"><b>≈ 50 см</b><small>просвет над землёй в спокойном положении</small></div>
 <div class="metric"><b>360° / 8 с</b><small>полный переворот с плавным подбросом</small></div>
 </div>
-<p class="note">Полная 4K-модель: 85,94 МБ. При обрыве загрузки части скачиваются повторно; после ошибки доступна кнопка повторного запуска. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
+<p class="note">Полная 4K-модель: 80,99 МБ. При обрыве загрузки части скачиваются повторно; после ошибки доступна кнопка повторного запуска. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
 </aside>
 </section>
-<h3>Реальные Cycles-рендеры V61 · торец с четырёх сторон</h3><p>Геометрия, PBR и анимация не менялись. Рендеры сделаны при отдельном студийном свете; веб-модель использует исходные материалы V55.</p>
+<h3>Реальные Blender-рендеры исходной V60</h3><p>Восстановлены старые торцы. Здесь только реальные рендеры V60, без нового материала V61.</p>
 <div class="gallery">
-<a class="shot" href="images/V61_Refined_Rim_FRONT.png?v=61a"><img src="images/V61_Refined_Rim_FRONT.png?v=61a" alt="Общий ракурс" loading="lazy"><strong>Торец · спереди</strong><small>Силуэт и мягкий геологический рельеф</small></a>
-<a class="shot" href="images/V61_Refined_Rim_LEFT.png?v=61a"><img src="images/V61_Refined_Rim_LEFT.png?v=61a" alt="Макро" loading="lazy"><strong>Торец · слева</strong><small>Проверка привязки искр</small></a>
-<a class="shot" href="images/V61_Refined_Rim_BACK.png?v=61a"><img src="images/V61_Refined_Rim_BACK.png?v=61a" alt="Верхняя сторона" loading="lazy"><strong>Торец · сзади</strong><small>Лавовые каналы уходят в нижнюю корку</small></a>
-<a class="shot" href="images/V61_Refined_Rim_RIGHT.png?v=61a"><img src="images/V61_Refined_Rim_RIGHT.png?v=61a" alt="Обратная сторона" loading="lazy"><strong>Торец · справа</strong><small>Остывшие области и локальные жилы</small></a>
-<a class="shot" href="images/V61_Refined_Rim_MACRO.png?v=61a"><img src="images/V61_Refined_Rim_MACRO.png?v=61a" alt="Фаза переворота 130" loading="lazy"><strong>Торец · макро</strong><small>Рельеф, нормали и свечение</small></a><a class="shot" href="images/V61_Refined_Rim_FRONT.png?v=61a"><img src="images/V61_Refined_Rim_FRONT.png?v=61a" alt="Фаза переворота 180" loading="lazy"><strong>Торец · фронт</strong><small>Возвращение в исходное положение</small></a></div>
+<a class="shot" href="images/GZ60_Hero_OriginalV55.png?v=61a"><img src="images/GZ60_Hero_OriginalV55.png?v=61a" alt="Общий ракурс" loading="lazy"><strong>Оригинальная V60</strong><small>Силуэт и мягкий геологический рельеф</small></a>
+<a class="shot" href="images/GZ60_Flip_095.png?v=61a"><img src="images/GZ60_Flip_095.png?v=61a" alt="Макро" loading="lazy"><strong>Переворот V60</strong><small>Проверка привязки искр</small></a>
+<a class="shot" href="images/GZ60_Top_CrackEmitters.png?v=61a"><img src="images/GZ60_Top_CrackEmitters.png?v=61a" alt="Верхняя сторона" loading="lazy"><strong>Верхние трещины</strong><small>Оригинальный рисунок трещин</small></a>
+<a class="shot" href="images/GZ60_Bottom_CrackEmitters.png?v=61a"><img src="images/GZ60_Bottom_CrackEmitters.png?v=61a" alt="Обратная сторона" loading="lazy"><strong>Нижние трещины</strong><small>Оригинальный рисунок трещин</small></a>
+<a class="shot" href="images/GZ60_Flip_130.png?v=61a"><img src="images/GZ60_Flip_130.png?v=61a" alt="Фаза переворота 130" loading="lazy"><strong>Переворот · кадр 130</strong><small>Исходный материал торца</small></a><a class="shot" href="images/GZ60_Hero_OriginalV55.png?v=61a"><img src="images/GZ60_Hero_OriginalV55.png?v=61a" alt="Фаза переворота 180" loading="lazy"><strong>Исходная боковая кромка</strong><small>Возвращение в исходное положение</small></a></div>
 <details><summary>Что именно исправлено относительно V54b</summary>
 <p>В V54b при GLB-экспорте normalTexture ошибочно содержала карту высот. В V55 она подключена напрямую к корректному Normal Map-шейдеру, подтверждён исходник NormalGL, а карты изображений передаются как PNG. Силуэт и поверхности исходного меша сглажены без нарушения замкнутой топологии. Техника снижает технические артефакты, но не заменяет финальную ручную скульптуру.</p>
 <p><a href="vesuvius-v54.html?v=54b">Сравнить с предыдущим V54b</a></p>
 </details>
-<footer>GUSTAVA ZONE 2040 · ВЕЗУВИЙ V61 · точный исходный корпус V55 и оригинальные 4K PBR карты верхней/нижней стороны. Исправлен только торцевой материал. Источники геоматериалов: Poly Haven Dark Rock (CC0). Игровая Niagara отдельно требует проверки.</footer>
+<footer>GUSTAVA ZONE 2040 · ВЕЗУВИЙ · ВОССТАНОВЛЕНА ТОЧНАЯ V60 НА ОСНОВЕ V55. Боковая кромка, верх и низ неизменны. Сохранены анимированные искры и пепел, исправленный загрузчик и тихий звук. Проверка в Unreal Niagara отдельно.</footer>
 </main>
 <script>
 const v=document.querySelector('#artifact'),status=document.querySelector('#status'),p=document.querySelector('#pause');
 let playing=true;
-v.addEventListener('progress',e=>{const n=Math.round(e.detail.totalProgress*100);if(n<100)status.textContent='Загрузка 3D-модели: '+n+'% · PBR 4K, 86 МБ';});
-v.addEventListener('load',()=>{try{v.animationName='GZ61_OriginalV55_RimPBR_8Second_Loop';v.timeScale=Number(document.querySelector('#speed').value);v.play();status.textContent='V61: обновлён только материал торца V60 · анимация и искры прежние';}catch(e){console.warn(e)}});
+v.addEventListener('progress',e=>{const n=Math.round(e.detail.totalProgress*100);if(n<100)status.textContent='Загрузка 3D-модели: '+n+'% · PBR 4K, 81 МБ';});
+v.addEventListener('load',()=>{try{v.animationName='GZ60_V55_DualCrack_8Second_Loop';v.timeScale=Number(document.querySelector('#speed').value);v.play();status.textContent='Восстановлена исходная V60: оригинальный торец, частицы и переворот';}catch(e){console.warn(e)}});
 v.addEventListener('error',()=>{status.textContent='Не удалось загрузить GLB. Обнови страницу или проверь соединение.';});
 p.addEventListener('click',()=>{playing=!playing;playing?v.play():v.pause();p.textContent=playing?'⏸ Пауза':'▶ Продолжить';});
 document.querySelector('#macro').addEventListener('click',()=>{v.cameraOrbit='25deg 62deg 68%';v.fieldOfView='28deg';});
@@ -134,21 +134,20 @@ document.querySelector('#speed').addEventListener('input',e=>{v.timeScale=Number
 document.querySelector('#exposure').addEventListener('input',e=>{v.exposure=Number(e.target.value);document.querySelector('#exposureValue').textContent=Math.round(Number(e.target.value)*100)+'%';});
 
 
-// The V61 model is an 85,940,540-byte GLB split into five verified parts.
-// The original bug: part #5 had 5,940,540 bytes, but the old loader expected 987,872 (V60 leftovers).
-const V61_PARTS=["models/Vesuvius_V61_OriginalV55_RefinedRim.part01.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part02.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part03.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part04.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part05.bin?v=61c"];
-const V61_SIZES=[20000000, 20000000, 20000000, 20000000, 5940540];
-const V61_TOTAL=85940540;
+// Exact original V60 GLB: 80,987,872 bytes split into five files.
+const RESTORED_PARTS=["models/Vesuvius_V60_V55Original_DualCrack.part01.bin?v=60b", "models/Vesuvius_V60_V55Original_DualCrack.part02.bin?v=60b", "models/Vesuvius_V60_V55Original_DualCrack.part03.bin?v=60b", "models/Vesuvius_V60_V55Original_DualCrack.part04.bin?v=60b", "models/Vesuvius_V60_V55Original_DualCrack.part05.bin?v=60b"];
+const RESTORED_SIZES=[20000000, 20000000, 20000000, 20000000, 987872];
+const RESTORED_TOTAL=80987872;
 const retryButton=document.querySelector('#retry-load');
 let currentModelUrl=null, loaderActive=false, activeLoadAttempt=0;
 function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
 async function downloadPart(i, run){
-  const url=V61_PARTS[i], want=V61_SIZES[i];
+  const url=RESTORED_PARTS[i], want=RESTORED_SIZES[i];
   let last=null;
   for(let attempt=1;attempt<=3;attempt++){
     let timer=null, controller=new AbortController();
     try{
-      status.textContent='3D V61: часть '+(i+1)+'/5'+(attempt>1?' · повтор '+attempt+'/3':'')+' · 4K PBR';
+      status.textContent='3D V60: часть '+(i+1)+'/5'+(attempt>1?' · повтор '+attempt+'/3':'')+' · 4K PBR';
       // Timeout is per-file rather than global: slower connections can recover without losing completed parts.
       timer=setTimeout(()=>controller.abort(),120000);
       const response=await fetch(url,{signal:controller.signal,cache:attempt===1?'force-cache':'reload'});
@@ -163,27 +162,27 @@ async function downloadPart(i, run){
   }
   throw last||new Error('Загрузка части '+(i+1)+' не удалась');
 }
-async function loadV61(){
+async function loadRestored(){
   if(loaderActive)return;
   loaderActive=true;retryButton.hidden=true;retryButton.disabled=true;
   const run=++activeLoadAttempt;
   let completed=0,next=0;
-  const data=new Array(V61_PARTS.length);
+  const data=new Array(RESTORED_PARTS.length);
   try{
-    status.textContent='3D V61: проверка 5 файлов модели (85,94 МБ)...';
+    status.textContent='3D V60: проверка 5 файлов модели (80,99 МБ)...';
     const worker=async()=>{
       for(;;){
         const index=next++;
-        if(index>=V61_PARTS.length)return;
+        if(index>=RESTORED_PARTS.length)return;
         data[index]=await downloadPart(index,run);
         completed++;
-        status.textContent='3D V61: загружено '+completed+' из '+V61_PARTS.length+' частей ('+
+        status.textContent='3D V60: загружено '+completed+' из '+RESTORED_PARTS.length+' частей ('+
            (data.reduce((n,b)=>n+(b?.byteLength||0),0)/1000000).toFixed(1)+' МБ)';
       }
     };
     await Promise.all([worker(),worker()]); // two concurrent downloads, less contention than five 20MB requests.
     const b=new Blob(data,{type:'model/gltf-binary'});
-    if(b.size!==V61_TOTAL)throw new Error('Неверный итоговый размер модели '+b.size+' вместо '+V61_TOTAL);
+    if(b.size!==RESTORED_TOTAL)throw new Error('Неверный итоговый размер модели '+b.size+' вместо '+RESTORED_TOTAL);
     status.textContent='Все 5 частей загружены. Собираю 3D-модель и включаю анимацию...';
     const url=URL.createObjectURL(b);
     if(currentModelUrl)URL.revokeObjectURL(currentModelUrl);
@@ -192,12 +191,12 @@ async function loadV61(){
     // Status changes to "ready" on model-viewer load event above, not before.
   }catch(e){
     console.error('V61 viewer load error',e);
-    status.textContent='Ошибка загрузки V61: '+(e?.message||String(e))+' · нажми «Повторить загрузку»';
+    status.textContent='Ошибка загрузки 3D: '+(e?.message||String(e))+' · нажми «Повторить загрузку»';
     retryButton.hidden=false;
     retryButton.disabled=false;
   }finally{loaderActive=false;}
 }
-retryButton.addEventListener('click',loadV61);
+retryButton.addEventListener('click',loadRestored);
 v.addEventListener('error',()=>{
   retryButton.hidden=false;retryButton.disabled=false;
   status.textContent='GLB загружен, но просмотрщик не открыл модель. Нажми «Повторить загрузку».';
@@ -215,6 +214,6 @@ lavaToggle.addEventListener('click',async()=>{
   try{await lava.play();lavaEnabled=true;lavaToggle.textContent='🔊 Выключить звук';}
   catch(err){lavaToggle.textContent='Не удалось включить звук';console.warn('V61 audio',err);}
 });
-loadV61();
+loadRestored();
 
 </script></body></html>
