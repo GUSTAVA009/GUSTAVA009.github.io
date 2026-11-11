@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<title>Везувий V62 — натуральный каменный торец, анимация оригинальной V60 | GUSTAVA ZONE 2040</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#080c12;--surface:#121c26;--line:#344453;--text:#f0f1f3;--muted:#a9b9c7;--orange:#ffae78}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -20%,#293442 0,#101820 50%,#080c12 84%);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--text)}
+a{color:#ffc197;text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1390px;padding:18px 22px 56px;margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:6px 0 22px;border-bottom:1px solid #2d3b4c}
+nav strong{font-size:12px;font-weight:850;letter-spacing:.17em}nav strong b{color:#ffa56c}nav a{color:#afbdca;font-size:12px}
+header{padding:28px 0 20px}.kicker{font-weight:850;font-size:11px;letter-spacing:.16em;color:#ffa775}
+h1{font-size:clamp(44px,6vw,80px);font-weight:900;letter-spacing:-.07em;line-height:1.04;margin:10px 0}
+h1 span{font-size:.30em;letter-spacing:.015em;font-weight:500;color:#b8c6cf;vertical-align:middle}
+header p{font-size:14px;color:#b8c5cf;max-width:1030px;margin:10px 0}
+.layout{display:grid;grid-template-columns:minmax(0,1.72fr) minmax(310px,.88fr);gap:15px}
+.stage{border:1px solid #45596c;min-height:655px;border-radius:15px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#243240,#111c27 54%,#080e16)}
+model-viewer{display:block;width:100%;height:660px;--poster-color:transparent;--progress-bar-color:#ffa266}
+.corner{position:absolute;z-index:2;pointer-events:none;left:13px;top:13px;border:1px solid #9b6b44;border-radius:7px;background:#2b1c17db;color:#ffd0a5;font:700 11px ui-monospace,Consolas,monospace;padding:7px 10px}
+.hint{position:absolute;z-index:2;pointer-events:none;bottom:13px;left:13px;right:13px;border:1px solid #334656;border-radius:7px;background:#0b131de0;text-align:center;color:#c3cdd6;font-size:11px;padding:8px}
+.aside{border:1px solid #324758;border-radius:15px;padding:20px;background:linear-gradient(146deg,#1c2937,#0c1620)}
+.aside h2{font-size:18px;letter-spacing:-.025em;margin:0 0 9px}.aside p{color:#b8c7d2;font-size:13px;margin:0 0 16px}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button{border:1px solid #946345;border-radius:8px;background:#38281f;cursor:pointer;color:#ffdcc7;font-size:12px;font-weight:760;padding:10px 6px;min-height:42px}
+button:hover{background:#55382a}button:focus-visible,input:focus-visible{outline:2px solid #ffac77;outline-offset:2px}
+label{display:flex;justify-content:space-between;margin:16px 0 5px;color:#c3d0d9;font-size:12px;font-weight:700}
+input[type=range]{width:100%;accent-color:#f79a61}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px;border-top:1px solid #344757;padding-top:17px}
+.metric{border:1px solid #304454;border-radius:8px;background:#101b27;padding:12px}
+.metric b{font-size:19px;color:#ffcfaa;display:block}.metric small{font-size:11px;color:#aebfca;display:block;margin-top:3px;line-height:1.35}
+.note{margin-top:14px!important;font-size:11px!important;line-height:1.65!important;color:#9fb1bc!important}
+h3{font-size:20px;letter-spacing:-.025em;margin:29px 0 14px}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.shot{display:block;overflow:hidden;border:1px solid #354b5d;border-radius:10px;background:#121e28}
+.shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.shot strong{display:block;font-size:13px;color:#e9eff2;padding:9px 10px 0}.shot small{font-size:11px;color:#a9bdca;display:block;padding:2px 10px 10px}
+details{border-top:1px solid #344759;padding-top:15px;margin-top:27px;color:#afbecb;font-size:13px}details summary{cursor:pointer;color:#dce8ef;font-weight:700}
+footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18px;font-size:12px}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.stage{min-height:480px}model-viewer{height:530px}.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.wrap{padding:12px 12px 37px}header{padding-top:24px}h1 span{display:block;margin:8px 0}.stage{min-height:430px}model-viewer{height:450px}.aside{padding:14px}}
+
+.audio-panel{margin:14px 0;border:1px solid #5c5148;border-radius:10px;padding:13px;background:#1c252f}
+.audio-panel h3{font-size:14px;margin:0 0 5px;color:#ffe2c8}
+.audio-panel p{margin:0 0 7px;font-size:12px;line-height:1.45}
+.audio-controls{display:flex;gap:9px;align-items:center}
+.audio-controls button{flex:1}
+.audio-controls input{min-width:80px;flex:1}
+#retry-load{width:100%;margin:12px 0;border-color:#b48768;background:#41291f}
+#retry-load[hidden]{display:none}
+</style>
+</head>
+<body><main class="wrap">
+<nav><strong>GUSTAVA <b>ZONE 2040</b> · ARTIFACT LAB</strong><a href="index.html?v=55d">Все артефакты</a></nav>
+<header>
+<div class="kicker">V62 · НАТУРАЛЬНАЯ 4K ФАКТУРА ТОРЦА ИЗ ОРИГИНАЛЬНОЙ ВЕРХНЕЙ И НИЖНЕЙ ПОРОДЫ</div>
+<h1>ВЕЗУВИЙ <span>/ V62 · STONE RIM FIX</span></h1>
+<p>Исправлена сама оригинальная 3D-модель V60 из V55. Убраны полосы на боковой угольной фактуре: новая 4K-камень/normal карта собрана из настоящих текстур верхней и нижней стороны. Не менялись геометрия, UV, верх, низ, боковая лава, искры, пепел и восьмисекундный переворот.</p>
+<p style="color:#ffca9e;font-weight:600;max-width:1040px"><b>Это реальная правка GLB, а не концепт:</b> заменены только боковая каменная BaseColor 4096×1024 и normal map 4096×1024. Все элементы первоначальной V60, кроме боковых текстур, сохранены, а ошибка заголовка GLB на 8 байт исправлена. <a href="vesuvius-v60-original-v55.html?v=60b">Открыть старую V60 для сравнения</a> · <a href="_v62/v62_rim_before_after.jpg?v=62a">Сравнить карты до/после</a>.</p></header>
+<section class="layout">
+<div class="stage">
+<div class="corner">WEB 3D · PNG NORMALS · 4096 PBR · 8s LOOP</div>
+<model-viewer id="artifact"
+ data-base-model="v62-rim-retexture-only"
+ 
+ alt="Везувий V60 — исходная геометрия V55 с исправленными частицами вулканического артефакта GUSTAVA ZONE 2040"
+ camera-controls autoplay animation-name="GZ60_V55_DualCrack_8Second_Loop"
+ camera-orbit="28deg 63deg 97%" min-camera-orbit="auto auto 25%" max-camera-orbit="auto auto 500%"
+ camera-target="0m 0.64m 0m" field-of-view="32deg"
+ environment-image="neutral" tone-mapping="neutral" exposure="1.10"
+ shadow-intensity=".62" loading="eager" touch-action="pan-y"></model-viewer>
+<div id="status" class="hint" role="status" aria-live="polite">Загружается настоящая 3D-модель (93 МБ) · Вращай мышью, приближай колесом</div>
+</div>
+<aside class="aside">
+<h2>Просмотр высокого качества</h2>
+<p>Корректное PBR-освещение, сглаженный рельеф и без потерь сжатые карты нормалей. Оценивать фактуру лучше на крупном плане при освещении 100–150%.</p>
+<div class="buttons">
+<button id="pause" type="button">⏸ Пауза</button>
+<button id="macro" type="button">⌕ Крупный план</button>
+<button id="top" type="button">↑ Верхняя сторона</button>
+<button id="bottom" type="button">↓ Нижняя сторона</button>
+</div>
+<label for="speed">Скорость движения <span id="speedValue">1×</span></label>
+<input type="range" id="speed" min=".25" max="2" step=".25" value="1"/>
+<label for="exposure">Экспозиция <span id="exposureValue">110%</span></label>
+<input type="range" id="exposure" min=".60" max="2.0" step=".10" value="1.1"/>
+
+<div class="audio-panel">
+<h3>🌋 Бурлящая магма · очищенный SFX</h3>
+<p>Бесшовный цикл 8 секунд, бас приглушён. Звук выключен при открытии — включи его вручную.</p>
+<div class="audio-controls">
+<button id="lava-toggle" type="button">🔈 Включить звук</button>
+<input type="range" id="lava-volume" min="0" max="100" value="35" step="5" aria-label="Громкость звука"/>
+<b id="lava-volume-text" style="font:12px ui-monospace;color:#ffcdaf;min-width:32px;text-align:right">35%</b>
+</div>
+<audio id="lava-audio" src="audio/Vesuvius_Lava_Seamless8s.ogg?v=61c" preload="none" loop></audio>
+</div>
+<button id="retry-load" type="button" hidden>↻ Повторить загрузку 3D-модели</button>
+<div class="metrics">
+<div class="metric"><b>4096 px</b><small>4K PBR: PNG-нормали и магма, цвет JPEG Q98 в веб-просмотре</small></div>
+<div class="metric"><b>468 160</b><small>полигонов сглаженного 3D-корпуса</small></div>
+<div class="metric"><b>480</b><small>объёмных раскалённых искр</small></div>
+<div class="metric"><b>920</b><small>3D-частиц вулканического пепла</small></div>
+<div class="metric"><b>≈ 50 см</b><small>просвет над землёй в спокойном положении</small></div>
+<div class="metric"><b>360° / 8 с</b><small>полный переворот с плавным подбросом</small></div>
+</div>
+<p class="note">Полная 4K-модель: 93,29 МБ. При обрыве загрузки части скачиваются повторно; после ошибки доступна кнопка повторного запуска. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
+</aside>
+</section>
+<h3>Сравнение настоящих PBR-карт торца: V60 / V62</h3><p>Это исходные текстуры реальной 3D-модели, а не концепт. Итоговый внешний вид оценивай в 3D-просмотре выше.</p><a href="_v62/v62_rim_before_after.jpg?v=62a"><img src="_v62/v62_rim_before_after.jpg?v=62a" alt="Реальная боковая текстура V60 и исправленная V62" style="display:block;max-width:900px;width:100%;border-radius:12px"></a><h3>Blender-рендеры исходной V60 для сравнения
+<div class="gallery">
+<a class="shot" href="images/GZ60_Hero_OriginalV55.png?v=61a"><img src="images/GZ60_Hero_OriginalV55.png?v=61a" alt="Общий ракурс" loading="lazy"><strong>Оригинальная V60</strong><small>Силуэт и мягкий геологический рельеф</small></a>
+<a class="shot" href="images/GZ60_Flip_095.png?v=61a"><img src="images/GZ60_Flip_095.png?v=61a" alt="Макро" loading="lazy"><strong>Переворот V60</strong><small>Проверка привязки искр</small></a>
+<a class="shot" href="images/GZ60_Top_CrackEmitters.png?v=61a"><img src="images/GZ60_Top_CrackEmitters.png?v=61a" alt="Верхняя сторона" loading="lazy"><strong>Верхние трещины</strong><small>Оригинальный рисунок трещин</small></a>
+<a class="shot" href="images/GZ60_Bottom_CrackEmitters.png?v=61a"><img src="images/GZ60_Bottom_CrackEmitters.png?v=61a" alt="Обратная сторона" loading="lazy"><strong>Нижние трещины</strong><small>Оригинальный рисунок трещин</small></a>
+<a class="shot" href="images/GZ60_Flip_130.png?v=61a"><img src="images/GZ60_Flip_130.png?v=61a" alt="Фаза переворота 130" loading="lazy"><strong>Переворот · кадр 130</strong><small>Исходный материал торца</small></a><a class="shot" href="images/GZ60_Hero_OriginalV55.png?v=61a"><img src="images/GZ60_Hero_OriginalV55.png?v=61a" alt="Фаза переворота 180" loading="lazy"><strong>Исходная боковая кромка</strong><small>Возвращение в исходное положение</small></a></div>
+<details><summary>Что именно исправлено относительно V54b</summary>
+<p>В V54b при GLB-экспорте normalTexture ошибочно содержала карту высот. В V55 она подключена напрямую к корректному Normal Map-шейдеру, подтверждён исходник NormalGL, а карты изображений передаются как PNG. Силуэт и поверхности исходного меша сглажены без нарушения замкнутой топологии. Техника снижает технические артефакты, но не заменяет финальную ручную скульптуру.</p>
+<p><a href="vesuvius-v54.html?v=54b">Сравнить с предыдущим V54b</a></p>
+</details>
+<footer>GUSTAVA ZONE 2040 · ВЕЗУВИЙ V62 · РЕАЛЬНЫЙ GLB V60 ИЗ V55 С НОВЫМИ КАМЕННЫМИ МАТЕРИАЛАМИ ТОЛЬКО НА ТОРЦЕ. ВЕРХ, НИЗ, ГЕОМЕТРИЯ, UV, ЛАВА, ЧАСТИЦЫ И АНИМАЦИИ СОХРАНЕНЫ. Проверка в Unreal Niagara отдельно.</footer>
+</main>
+<script>
+const v=document.querySelector('#artifact'),status=document.querySelector('#status'),p=document.querySelector('#pause');
+let playing=true;
+v.addEventListener('progress',e=>{const n=Math.round(e.detail.totalProgress*100);if(n<100)status.textContent='Загрузка 3D-модели: '+n+'% · PBR 4K, 93 МБ';});
+v.addEventListener('load',()=>{try{v.animationName='GZ60_V55_DualCrack_8Second_Loop';v.timeScale=Number(document.querySelector('#speed').value);v.play();status.textContent='V62: боковая порода теперь натуральная, анимация и искры сохранены';}catch(e){console.warn(e)}});
+v.addEventListener('error',()=>{status.textContent='Не удалось загрузить GLB. Обнови страницу или проверь соединение.';});
+p.addEventListener('click',()=>{playing=!playing;playing?v.play():v.pause();p.textContent=playing?'⏸ Пауза':'▶ Продолжить';});
+document.querySelector('#macro').addEventListener('click',()=>{v.cameraOrbit='25deg 62deg 68%';v.fieldOfView='28deg';});
+document.querySelector('#top').addEventListener('click',()=>{v.cameraOrbit='15deg 12deg 102%';v.fieldOfView='32deg';});
+document.querySelector('#bottom').addEventListener('click',()=>{v.cameraOrbit='15deg 168deg 102%';v.fieldOfView='32deg';});
+document.querySelector('#speed').addEventListener('input',e=>{v.timeScale=Number(e.target.value);document.querySelector('#speedValue').textContent=Number(e.target.value)+'×';});
+document.querySelector('#exposure').addEventListener('input',e=>{v.exposure=Number(e.target.value);document.querySelector('#exposureValue').textContent=Math.round(Number(e.target.value)*100)+'%';});
+
+
+// Exact original V60 GLB: 80,987,872 bytes split into five files.
+const RESTORED_PARTS=["models/Vesuvius_V62_OriginalV60_NaturalStoneRim.part01.bin?v=62a", "models/Vesuvius_V62_OriginalV60_NaturalStoneRim.part02.bin?v=62a", "models/Vesuvius_V62_OriginalV60_NaturalStoneRim.part03.bin?v=62a", "models/Vesuvius_V62_OriginalV60_NaturalStoneRim.part04.bin?v=62a", "models/Vesuvius_V62_OriginalV60_NaturalStoneRim.part05.bin?v=62a"];
+const RESTORED_SIZES=[20000000,20000000,20000000,20000000,13290984];
+const RESTORED_TOTAL=93290984;
+const retryButton=document.querySelector('#retry-load');
+let currentModelUrl=null, loaderActive=false, activeLoadAttempt=0;
+function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+async function downloadPart(i, run){
+  const url=RESTORED_PARTS[i], want=RESTORED_SIZES[i];
+  let last=null;
+  for(let attempt=1;attempt<=3;attempt++){
+    let timer=null, controller=new AbortController();
+    try{
+      status.textContent='3D V62: часть '+(i+1)+'/5'+(attempt>1?' · повтор '+attempt+'/3':'')+' · 4K PBR';
+      // Timeout is per-file rather than global: slower connections can recover without losing completed parts.
+      timer=setTimeout(()=>controller.abort(),120000);
+      const response=await fetch(url,{signal:controller.signal,cache:attempt===1?'force-cache':'reload'});
+      if(!response.ok)throw new Error('часть '+(i+1)+', HTTP '+response.status);
+      const data=await response.arrayBuffer();
+      if(data.byteLength!==want)throw new Error('часть '+(i+1)+' неполная: '+data.byteLength+' вместо '+want);
+      return data;
+    }catch(e){
+      last=e;console.warn('V61 3D download retry',i+1,attempt,e);
+      if(attempt<3)await sleep(600*attempt);
+    }finally{if(timer!==null)clearTimeout(timer);}
+  }
+  throw last||new Error('Загрузка части '+(i+1)+' не удалась');
+}
+async function loadRestored(){
+  if(loaderActive)return;
+  loaderActive=true;retryButton.hidden=true;retryButton.disabled=true;
+  const run=++activeLoadAttempt;
+  let completed=0,next=0;
+  const data=new Array(RESTORED_PARTS.length);
+  try{
+    status.textContent='3D V62: проверка 5 файлов модели (93,29 МБ)...';
+    const worker=async()=>{
+      for(;;){
+        const index=next++;
+        if(index>=RESTORED_PARTS.length)return;
+        data[index]=await downloadPart(index,run);
+        completed++;
+        status.textContent='3D V62: загружено '+completed+' из '+RESTORED_PARTS.length+' частей ('+
+           (data.reduce((n,b)=>n+(b?.byteLength||0),0)/1000000).toFixed(1)+' МБ)';
+      }
+    };
+    await Promise.all([worker(),worker()]); // two concurrent downloads, less contention than five 20MB requests.
+    const b=new Blob(data,{type:'model/gltf-binary'});
+    if(b.size!==RESTORED_TOTAL)throw new Error('Неверный итоговый размер модели '+b.size+' вместо '+RESTORED_TOTAL);
+    status.textContent='Все 5 частей загружены. Собираю 3D-модель и включаю анимацию...';
+    const url=URL.createObjectURL(b);
+    if(currentModelUrl)URL.revokeObjectURL(currentModelUrl);
+    currentModelUrl=url;
+    v.src=url;
+    // Status changes to "ready" on model-viewer load event above, not before.
+  }catch(e){
+    console.error('V61 viewer load error',e);
+    status.textContent='Ошибка загрузки 3D: '+(e?.message||String(e))+' · нажми «Повторить загрузку»';
+    retryButton.hidden=false;
+    retryButton.disabled=false;
+  }finally{loaderActive=false;}
+}
+retryButton.addEventListener('click',loadRestored);
+v.addEventListener('error',()=>{
+  retryButton.hidden=false;retryButton.disabled=false;
+  status.textContent='GLB загружен, но просмотрщик не открыл модель. Нажми «Повторить загрузку».';
+});
+const lava=document.querySelector('#lava-audio'),lavaToggle=document.querySelector('#lava-toggle');
+const lavaVolume=document.querySelector('#lava-volume'),lavaText=document.querySelector('#lava-volume-text');
+let lavaEnabled=false;
+lava.volume=Number(lavaVolume.value)/100;
+lavaVolume.addEventListener('input',()=>{
+  lava.volume=Number(lavaVolume.value)/100;
+  lavaText.textContent=lavaVolume.value+'%';
+});
+lavaToggle.addEventListener('click',async()=>{
+  if(lavaEnabled){lava.pause();lavaEnabled=false;lavaToggle.textContent='🔈 Включить звук';return;}
+  try{await lava.play();lavaEnabled=true;lavaToggle.textContent='🔊 Выключить звук';}
+  catch(err){lavaToggle.textContent='Не удалось включить звук';console.warn('V61 audio',err);}
+});
+loadRestored();
+
+</script></body></html>
