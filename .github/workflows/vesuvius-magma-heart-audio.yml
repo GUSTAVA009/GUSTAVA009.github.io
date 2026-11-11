@@ -1,0 +1,62 @@
+name: Generate original Vesuvius Magma Heart SFX
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/generate_vesuvius_magma_heart.py
+      - .github/workflows/vesuvius-magma-heart-audio.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sound:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check numpy scipy soundfile pyloudnorm
+      - name: Generate completely new eight-second stereo volcanic sound
+        run: python tools/generate_vesuvius_magma_heart.py
+      - name: Update V62 sound only, retain volume controls
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("zone-artifacts/vesuvius-v62-natural-stone.html")
+          s=p.read_text(encoding="utf8")
+          old="audio/Vesuvius_Lava_Seamless8s.ogg?v=61c"
+          new="audio/Vesuvius_Magma_Heart_Original_8s.ogg?v=62sound1"
+          assert s.count(old)==1, "expected exactly one V62 old lava sound"
+          s=s.replace(old,new)
+          assert 'id="lava-toggle"' in s and 'id="lava-volume"' in s
+          s=s.replace("Бесшовный цикл 8 секунд, бас приглушён. Звук выключен при открытии — включи его вручную.",
+              "Новый оригинальный звук: магматический пульс, треск базальта и искры. Цикл 8 секунд. Включается вручную.")
+          s=s.replace("🌋 Бурлящая магма · очищенный SFX","🌋 Magma Heart · оригинальный звук Везувия")
+          p.write_text(s,encoding="utf8")
+          PY
+      - name: Verify generated audio and changes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path('zone-artifacts/audio/Vesuvius_Magma_Heart_QA.json').read_text())
+          assert q['result']=='PASS_ORIGINAL_MAGMA_HEART_SFX'
+          assert abs(q['duration_s']-8)<0.001 and q['loop_boundary_delta']<1e-5
+          assert q['lufs']< -24 and q['peak_dBFS']< -6
+          assert Path('zone-artifacts/audio/Vesuvius_Magma_Heart_Original_8s.ogg').stat().st_size>30000
+          page=Path('zone-artifacts/vesuvius-v62-natural-stone.html').read_text()
+          assert 'audio/Vesuvius_Magma_Heart_Original_8s.ogg?v=62sound1' in page
+          assert 'Vesuvius_V62_OriginalV60_NaturalStoneRim.part01.bin' in page
+          print("AUDIO_AND_V62_VIEWER_PASS",q)
+          PY
+      - name: Commit new sound and V62 viewer without touching geometry
+        run: |
+          git config user.name "GUSTAVA Artifact QA"
+          git config user.email "actions@users.noreply.github.com"
+          git add zone-artifacts/audio/Vesuvius_Magma_Heart* zone-artifacts/vesuvius-v62-natural-stone.html
+          git commit -m "V62 Vesuvius: replace old bubbly audio with original Magma Heart loop" || exit 0
+          git -c http.version=HTTP/1.1 push origin HEAD:main
