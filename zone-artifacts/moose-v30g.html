@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Forest Moose V30G • Blender Review</title>
+<meta name="description" content="Реальные рендеры игровой 3D-модели мутанта-лося. Контроль анатомии глаз, посадки и горизонтальных зрачков.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#080a0b;color:#ebece7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 73% 3%,#273126 0,#111512 35%,#080a0b 78%);min-height:100vh}
+main{width:min(1240px,100%);margin:0 auto;padding:28px 20px 50px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.kicker{font-size:12px;letter-spacing:2px;font-weight:750;color:#d5af67}.version{font-size:12px;border:1px solid #65735b66;border-radius:32px;padding:9px 14px;color:#c4cec0}
+h1{font-size:clamp(24px,5vw,47px);margin:26px 0 10px;line-height:1.08;letter-spacing:-1.3px}
+p.lead{font-size:14px;color:#a2aaa0;line-height:1.7;max-width:920px;margin:0 0 24px}
+.frame{position:relative;display:flex;align-items:center;justify-content:center;background:#030403;border:1px solid #ffffff29;border-radius:13px;overflow:hidden;box-shadow:0 30px 80px #0009}
+.frame img{display:block;width:100%;height:auto;max-height:min(72vh,760px);object-fit:contain;user-select:none}
+.frame a{display:block;width:100%;text-align:center;line-height:0;cursor:zoom-in}
+.frame figcaption{position:absolute;bottom:0;left:0;right:0;padding:26px 15px 13px;background:linear-gradient(transparent,#040604d9);font-size:13px;color:#fff;letter-spacing:.2px;pointer-events:none}
+.nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:14px}
+.pick{cursor:pointer;display:flex;gap:10px;align-items:center;background:#161b18;border:1px solid #404b40;border-radius:12px;padding:8px;text-align:left;color:#c5c9c4;transition:all .14s;font-weight:600;font-size:13px}
+.pick:hover{background:#232a25}.pick[aria-pressed=true]{border-color:#d6ad60;background:#303026;color:#faf5e9}
+.pick img{height:66px;width:105px;object-fit:cover;border-radius:7px;max-width:50%}
+.details{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.details div{background:#151915;border:1px solid #343b33;border-radius:11px;padding:15px}
+small{display:block;font-size:10px;letter-spacing:1.3px;text-transform:uppercase;color:#94a18f;margin-bottom:7px}
+strong{font-size:14px;font-weight:650;color:#e8ebe3}
+.muted{color:#99a499;line-height:1.6;font-size:12px}
+footer{border-top:1px solid #333e32;padding-top:18px;margin-top:20px;color:#899786;font-size:12px;line-height:1.7}
+a{color:#d8b776}button{font-family:inherit}
+@media(max-width:740px){main{padding:17px 12px 30px}.nav{gap:6px}.pick{font-size:11px;display:block}.pick img{height:60px;width:100%;max-width:none;margin-bottom:6px}.details{grid-template-columns:1fr}.frame figcaption{font-size:11px}}
+</style></head><body><main>
+<header class="top"><span class="kicker">GUSTAVA ZONA 2040 / MUTANTS</span><span class="version">3D asset V30G · Blender 5.2</span></header>
+<h1>Лесной лось. Исправление глаз.</h1>
+<p class="lead">Три настоящих рендера Blender с существующей 3D-модели V30G. Оба глаза перенесены в исходные боковые глазницы, зрачки имеют горизонтальную форму. Переключайте ракурсы ниже; нажмите на изображение, чтобы открыть его в полном размере.</p>
+<figure class="frame" style="margin:0">
+<a id="full" href="images/moose-v30g-front.jpg" target="_blank" rel="noopener"><img id="main" src="images/moose-v30g-front.jpg" alt="Forest Moose V30G — спереди" loading="eager"></a>
+<figcaption id="caption">01 / 03 · Спереди — оба глаза и форма морды</figcaption>
+</figure>
+<nav class="nav" aria-label="Переключение ракурсов">
+<button class="pick" type="button" aria-pressed="true" onclick="show(0)"><img src="images/moose-v30g-front.jpg" alt=""><span>01 · Спереди</span></button>
+<button class="pick" type="button" aria-pressed="false" onclick="show(1)"><img src="images/moose-v30g-left.jpg" alt=""><span>02 · Левый профиль</span></button>
+<button class="pick" type="button" aria-pressed="false" onclick="show(2)"><img src="images/moose-v30g-right.jpg" alt=""><span>03 · Правый профиль</span></button>
+</nav>
+<section class="details">
+<div><small>Геометрия</small><strong>Настоящий 3D-меш, не концепт</strong></div>
+<div><small>Зрачок</small><strong>Горизонтальный, тёмный</strong></div>
+<div><small>Материалы</small><strong>Исходный PBR сохранён</strong></div>
+</section>
+<p class="muted">Управление: стрелки ← → на клавиатуре. Рендеры показывают работу новой геометрии в сцене Blender. Это галерея ракурсов, а не полноценный вращаемый WebGL-просмотр. Импорт и анимации в Unreal Engine пока не проверены; AAAA-финал ещё не утверждён.</p>
+<footer>© GUSTAVA ZONA 2040 · Проверочные кадры Blender · Версия V30G<br>Редактируемый .blend и игровой .glb сохранены на ПК в папке проекта: <code>REALISTIC_MUTANTS_V2 / V30G_REFINED_NATURAL_MOOSE_EYES</code></footer>
+</main><script>
+const views=[['images/moose-v30g-front.jpg','Спереди — оба глаза и форма морды'],['images/moose-v30g-left.jpg','Левый профиль — глаз в своей глазнице'],['images/moose-v30g-right.jpg','Правый профиль — глаз в своей глазнице']];
+let index=0;function show(i){index=(i+views.length)%views.length;document.getElementById('main').src=views[index][0];document.getElementById('full').href=views[index][0];document.getElementById('caption').textContent=String(index+1).padStart(2,'0')+' / 03 · '+views[index][1];document.querySelectorAll('.pick').forEach((x,j)=>x.setAttribute('aria-pressed',j===index?'true':'false'))}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(index+1);if(e.key==='ArrowLeft')show(index-1)});
+</script></body></html>
