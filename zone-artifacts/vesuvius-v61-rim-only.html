@@ -39,6 +39,15 @@ details{border-top:1px solid #344759;padding-top:15px;margin-top:27px;color:#afb
 footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18px;font-size:12px}
 @media(max-width:1000px){.layout{grid-template-columns:1fr}.stage{min-height:480px}model-viewer{height:530px}.gallery{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.wrap{padding:12px 12px 37px}header{padding-top:24px}h1 span{display:block;margin:8px 0}.stage{min-height:430px}model-viewer{height:450px}.aside{padding:14px}}
+
+.audio-panel{margin:14px 0;border:1px solid #5c5148;border-radius:10px;padding:13px;background:#1c252f}
+.audio-panel h3{font-size:14px;margin:0 0 5px;color:#ffe2c8}
+.audio-panel p{margin:0 0 7px;font-size:12px;line-height:1.45}
+.audio-controls{display:flex;gap:9px;align-items:center}
+.audio-controls button{flex:1}
+.audio-controls input{min-width:80px;flex:1}
+#retry-load{width:100%;margin:12px 0;border-color:#b48768;background:#41291f}
+#retry-load[hidden]{display:none}
 </style>
 </head>
 <body><main class="wrap">
@@ -60,7 +69,7 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
  camera-target="0m 0.64m 0m" field-of-view="32deg"
  environment-image="neutral" tone-mapping="neutral" exposure="1.10"
  shadow-intensity=".62" loading="eager" touch-action="pan-y"></model-viewer>
-<div id="status" class="hint">Загружается настоящая 3D-модель (86 МБ) · Вращай мышью, приближай колесом</div>
+<div id="status" class="hint" role="status" aria-live="polite">Загружается настоящая 3D-модель (86 МБ) · Вращай мышью, приближай колесом</div>
 </div>
 <aside class="aside">
 <h2>Просмотр высокого качества</h2>
@@ -75,6 +84,18 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <input type="range" id="speed" min=".25" max="2" step=".25" value="1"/>
 <label for="exposure">Экспозиция <span id="exposureValue">110%</span></label>
 <input type="range" id="exposure" min=".60" max="2.0" step=".10" value="1.1"/>
+
+<div class="audio-panel">
+<h3>🌋 Бурлящая магма · очищенный SFX</h3>
+<p>Бесшовный цикл 8 секунд, бас приглушён. Звук выключен при открытии — включи его вручную.</p>
+<div class="audio-controls">
+<button id="lava-toggle" type="button">🔈 Включить звук</button>
+<input type="range" id="lava-volume" min="0" max="100" value="35" step="5" aria-label="Громкость звука"/>
+<b id="lava-volume-text" style="font:12px ui-monospace;color:#ffcdaf;min-width:32px;text-align:right">35%</b>
+</div>
+<audio id="lava-audio" src="audio/Vesuvius_Lava_Seamless8s.ogg?v=61c" preload="none" loop></audio>
+</div>
+<button id="retry-load" type="button" hidden>↻ Повторить загрузку 3D-модели</button>
 <div class="metrics">
 <div class="metric"><b>4096 px</b><small>4K PBR: PNG-нормали и магма, цвет JPEG Q98 в веб-просмотре</small></div>
 <div class="metric"><b>468 160</b><small>полигонов сглаженного 3D-корпуса</small></div>
@@ -83,7 +104,7 @@ footer{color:#91a4b2;border-top:1px solid #314456;margin-top:30px;padding-top:18
 <div class="metric"><b>≈ 50 см</b><small>просвет над землёй в спокойном положении</small></div>
 <div class="metric"><b>360° / 8 с</b><small>полный переворот с плавным подбросом</small></div>
 </div>
-<p class="note">Размер высококачественного GLB: 86 МБ. Первая загрузка зависит от соединения. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
+<p class="note">Полная 4K-модель: 85,94 МБ. При обрыве загрузки части скачиваются повторно; после ошибки доступна кнопка повторного запуска. Изображения ниже — реальные Blender Cycles-рендеры V55, а не 2D-концепты. Для Unreal и Nanite отдельно готовится более плотный игровой меш.</p>
 </aside>
 </section>
 <h3>Реальные Cycles-рендеры V61 · торец с четырёх сторон</h3><p>Геометрия, PBR и анимация не менялись. Рендеры сделаны при отдельном студийном свете; веб-модель использует исходные материалы V55.</p>
@@ -112,27 +133,88 @@ document.querySelector('#bottom').addEventListener('click',()=>{v.cameraOrbit='1
 document.querySelector('#speed').addEventListener('input',e=>{v.timeScale=Number(e.target.value);document.querySelector('#speedValue').textContent=Number(e.target.value)+'×';});
 document.querySelector('#exposure').addEventListener('input',e=>{v.exposure=Number(e.target.value);document.querySelector('#exposureValue').textContent=Math.round(Number(e.target.value)*100)+'%';});
 
-// Unmodified high-fidelity V55-derived GLB, split into small HTTP files for reliable GitHub delivery.
-(async function(){
-  const files = ["models/Vesuvius_V61_OriginalV55_RefinedRim.part01.bin?v=61b", "models/Vesuvius_V61_OriginalV55_RefinedRim.part02.bin?v=61b", "models/Vesuvius_V61_OriginalV55_RefinedRim.part03.bin?v=61b", "models/Vesuvius_V61_OriginalV55_RefinedRim.part04.bin?v=61b", "models/Vesuvius_V61_OriginalV55_RefinedRim.part05.bin?v=61b"];
-  const sizes = [20000000, 20000000, 20000000, 20000000, 987872];
-  try {
-    status.textContent = 'Загрузка оригинальной 4K V55 с исправленным торцом: 0/'+files.length+' частей';
-    let done=0;
-    const data = await Promise.all(files.map(async (url,i)=>{
-       const response=await fetch(url, {cache:'force-cache'});
-       if(!response.ok)throw new Error('Part '+(i+1)+': HTTP '+response.status);
-       const bytes=await response.arrayBuffer();
-       if(bytes.byteLength!==sizes[i])throw new Error('Part '+(i+1)+' incomplete');
-       done++;
-       status.textContent = 'Загрузка 3D-модели: '+done+'/'+files.length+' частей';
-       return bytes;
-    }));
-    const blob=new Blob(data,{type:'model/gltf-binary'});
-    if(blob.size!==85940540)throw new Error('GLB checksum length mismatch');
-    const url=URL.createObjectURL(blob);
-    v.addEventListener('load',()=>URL.revokeObjectURL(url),{once:true});
+
+// The V61 model is an 85,940,540-byte GLB split into five verified parts.
+// The original bug: part #5 had 5,940,540 bytes, but the old loader expected 987,872 (V60 leftovers).
+const V61_PARTS=["models/Vesuvius_V61_OriginalV55_RefinedRim.part01.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part02.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part03.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part04.bin?v=61c", "models/Vesuvius_V61_OriginalV55_RefinedRim.part05.bin?v=61c"];
+const V61_SIZES=[20000000, 20000000, 20000000, 20000000, 5940540];
+const V61_TOTAL=85940540;
+const retryButton=document.querySelector('#retry-load');
+let currentModelUrl=null, loaderActive=false, activeLoadAttempt=0;
+function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+async function downloadPart(i, run){
+  const url=V61_PARTS[i], want=V61_SIZES[i];
+  let last=null;
+  for(let attempt=1;attempt<=3;attempt++){
+    let timer=null, controller=new AbortController();
+    try{
+      status.textContent='3D V61: часть '+(i+1)+'/5'+(attempt>1?' · повтор '+attempt+'/3':'')+' · 4K PBR';
+      // Timeout is per-file rather than global: slower connections can recover without losing completed parts.
+      timer=setTimeout(()=>controller.abort(),120000);
+      const response=await fetch(url,{signal:controller.signal,cache:attempt===1?'force-cache':'reload'});
+      if(!response.ok)throw new Error('часть '+(i+1)+', HTTP '+response.status);
+      const data=await response.arrayBuffer();
+      if(data.byteLength!==want)throw new Error('часть '+(i+1)+' неполная: '+data.byteLength+' вместо '+want);
+      return data;
+    }catch(e){
+      last=e;console.warn('V61 3D download retry',i+1,attempt,e);
+      if(attempt<3)await sleep(600*attempt);
+    }finally{if(timer!==null)clearTimeout(timer);}
+  }
+  throw last||new Error('Загрузка части '+(i+1)+' не удалась');
+}
+async function loadV61(){
+  if(loaderActive)return;
+  loaderActive=true;retryButton.hidden=true;retryButton.disabled=true;
+  const run=++activeLoadAttempt;
+  let completed=0,next=0;
+  const data=new Array(V61_PARTS.length);
+  try{
+    status.textContent='3D V61: проверка 5 файлов модели (85,94 МБ)...';
+    const worker=async()=>{
+      for(;;){
+        const index=next++;
+        if(index>=V61_PARTS.length)return;
+        data[index]=await downloadPart(index,run);
+        completed++;
+        status.textContent='3D V61: загружено '+completed+' из '+V61_PARTS.length+' частей ('+
+           (data.reduce((n,b)=>n+(b?.byteLength||0),0)/1000000).toFixed(1)+' МБ)';
+      }
+    };
+    await Promise.all([worker(),worker()]); // two concurrent downloads, less contention than five 20MB requests.
+    const b=new Blob(data,{type:'model/gltf-binary'});
+    if(b.size!==V61_TOTAL)throw new Error('Неверный итоговый размер модели '+b.size+' вместо '+V61_TOTAL);
+    status.textContent='Все 5 частей загружены. Собираю 3D-модель и включаю анимацию...';
+    const url=URL.createObjectURL(b);
+    if(currentModelUrl)URL.revokeObjectURL(currentModelUrl);
+    currentModelUrl=url;
     v.src=url;
-  }catch(err){status.textContent='Ошибка загрузки 3D: '+err.message;console.error(err);}
-})();
+    // Status changes to "ready" on model-viewer load event above, not before.
+  }catch(e){
+    console.error('V61 viewer load error',e);
+    status.textContent='Ошибка загрузки V61: '+(e?.message||String(e))+' · нажми «Повторить загрузку»';
+    retryButton.hidden=false;
+    retryButton.disabled=false;
+  }finally{loaderActive=false;}
+}
+retryButton.addEventListener('click',loadV61);
+v.addEventListener('error',()=>{
+  retryButton.hidden=false;retryButton.disabled=false;
+  status.textContent='GLB загружен, но просмотрщик не открыл модель. Нажми «Повторить загрузку».';
+});
+const lava=document.querySelector('#lava-audio'),lavaToggle=document.querySelector('#lava-toggle');
+const lavaVolume=document.querySelector('#lava-volume'),lavaText=document.querySelector('#lava-volume-text');
+let lavaEnabled=false;
+lava.volume=Number(lavaVolume.value)/100;
+lavaVolume.addEventListener('input',()=>{
+  lava.volume=Number(lavaVolume.value)/100;
+  lavaText.textContent=lavaVolume.value+'%';
+});
+lavaToggle.addEventListener('click',async()=>{
+  if(lavaEnabled){lava.pause();lavaEnabled=false;lavaToggle.textContent='🔈 Включить звук';return;}
+  try{await lava.play();lavaEnabled=true;lavaToggle.textContent='🔊 Выключить звук';}
+  catch(err){lavaToggle.textContent='Не удалось включить звук';console.warn('V61 audio',err);}
+});
+loadV61();
+
 </script></body></html>
