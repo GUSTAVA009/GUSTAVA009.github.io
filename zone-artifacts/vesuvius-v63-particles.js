@@ -48,7 +48,7 @@ let emitters = [], hotSampleCount = 0;
 const tmp = new THREE.Object3D();
 const vUp = new THREE.Vector3(0,1,0), tmpQ = new THREE.Quaternion();
 const tmpColor = new THREE.Color();
-const particlesEnabled = {spark: true, coal: true};
+const particlesEnabled = {spark: true};
 const seed = (n) => { const x = Math.sin(n*127.1+16.35)*43758.5453; return x-Math.floor(x); };
 const clamp = THREE.MathUtils.clamp;
 function say(message){status.textContent = message;}
@@ -66,20 +66,66 @@ $('#hero').onclick=()=>setPreset('hero');
 $('#top').onclick=()=>setPreset('top');
 $('#bottom').onclick=()=>setPreset('bottom');
 $('#macro').onclick=()=>setPreset('macro');
-pauseBtn.onclick=()=>{playing=!playing;pauseBtn.textContent=playing?'⏸ Пауза':'▶ Продолжить';};
-$('#speed').oninput=e=>{speed=Number(e.target.value);$('#speedVal').textContent=speed.toFixed(2)+'×';};
+pauseBtn.onclick=()=>{
+ playing=!playing;
+ pauseBtn.textContent=playing?'⏸ Пауза':'▶ Продолжить';
+ if(!playing)audio.pause();
+ else if(audioWanted)startAudio();
+};
+$('#speed').oninput=e=>{
+ speed=Number(e.target.value);
+ $('#speedVal').textContent=speed.toFixed(2)+'×';
+ if(audioWanted)syncAudioToAnimation(true);
+};
 $('#exposure').oninput=e=>{renderer.toneMappingExposure=Number(e.target.value);$('#exposureVal').textContent=Math.round(100*Number(e.target.value))+'%';};
-$('#sparkToggle').onchange=e=>{particlesEnabled.spark=e.target.checked;emitters.filter(v=>v.kind==='spark').forEach(v=>{v.outer.visible=e.target.checked;});};
-$('#coalToggle').onchange=e=>{particlesEnabled.coal=e.target.checked;emitters.filter(v=>v.kind==='coal').forEach(v=>{v.outer.visible=e.target.checked;if(v.core)v.core.visible=e.target.checked;});};
+$('#sparkToggle').onchange=e=>{
+ particlesEnabled.spark=e.target.checked;
+ emitters.forEach(v=>{v.outer.visible=e.target.checked;});
+};
 
 const audio=$('#audio'),audioBtn=$('#audioToggle'),volume=$('#volume');
+let audioWanted=false, clipDuration=8;
 audio.volume=Number(volume.value)/100;
+audio.preload='metadata';
 volume.oninput=e=>{audio.volume=Number(e.target.value)/100;};
+
+// Tie audio phase to the original GLB animation, not independent wall time.
+function syncAudioToAnimation(force=false) {
+ const duration=audio.duration;
+ if(!Number.isFinite(duration)||duration<=0||clipDuration<=0)return;
+ const phase=((animationSeconds%clipDuration)+clipDuration)%clipDuration/clipDuration;
+ const target=phase*duration;
+ const drift=Math.abs(audio.currentTime-target);
+ const wrappedDrift=Math.min(drift,Math.abs(duration-drift));
+ const rate=clamp(speed*duration/clipDuration,.25,4);
+ if(Math.abs(audio.playbackRate-rate)>.001)audio.playbackRate=rate;
+ if(force||wrappedDrift>.18)audio.currentTime=target;
+}
+async function startAudio(){
+ if(!audioWanted||!playing)return;
+ try{
+  syncAudioToAnimation(true);
+  await audio.play();
+  audioBtn.textContent='🔊 Выключить звук';
+ }catch(e){
+  audioWanted=false;
+  audio.pause();
+  audioBtn.textContent='🔈 Включить звук';
+  say('Звук недоступен: '+e.message);
+ }
+}
 audioBtn.onclick=async()=>{
- if(!audio.paused){audio.pause();audioBtn.textContent='🔈 Включить звук';return;}
- try {await audio.play();audioBtn.textContent='🔊 Выключить звук';}
- catch(e){say('Звук недоступен: '+e.message);}
+ if(audioWanted){
+  audioWanted=false;
+  audio.pause();
+  audioBtn.textContent='🔈 Включить звук';
+ }else{
+  audioWanted=true;
+  if(playing)await startAudio();
+  else audioBtn.textContent='🔊 Звук включён (пауза)';
+ }
 };
+audio.addEventListener('loadedmetadata',()=>{if(audioWanted)syncAudioToAnimation(true);});
 
 async function onePart(i) {
  const [name,wanted]=parts[i];
@@ -126,11 +172,15 @@ function emissiveSampler(mesh) {
   const ctx=can.getContext('2d',{willReadFrequently:true});
   ctx.drawImage(image,0,0,can.width,can.height);
   const data=ctx.getImageData(0,0,can.width,can.height).data, w=can.width,h=can.height;
+  const mappedUV=new THREE.Vector2();
   return uv=>{
    if(!uv)return 0;
-   const u=((uv.x%1)+1)%1,v=((uv.y%1)+1)%1;
-   const x=clamp(Math.floor(u*(w-1)),0,w-1);
-   const y=clamp(Math.floor((1-v)*(h-1)),0,h-1);
+   // Respect GLTF texture.flipY and texture transform, so the source
+   // points match the visible glowing fissures on the actual geometry.
+   mappedUV.copy(uv);
+   map.transformUv(mappedUV);
+   const x=clamp(Math.floor(mappedUV.x*(w-1)),0,w-1);
+   const y=clamp(Math.floor(mappedUV.y*(h-1)),0,h-1);
    const k=(y*w+x)*4;
    return data[k]*.55+data[k+1]*.38+data[k+2]*.07;
   };
@@ -154,57 +204,38 @@ function crackSites(mesh) {
  const select=filtered.length>=45?filtered:points.slice(0,Math.min(550,points.length));
  return select.map(p=>({position:p.p,normal:p.n,emission:p.g}));
 }
-function stoneGeometry() {
- const g=new THREE.IcosahedronGeometry(1,0);
- const pos=g.attributes.position;
- for(let i=0;i<pos.count;i++){
-  const s=.81+.26*seed(i+23);pos.setXYZ(i,pos.getX(i)*s,pos.getY(i)*(.71+.24*seed(i+49)),pos.getZ(i)*s);
- }
- pos.needsUpdate=true;g.computeVertexNormals();return g;
-}
-const sparkGeo = new THREE.ConeGeometry(1,1,5,1);
+// ConeGeometry's long axis is local +Y. The per-particle quaternion maps
+// local +Y to the true flight direction. No extra 90-degree rotation needed.
+const sparkGeo=new THREE.ConeGeometry(1,1,6,1);
 sparkGeo.translate(0,.5,0);
-const coalGeo = stoneGeometry();
-const coreGeo = new THREE.IcosahedronGeometry(1,0);
-const sparkMat=new THREE.MeshBasicMaterial({color:0xffac53,vertexColors:false,transparent:false,depthWrite:true});
-const coalMat=new THREE.MeshStandardMaterial({
- color:0x241d1b,roughness:.94,metalness:.02,emissive:0xff4c13,emissiveIntensity:.29
+const sparkMat=new THREE.MeshBasicMaterial({
+ color:0xffac53,vertexColors:false,transparent:false,depthWrite:true
 });
-const coreMat=new THREE.MeshBasicMaterial({color:0xff680e,transparent:true,opacity:.73,depthWrite:false});
-function makeEmitter(mesh,sites,kind,count,side){
- const outer=new THREE.InstancedMesh(kind==='spark'?sparkGeo:coalGeo,kind==='spark'?sparkMat:coalMat,count);
- outer.frustumCulled=false;outer.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
- outer.name='V63_'+side+'_'+kind+'_THREE_DIMENSIONAL_CRACK_PARTICLES';
+function makeEmitter(mesh,sites,count,side) {
+ const outer=new THREE.InstancedMesh(sparkGeo,sparkMat,count);
+ outer.frustumCulled=false;
+ outer.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+ outer.name='V63_'+side+'_SPARKS_FROM_CRACKS';
  mesh.add(outer);
- let core=null;
- if(kind==='coal'){
-  core=new THREE.InstancedMesh(coreGeo,coreMat,count);
-  core.frustumCulled=false;core.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-  core.name='V63_'+side+'_MOLTEN_COAL_CORES';
-  mesh.add(core);
- }
  const particles=[];
  for(let i=0;i<count;i++){
-  const random=()=>seed(200+i*97+side.length*19+Math.round(i*1.713+5*side.length));
   const j=Math.floor(seed(i*9.33+side.length*37)*sites.length);
   const source=sites[j%sites.length];
-  const life=(kind==='spark'?.28:.95)+seed(i*57.9+side.length)* (kind==='spark'?.75:1.45);
+  const life=.28+seed(i*57.9+side.length)*.75;
   particles.push({
    position:source.position,normal:source.normal,
    life,phase:seed(i*64.23+side.length*18)*life,
-   size:(kind==='spark'?.009:.0028)+(kind==='spark'?.009:.0051)*seed(i*33.1+18),
-   speed:(kind==='spark'?.15:.040)+(kind==='spark'?.21:.065)*seed(i*13.4+side.length*83),
+   size:.009+.009*seed(i*33.1+18),
+   speed:.15+.21*seed(i*13.4+side.length*83),
    drift:seed(i*91.1+side.length*53)*6.283,
-   wobble:seed(i*51.1+side.length)*.015+.005,
-   spin:seed(i*19.3+side.length*13)*6.283
+   wobble:.0015+.006*seed(i*51.1+side.length),
+   width:.00085+.00045*seed(i*19.3+side.length*13)
   });
- }
- for(let i=0;i<count;i++){
-  tmpColor.setHSL(kind==='spark'?(.058+.035*seed(i*31)):0.035,kind==='spark'?1:.24,kind==='spark'?.52:.23);
+  tmpColor.setHSL(.058+.035*seed(i*31),1,.52);
   outer.setColorAt(i,tmpColor);
  }
  if(outer.instanceColor)outer.instanceColor.needsUpdate=true;
- emitters.push({outer,core,kind,count,particles,mesh,side});
+ emitters.push({outer,count,particles,mesh,side});
 }
 function findMaterialMeshes(sceneRoot) {
  const result=[];
@@ -221,42 +252,40 @@ function findMaterialMeshes(sceneRoot) {
 }
 function tickParticles(t) {
  for(const e of emitters){
-  // Compensate original 8-second coin flip: emissions always rise in world Y,
-  // while their 3D origins stay firmly attached to the rotating rock.
-  e.mesh.getWorldQuaternion(tmpQ);tmpQ.invert();
-  const worldUp = vUp.clone().applyQuaternion(tmpQ);
+  // Emission sites rotate with the mesh; velocity still rises in world Y.
+  e.mesh.getWorldQuaternion(tmpQ);
+  tmpQ.invert();
+  const worldUp=vUp.clone().applyQuaternion(tmpQ);
+  const lateralA=new THREE.Vector3(1,0,0).projectOnPlane(worldUp);
+  if(lateralA.lengthSq()<.0001)lateralA.set(0,0,1).projectOnPlane(worldUp);
+  lateralA.normalize();
+  const lateralB=new THREE.Vector3().crossVectors(worldUp,lateralA).normalize();
   for(let i=0;i<e.count;i++){
    const p=e.particles[i];
    const age=(t+p.phase)%p.life;
    const pct=age/p.life;
    const envelope=Math.min(1,age/.13)*(1-pct)**.8;
-   const launch=e.kind==='spark'?.27:.15;
-   const vel=worldUp.clone().multiplyScalar(1-launch).addScaledVector(p.normal,launch).normalize();
-   const shift=vel.multiplyScalar(p.speed*age);
-   shift.x+=Math.sin(p.drift+pct*9)*p.wobble*pct;
-   shift.z+=Math.cos(p.drift+pct*8)*p.wobble*pct;
-   const offset=p.normal.clone().multiplyScalar(e.kind==='spark'?.0015:.0030);
-   const location=p.position.clone().add(offset).add(shift);
-   tmp.position.copy(location);
-   if(e.kind==='spark'){
-    const direction=shift.lengthSq()>1e-8?shift.normalize():worldUp;
-    tmp.quaternion.setFromUnitVectors(vUp,direction);
-    tmp.rotateY(p.spin);
-    const width=(.0009+.0007*Math.sin(p.spin))*envelope;
-    tmp.scale.set(Math.max(.00001,width),Math.max(.00001,p.size*envelope),Math.max(.00001,width));
-   }else {
-    tmp.quaternion.setFromEuler(new THREE.Euler(p.spin+age*1.8,age*2.1+p.drift,p.spin*.4+age));
-    const s=p.size*envelope;
-    tmp.scale.set(Math.max(.00001,s),Math.max(.00001,s*.82),Math.max(.00001,s*.76));
-   }
-   tmp.updateMatrix();e.outer.setMatrixAt(i,tmp.matrix);
-   if(e.core){
-    tmp.scale.multiplyScalar(.31+seed(i*5.4)*.25);
-    tmp.updateMatrix();e.core.setMatrixAt(i,tmp.matrix);
-   }
+   const normal=p.normal.clone().normalize();
+   const outwardInfluence=.16+.44*clamp((normal.dot(worldUp)+1)*.5,0,1);
+   const direction=worldUp.clone().multiplyScalar(1-outwardInfluence)
+     .addScaledVector(normal,outwardInfluence).normalize();
+   const shift=direction.clone().multiplyScalar(p.speed*age);
+   const sideways=p.wobble*pct*.4;
+   shift.addScaledVector(lateralA,Math.sin(p.drift+pct*5.5)*sideways);
+   shift.addScaledVector(lateralB,Math.cos(p.drift+pct*5.0)*sideways);
+   // Start just above the fissure, not floating off the rock.
+   tmp.position.copy(p.position).addScaledVector(normal,.00045).add(shift);
+   // Long spark axis follows its velocity, without random extra rotation.
+   tmp.quaternion.setFromUnitVectors(vUp,direction);
+   tmp.scale.set(
+    Math.max(.00001,p.width*envelope),
+    Math.max(.00001,p.size*envelope),
+    Math.max(.00001,p.width*envelope)
+   );
+   tmp.updateMatrix();
+   e.outer.setMatrixAt(i,tmp.matrix);
   }
   e.outer.instanceMatrix.needsUpdate=true;
-  if(e.core)e.core.instanceMatrix.needsUpdate=true;
  }
 }
 async function load() {
@@ -268,7 +297,7 @@ async function load() {
   const loader=new GLTFLoader();
   const gltf=await loader.parseAsync(data,'');
   if(root)scene.remove(root);
-  emitters=[];root=gltf.scene;
+  emitters=[];hotSampleCount=0;root=gltf.scene;
   scene.add(root);
   root.updateMatrixWorld(true);
   const materialMeshes=findMaterialMeshes(root);
@@ -279,15 +308,21 @@ async function load() {
    await new Promise(requestAnimationFrame);
    const sites=crackSites(mesh);
    hotSampleCount+=sites.length;
-   makeEmitter(mesh,sites,'spark',205,side);
-   makeEmitter(mesh,sites,'coal',325,side);
+   makeEmitter(mesh,sites,260,side);
   }
   if(!gltf.animations.length)throw new Error('Не найдена оригинальная анимация Везувия');
   mixer=new THREE.AnimationMixer(root);
   mixer.clipAction(gltf.animations[0]).setLoop(THREE.LoopRepeat,Infinity).play();
-  // Do not replace texture coordinates, base geometry, or the native animation.
-  say('V63 готов: 410 объёмных искр + 650 угольных осколков из '+hotSampleCount+' точек лавовых трещин');
-  $('#counter').textContent='410 искр / 650 угольков';
+  clipDuration=Math.max(.01,gltf.animations[0].duration);
+  animationSeconds=0;
+  mixer.setTime(0);
+  if(audioWanted){
+   syncAudioToAnimation(true);
+   if(playing)startAudio();
+  }
+  // Preserve original V62 geometry, PBR material maps and 8s animation.
+  say('V63 готов: 520 объёмных искр из '+hotSampleCount+' точек лавовых трещин');
+  $('#counter').textContent='520 искр';
   $('#source').textContent='V62 · PBR 4K · натуральный каменный торец';
   progress.value=1;
  } catch(e){
@@ -301,7 +336,11 @@ function loop(now) {
  requestAnimationFrame(loop);
  const dt=Math.min(.05,(now-lastFrame)/1000);
  lastFrame=now;
- if(playing){animationSeconds+=dt*speed;if(mixer)mixer.update(dt*speed);}
+ if(playing){
+  animationSeconds+=dt*speed;
+  if(mixer)mixer.update(dt*speed);
+  if(audioWanted&&!audio.paused)syncAudioToAnimation();
+ }else if(!audio.paused)audio.pause();
  if(emitters.length)tickParticles(animationSeconds);
  controls.update();
  if(root)lavaLight.intensity=6.4+1.1*Math.sin(animationSeconds*2.4);
