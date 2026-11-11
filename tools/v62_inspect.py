@@ -7,6 +7,7 @@ assert len(parts)==5,f'Missing V60 GLB parts {len(parts)}'
 raw=b''.join(p.read_bytes() for p in parts)
 assert raw[:4]==b'glTF'
 version,total=struct.unpack_from('<II',raw,4)
+print("V62_HEADER",{"version":version,"header_total":total,"joined_size":len(raw),"part_sizes":[p.stat().st_size for p in parts]},flush=True)
 assert version==2 and total==len(raw)
 jsize,jtype=struct.unpack_from('<I4s',raw,12)
 assert jtype==b'JSON'
