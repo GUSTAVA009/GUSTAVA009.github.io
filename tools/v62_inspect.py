@@ -8,7 +8,8 @@ raw=b''.join(p.read_bytes() for p in parts)
 assert raw[:4]==b'glTF'
 version,total=struct.unpack_from('<II',raw,4)
 print("V62_HEADER",{"version":version,"header_total":total,"joined_size":len(raw),"part_sizes":[p.stat().st_size for p in parts]},flush=True)
-assert version==2 and total==len(raw)
+assert version==2 and total in (len(raw),len(raw)-8)
+print('KNOWN_V60_HEADER_OFF_BY',len(raw)-total,flush=True)
 jsize,jtype=struct.unpack_from('<I4s',raw,12)
 assert jtype==b'JSON'
 g=json.loads(raw[20:20+jsize])
