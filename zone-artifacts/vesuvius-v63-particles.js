@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { MeshSurfaceSampler } from 'three/addons/math/MeshSurfaceSampler.js';
 
 // GUSTAVA ZONE 2040 / V63: real-time geometry-based crack emitters on the actual V62 GLB.
-// V62 geometry, maps, root motion and original 8-second animation remain unchanged.
+// The original V62 GLB is preserved; only runtime animation and sound playback change.
 const $ = s => document.querySelector(s);
 const stage = $('#stage'), status = $('#status'), retry = $('#retry');
 const progress = $('#progress'), pauseBtn = $('#pause');
@@ -43,8 +43,9 @@ const parts = [
 ];
 const totalBytes = 93290984;
 let root = null, mixer = null, animationSeconds = 0, lastFrame = performance.now();
-let playing = true, speed = 1, loading = false;
-let emitters = [], hotSampleCount = 0;
+let playing = true, speed = 1.25, loading = false;
+let emitters = [], hotSampleCount = 0, landingRig = null;
+const coinAxis = new THREE.Vector3(1,0,0);
 const tmp = new THREE.Object3D();
 const vUp = new THREE.Vector3(0,1,0), tmpQ = new THREE.Quaternion();
 const tmpColor = new THREE.Color();
@@ -69,8 +70,10 @@ $('#macro').onclick=()=>setPreset('macro');
 pauseBtn.onclick=()=>{
  playing=!playing;
  pauseBtn.textContent=playing?'⏸ Пауза':'▶ Продолжить';
- if(!playing)audio.pause();
- else if(audioWanted)startAudio();
+ if(!playing){
+  stopSound();
+  if(audioWanted)audioBtn.textContent='🔊 Звук включён (пауза)';
+ }else if(audioWanted)startAudio();
 };
 $('#speed').oninput=e=>{
  speed=Number(e.target.value);
@@ -85,31 +88,109 @@ $('#sparkToggle').onchange=e=>{
 
 const audio=$('#audio'),audioBtn=$('#audioToggle'),volume=$('#volume');
 let audioWanted=false, clipDuration=8;
-audio.volume=Number(volume.value)/100;
-audio.preload='metadata';
-volume.oninput=e=>{audio.volume=Number(e.target.value)/100;};
+let soundContext=null, soundBuffer=null, soundSource=null, soundGain=null;
+let soundEpochTime=0,soundEpochAnimation=0,soundEpochSpeed=speed,soundRequest=0;
 
-// Tie audio phase to the original GLB animation, not independent wall time.
-function syncAudioToAnimation(force=false) {
- const duration=audio.duration;
- if(!Number.isFinite(duration)||duration<=0||clipDuration<=0)return;
- const phase=((animationSeconds%clipDuration)+clipDuration)%clipDuration/clipDuration;
- const target=phase*duration;
- const drift=Math.abs(audio.currentTime-target);
- const wrappedDrift=Math.min(drift,Math.abs(duration-drift));
- const rate=clamp(speed*duration/clipDuration,.25,4);
- if(Math.abs(audio.playbackRate-rate)>.001)audio.playbackRate=rate;
- if(force||wrappedDrift>.18)audio.currentTime=target;
+volume.oninput=e=>{
+ const level=Number(e.target.value)/100;
+ if(soundContext&&soundGain)soundGain.gain.setTargetAtTime(level,soundContext.currentTime,.025);
+};
+
+// Produce a seamless loop by equal-power crossfading the OGG's tail into its
+// opening. Unlike HTMLAudioElement.loop/currentTime seeking, no gap or pop is
+// introduced at the 8-second seam.
+function seamlessSoundBuffer(context,original){
+ const overlap=Math.min(Math.floor(original.sampleRate*.78),Math.floor(original.length/7));
+ const length=original.length-overlap;
+ const output=context.createBuffer(original.numberOfChannels,length,original.sampleRate);
+ for(let channel=0;channel<original.numberOfChannels;channel++){
+  const input=original.getChannelData(channel);
+  const dest=output.getChannelData(channel);
+  dest.set(input.subarray(overlap,length),overlap);
+  for(let i=0;i<overlap;i++){
+   const fraction=i/Math.max(1,overlap-1);
+   const fromTail=Math.cos(fraction*Math.PI*.5);
+   const fromHead=Math.sin(fraction*Math.PI*.5);
+   dest[i]=input[length+i]*fromTail+input[i]*fromHead;
+  }
+ }
+ return output;
+}
+async function ensureSound(){
+ if(!soundContext){
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass)throw new Error('Web Audio не поддерживается этим браузером');
+  soundContext=new AudioContextClass();
+  // Warm magmatic rumble: suppress sub-bass, brittle mids and sharp hiss.
+  const highpass=soundContext.createBiquadFilter();
+  highpass.type='highpass';highpass.frequency.value=42;highpass.Q.value=.55;
+  const lowShelf=soundContext.createBiquadFilter();
+  lowShelf.type='lowshelf';lowShelf.frequency.value=160;lowShelf.gain.value=2.8;
+  const notch=soundContext.createBiquadFilter();
+  notch.type='peaking';notch.frequency.value=1150;notch.Q.value=.85;notch.gain.value=-3.3;
+  const lowpass=soundContext.createBiquadFilter();
+  lowpass.type='lowpass';lowpass.frequency.value=2050;lowpass.Q.value=.65;
+  soundGain=soundContext.createGain();
+  soundGain.gain.value=Number(volume.value)/100;
+  highpass.connect(lowShelf);lowShelf.connect(notch);notch.connect(lowpass);
+  lowpass.connect(soundGain);soundGain.connect(soundContext.destination);
+  soundContext._vesuviusInput=highpass;
+ }
+ if(!soundBuffer){
+  const response=await fetch(audio.getAttribute('src'),{cache:'force-cache'});
+  if(!response.ok)throw new Error('Аудиофайл HTTP '+response.status);
+  const decoded=await soundContext.decodeAudioData(await response.arrayBuffer());
+  soundBuffer=seamlessSoundBuffer(soundContext,decoded);
+ }
+ await soundContext.resume();
+}
+function stopSound(){
+ soundRequest++;
+ if(soundSource){
+  const source=soundSource;
+  soundSource=null;
+  try{source.stop();}catch(e){}
+  source.disconnect();
+ }
+}
+// The audio clock drives the animated scene, eliminating drift and repeated
+// currentTime seeks (the cause of audible breaks at the original loop seam).
+function syncAudioToAnimation(changeSpeed=false){
+ if(!soundContext||!soundSource||soundContext.state!=='running')return;
+ const now=soundContext.currentTime;
+ const phaseTime=soundEpochAnimation+(now-soundEpochTime)*soundEpochSpeed;
+ animationSeconds=phaseTime;
+ if(changeSpeed&&soundBuffer){
+  soundEpochTime=now;
+  soundEpochAnimation=phaseTime;
+  soundEpochSpeed=speed;
+  soundSource.playbackRate.setTargetAtTime(
+   speed*soundBuffer.duration/clipDuration,now,.018);
+ }
 }
 async function startAudio(){
  if(!audioWanted||!playing)return;
+ const request=++soundRequest;
  try{
-  syncAudioToAnimation(true);
-  await audio.play();
+  await ensureSound();
+  if(request!==soundRequest||!audioWanted||!playing)return;
+  if(soundSource)stopSound();
+  soundEpochTime=soundContext.currentTime;
+  soundEpochAnimation=animationSeconds;
+  soundEpochSpeed=speed;
+  const phase=((animationSeconds%clipDuration)+clipDuration)%clipDuration;
+  const offset=phase/clipDuration*soundBuffer.duration;
+  const source=soundContext.createBufferSource();
+  source.buffer=soundBuffer;
+  source.loop=true;
+  source.playbackRate.value=speed*soundBuffer.duration/clipDuration;
+  source.connect(soundContext._vesuviusInput);
+  soundSource=source;
+  source.start(0,offset);
   audioBtn.textContent='🔊 Выключить звук';
  }catch(e){
   audioWanted=false;
-  audio.pause();
+  stopSound();
   audioBtn.textContent='🔈 Включить звук';
   say('Звук недоступен: '+e.message);
  }
@@ -117,7 +198,7 @@ async function startAudio(){
 audioBtn.onclick=async()=>{
  if(audioWanted){
   audioWanted=false;
-  audio.pause();
+  stopSound();
   audioBtn.textContent='🔈 Включить звук';
  }else{
   audioWanted=true;
@@ -125,7 +206,6 @@ audioBtn.onclick=async()=>{
   else audioBtn.textContent='🔊 Звук включён (пауза)';
  }
 };
-audio.addEventListener('loadedmetadata',()=>{if(audioWanted)syncAudioToAnimation(true);});
 
 async function onePart(i) {
  const [name,wanted]=parts[i];
@@ -288,6 +368,34 @@ function tickParticles(t) {
   e.outer.instanceMatrix.needsUpdate=true;
  }
 }
+// The GLB already contains the full flip and descent (landing at ~5.9 s).
+// Add a decaying coin-like gyroscopic precession ONLY after it comes down.
+// An 18-degree tilt travels around the entire rim, then settles flat
+// before the clip seamlessly returns to its first keyframe.
+function updateCoinLanding(seconds){
+ if(!landingRig)return;
+ const t=((seconds%clipDuration)+clipDuration)%clipDuration;
+ const landing=5.88,end=Math.min(7.94,clipDuration-.03);
+ landingRig.quaternion.identity();
+ landingRig.position.set(0,0,0);
+ if(t<landing||t>=end)return;
+ const elapsed=t-landing;
+ const decay=Math.pow((end-t)/(end-landing),.78);
+ const rise=1-Math.exp(-15*elapsed);
+ const envelope=rise*decay;
+ const tilt=THREE.MathUtils.degToRad(20)*envelope;
+ // Rim-contact point makes a circle, reducing angular speed as it settles.
+ const spin=2*Math.PI*(2.2*elapsed-.31*elapsed*elapsed);
+ coinAxis.set(Math.cos(spin),0,Math.sin(spin));
+ landingRig.quaternion.setFromAxisAngle(coinAxis,tilt);
+ const displacement=.019*envelope;
+ landingRig.position.set(
+  displacement*Math.sin(spin),
+  .030*Math.sin(tilt),
+  -displacement*Math.cos(spin)
+ );
+}
+
 async function load() {
  if(loading)return;
  loading=true;retry.hidden=true;progress.value=0;
@@ -296,15 +404,23 @@ async function load() {
   say('Загружено 93.3 МБ. Распаковываю 3D и читаю 4K PBR...');
   const loader=new GLTFLoader();
   const gltf=await loader.parseAsync(data,'');
+  stopSound();
   if(root)scene.remove(root);
   emitters=[];hotSampleCount=0;root=gltf.scene;
   scene.add(root);
+  // Insert an identity pivot beneath the animated GLB root. This leaves its
+  // translation/rotation and morph animation tracks completely intact.
+  const animatedRock=root.getObjectByName('GZ55_8Sec_ContinuousFloatAndPlume');
+  if(!animatedRock)throw new Error('Не найден исходный узел вращения Везувия');
+  landingRig=new THREE.Group();
+  landingRig.name='Vesuvius_Landing_Coin_Rim_Precession';
+  for(const child of [...animatedRock.children])landingRig.add(child);
+  animatedRock.add(landingRig);
   root.updateMatrixWorld(true);
   const materialMeshes=findMaterialMeshes(root);
   if(materialMeshes.length!==2)throw new Error('Ожидалось 2 слоя трещин, найдено '+materialMeshes.length);
   for(const {mesh,side} of materialMeshes){
    say('Определяю физические источники '+(side==='TOP'?'верхних':'нижних')+' трещин...');
-   // Let progress text render before the CPU-heavy actual surface sampling.
    await new Promise(requestAnimationFrame);
    const sites=crackSites(mesh);
    hotSampleCount+=sites.length;
@@ -316,17 +432,14 @@ async function load() {
   clipDuration=Math.max(.01,gltf.animations[0].duration);
   animationSeconds=0;
   mixer.setTime(0);
-  if(audioWanted){
-   syncAudioToAnimation(true);
-   if(playing)startAudio();
-  }
-  // Preserve original V62 geometry, PBR material maps and 8s animation.
-  say('V63 готов: 520 объёмных искр из '+hotSampleCount+' точек лавовых трещин');
+  updateCoinLanding(0);
+  if(audioWanted&&playing)startAudio();
+  say('V63: 520 искр · анимация 1.25× · приземление монеткой · плавный звук');
   $('#counter').textContent='520 искр';
   $('#source').textContent='V62 · PBR 4K · натуральный каменный торец';
   progress.value=1;
- } catch(e){
-  console.error('V63 loader',e);
+ }catch(e){
+  console.error('Vesuvius loader',e);
   say('Ошибка 3D: '+(e.message||String(e)));
   retry.hidden=false;
  }finally{loading=false;}
@@ -337,13 +450,24 @@ function loop(now) {
  const dt=Math.min(.05,(now-lastFrame)/1000);
  lastFrame=now;
  if(playing){
-  animationSeconds+=dt*speed;
-  if(mixer)mixer.update(dt*speed);
-  if(audioWanted&&!audio.paused)syncAudioToAnimation();
- }else if(!audio.paused)audio.pause();
+  if(soundSource&&soundContext&&soundContext.state==='running'){
+   syncAudioToAnimation();
+  }else{
+   animationSeconds+=dt*speed;
+  }
+  if(mixer)mixer.setTime(animationSeconds);
+  updateCoinLanding(animationSeconds);
+ }
  if(emitters.length)tickParticles(animationSeconds);
  controls.update();
- if(root)lavaLight.intensity=6.4+1.1*Math.sin(animationSeconds*2.4);
+ // Use an integer number of pulsations per original 8-second clip;
+ // light brightness has exactly the same value at both ends of the loop.
+ if(root){
+  const phase=((animationSeconds%clipDuration)+clipDuration)%clipDuration;
+  lavaLight.intensity=6.6+
+    .85*Math.sin(2*Math.PI*phase/clipDuration)+
+    .24*Math.sin(4*Math.PI*phase/clipDuration+.3);
+ }
  renderer.render(scene,camera);
 }
 requestAnimationFrame(loop);
