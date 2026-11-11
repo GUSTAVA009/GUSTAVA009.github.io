@@ -1,0 +1,243 @@
+{
+  "GLB_total_bytes": 80987872,
+  "sha256": "82b8e00ee46e11ee027687549ccf564dea06eb88592709e20a15bf484de2c151",
+  "materials": [
+    {
+      "index": 0,
+      "name": "M_GZ54_Ash_RealCarbonShards",
+      "doubleSided": true,
+      "emissiveFactor": null
+    },
+    {
+      "index": 1,
+      "name": "M_GZ55_Top_TrueTangentNormals",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "baseColor": {
+        "texture_index": 2,
+        "image_index": 2,
+        "name": "T_GZ55_Top_Charcoal_Albedo4K_WebQ98",
+        "mime": "image/jpeg",
+        "resolution": [
+          4096,
+          4096
+        ]
+      },
+      "normal": {
+        "texture_index": 1,
+        "image_index": 1,
+        "name": "T_GZ54_CarbonHiPass_NormalGL_4K",
+        "mime": "image/png",
+        "resolution": [
+          4096,
+          4096
+        ]
+      },
+      "emission": {
+        "texture_index": 0,
+        "image_index": 0,
+        "name": "T_GZ55_Top_MoltenLava_Emission4K",
+        "mime": "image/png",
+        "resolution": [
+          4096,
+          4096
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "name": "M_GZ55_Bottom_TrueTangentNormals",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "baseColor": {
+        "texture_index": 5,
+        "image_index": 4,
+        "name": "T_GZ55_Bottom_Charcoal_Albedo4K_WebQ98",
+        "mime": "image/jpeg",
+        "resolution": [
+          4096,
+          4096
+        ]
+      },
+      "normal": {
+        "texture_index": 4,
+        "image_index": 1,
+        "name": "T_GZ54_CarbonHiPass_NormalGL_4K",
+        "mime": "image/png",
+        "resolution": [
+          4096,
+          4096
+        ]
+      },
+      "emission": {
+        "texture_index": 3,
+        "image_index": 3,
+        "name": "T_GZ55_Bottom_MoltenLava_Emission4K",
+        "mime": "image/png",
+        "resolution": [
+          4096,
+          4096
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "name": "M_GZ55_Rim_CharcoalCooling",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "baseColor": {
+        "texture_index": 7,
+        "image_index": 6,
+        "name": "T_GZ55_Rim_CoalBase4K_WebQ98",
+        "mime": "image/jpeg",
+        "resolution": [
+          4096,
+          1024
+        ]
+      },
+      "emission": {
+        "texture_index": 6,
+        "image_index": 5,
+        "name": "T_GZ55_Rim_MoltenSeam4K",
+        "mime": "image/png",
+        "resolution": [
+          4096,
+          1024
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "name": "M_GZ54_Spark_VolcanicEmbers",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        0.20999999344348907,
+        0.004000000189989805
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "index": 0,
+      "name": "GZ54_ASH_Smooth24Morph_Stream",
+      "primitives": [
+        {
+          "primitive": 0,
+          "material": 0,
+          "material_name": "M_GZ54_Ash_RealCarbonShards",
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "name": "GZ55_SmoothedNaturalBasalt",
+      "primitives": [
+        {
+          "primitive": 0,
+          "material": 1,
+          "material_name": "M_GZ55_Top_TrueTangentNormals",
+          "attributes": {
+            "POSITION": 26,
+            "NORMAL": 27,
+            "TEXCOORD_0": 28
+          },
+          "indices": 29
+        },
+        {
+          "primitive": 1,
+          "material": 2,
+          "material_name": "M_GZ55_Bottom_TrueTangentNormals",
+          "attributes": {
+            "POSITION": 30,
+            "NORMAL": 31,
+            "TEXCOORD_0": 32
+          },
+          "indices": 33
+        },
+        {
+          "primitive": 2,
+          "material": 3,
+          "material_name": "M_GZ55_Rim_CharcoalCooling",
+          "attributes": {
+            "POSITION": 34,
+            "NORMAL": 35,
+            "TEXCOORD_0": 36
+          },
+          "indices": 37
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "name": "GZ54_EMBER_Smooth24Morph_Stream",
+      "primitives": [
+        {
+          "primitive": 0,
+          "material": 4,
+          "material_name": "M_GZ54_Spark_VolcanicEmbers",
+          "attributes": {
+            "POSITION": 38,
+            "NORMAL": 39
+          },
+          "indices": 40
+        }
+      ]
+    }
+  ],
+  "animations": [
+    "GZ60_V55_DualCrack_8Second_Loop"
+  ],
+  "images": [
+    "T_GZ55_Top_MoltenLava_Emission4K",
+    "T_GZ54_CarbonHiPass_NormalGL_4K",
+    "T_GZ55_Top_Charcoal_Albedo4K_WebQ98",
+    "T_GZ55_Bottom_MoltenLava_Emission4K",
+    "T_GZ55_Bottom_Charcoal_Albedo4K_WebQ98",
+    "T_GZ55_Rim_MoltenSeam4K",
+    "T_GZ55_Rim_CoalBase4K_WebQ98"
+  ],
+  "nodes": [
+    {
+      "name": "Vesuvius_V55_ASH_920_RisingParticles",
+      "mesh": 0,
+      "children": []
+    },
+    {
+      "name": "Vesuvius_V55_CarbonTrueNormalSolid",
+      "mesh": 1,
+      "children": []
+    },
+    {
+      "name": "Vesuvius_V55_EMBER_480_RisingParticles",
+      "mesh": 2,
+      "children": []
+    },
+    {
+      "name": "GZ55_8Sec_ContinuousFloatAndPlume",
+      "mesh": null,
+      "children": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

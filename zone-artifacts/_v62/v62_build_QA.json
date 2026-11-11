@@ -1,0 +1,47 @@
+{
+  "result": "PASS_RIM_ONLY_REAL_CHARCOAL_FROM_V60_TOP_BOTTOM",
+  "base_glb_sha256": "82b8e00ee46e11ee027687549ccf564dea06eb88592709e20a15bf484de2c151",
+  "base_header_error_bytes": 8,
+  "new_glb_sha256": "63e95f72c129fe4e9a553b5330929164af7c5270fa4db8b58d867b6312a290fb",
+  "new_glb_bytes": 93290984,
+  "new_glb_header_valid": true,
+  "source_models": [
+    "V60_TOP_Charcoal4K",
+    "V60_BOTTOM_Charcoal4K"
+  ],
+  "top_material_unchanged": true,
+  "bottom_material_unchanged": true,
+  "original_animation_unchanged": true,
+  "original_mesh_uv_unchanged": true,
+  "original_rim_lava_unchanged": true,
+  "texture_res": [
+    4096,
+    1024
+  ],
+  "albedo_bytes": 2521689,
+  "normal_bytes": 9781045,
+  "old_horizontal_band_metric": 4.616536617279053,
+  "new_horizontal_band_metric": 0.3685094118118286,
+  "parts": [
+    {
+      "name": "Vesuvius_V62_OriginalV60_NaturalStoneRim.part01.bin",
+      "size": 20000000
+    },
+    {
+      "name": "Vesuvius_V62_OriginalV60_NaturalStoneRim.part02.bin",
+      "size": 20000000
+    },
+    {
+      "name": "Vesuvius_V62_OriginalV60_NaturalStoneRim.part03.bin",
+      "size": 20000000
+    },
+    {
+      "name": "Vesuvius_V62_OriginalV60_NaturalStoneRim.part04.bin",
+      "size": 20000000
+    },
+    {
+      "name": "Vesuvius_V62_OriginalV60_NaturalStoneRim.part05.bin",
+      "size": 13290984
+    }
+  ]
+}
