@@ -1,0 +1,13 @@
+{
+  "result": "PASS_ORIGINAL_MAGMA_HEART_SFX",
+  "duration_s": 8,
+  "channels": 2,
+  "sr": 48000,
+  "lufs": -27.5,
+  "peak_dBFS": -14.3,
+  "loop_boundary_delta": 0.0,
+  "files": {
+    "Vesuvius_Magma_Heart_Original_8s_48k24.wav": 2304044,
+    "Vesuvius_Magma_Heart_Original_8s.ogg": 97450
+  }
+}
