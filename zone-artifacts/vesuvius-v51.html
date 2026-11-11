@@ -1,0 +1,128 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b0d"><title>Везувий V51 — настоящий 3D-разлом, уголь, пепел, раскалённая лава</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#080b0d;--panel:#12191c;--hair:#29353d;--paper:#edf1ef;--mute:#adbabd;--warm:#ff9d48}
+*{box-sizing:border-box}body{background:radial-gradient(ellipse at 56% -38%,#293034,#0f1519 49%,#070a0c 88%);color:var(--paper);margin:0;font:14px/1.55 Inter,Segoe UI,Arial,system-ui,sans-serif}
+a{color:#ffc08c;text-decoration:none}a:hover{text-decoration:underline}
+main{max-width:1310px;margin:auto;padding:17px 22px 48px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:6px 0 22px;border-bottom:1px solid #2d393f}
+.brand{font-weight:900;font-size:12px;letter-spacing:.15em;color:#d7d9d7}.brand span{color:#ffaf6b}.topbar a{font-size:12px;color:#a6b6bd}
+.kicker{font-size:11px;letter-spacing:.21em;color:#ffae72;font-weight:900}
+.intro{padding:30px 0 19px}.intro h1{font-size:clamp(39px,6.1vw,75px);line-height:1;letter-spacing:-.07em;margin:9px 0 12px}
+.intro h1 small{font-size:.34em;letter-spacing:.11em;font-weight:500;color:#98a8ae;vertical-align:middle}
+.intro p{margin:0;color:#b0bdc2;font-size:15px;max-width:810px}
+.layout{display:grid;grid-template-columns:minmax(0,1.58fr) minmax(280px,.74fr);gap:17px}
+.stage{height:610px;position:relative;overflow:hidden;border:1px solid #334049;border-radius:18px;background:radial-gradient(ellipse at 55% 38%,#24333b,#0c1216 52%,#07090c 87%)}
+model-viewer{height:100%;width:100%;--poster-color:transparent;--progress-bar-color:#f5a362}
+.version{position:absolute;top:16px;left:16px;background:#22170fe9;border:1px solid #925c34;border-radius:8px;padding:7px 11px;color:#ffc58d;font:800 11px/1.4 ui-monospace,Consolas,monospace;letter-spacing:.08em;pointer-events:none}
+.instructions{position:absolute;bottom:14px;left:16px;right:16px;border-radius:9px;padding:9px 12px;background:#0d151cdb;border:1px solid #273b42;text-align:center;color:#b9c6cb;font-size:12px;pointer-events:none}
+.loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#0b141aeb;border:1px solid #684730;padding:12px 17px;border-radius:11px;color:#d7b594;font-weight:700;pointer-events:none}
+.panel{background:linear-gradient(150deg,#162026,#0c1317);border:1px solid #303e46;border-radius:18px;padding:20px}
+.panel h2{font-size:20px;letter-spacing:-.03em;margin:0 0 8px}.panel p{margin:0 0 18px;color:#aab7bf;line-height:1.58;font-size:13px}
+.controls{display:flex;gap:7px;flex-wrap:wrap}
+button{cursor:pointer;border:1px solid #885539;border-radius:9px;background:#38251c;color:#ffe0c6;padding:10px 12px;font-size:12px;font-weight:800;flex:1}
+button:hover{background:#593322}button:focus-visible,input:focus-visible{outline:2px solid #ffac78;outline-offset:3px}
+.sliderline{margin:17px 0 6px;display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:#bfd0d4}
+input[type=range]{width:100%;accent-color:#ff984b;cursor:pointer}
+.metrics{border-top:1px solid #293943;margin-top:22px;padding-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.metric{border:1px solid #2d3d47;background:#0c161c;padding:11px;border-radius:9px}
+.metric b{display:block;font-size:20px;letter-spacing:-.03em;color:#ffe4cc}
+.metric small{font-size:11px;color:#91a3ad;display:block;line-height:1.55}
+.detail{color:#8f9ea8;font-size:12px;margin-top:16px;line-height:1.65}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:27px}
+.imagecard{background:#121b20;border:1px solid #2b3942;border-radius:12px;overflow:hidden;display:block}
+.imagecard img{width:100%;display:block;aspect-ratio:1;object-fit:cover}.imagecard strong{color:#edeeed;font-size:12px;display:block;padding:10px 12px 1px}
+.imagecard small{color:#a3b1ba;font-size:11px;display:block;padding:0 12px 12px}
+.footer{margin-top:30px;padding-top:19px;border-top:1px solid #2c373c;color:#8799a1;font-size:12px;line-height:1.65}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.stage{height:510px}.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){main{padding:10px 12px 35px}.stage{height:440px}.intro h1 small{display:block;margin-top:7px}.panel{padding:15px}.gallery{gap:8px}}
+</style></head><body><main>
+<header class="topbar"><span class="brand">GUSTAVA <span>ZONE 2040</span> / ARTIFACT LAB</span>
+<a href="./index.html?v=51">Все артефакты</a></header>
+<section class="intro">
+<div class="kicker">V51 · CHARCOAL FRACTURE · NEW 3D GEOMETRY</div>
+<h1>ВЕЗУВИЙ <small>/ СЕРДЦЕ ПЕПЛА</small></h1>
+<p>Объёмная рваная тектоническая трещина, вырезанная в едином замкнутом корпусе. Чёрный пористый древесный уголь, вросшие пепельные осколки, глубинная магма, тепловое свечение стенок и более крупная вулканическая пыль.</p>
+</section>
+<div class="layout">
+<section class="stage">
+<model-viewer id="model" src="models/Vesuvius_V51.glb?v=51" poster="images/GZ51_Vesuvius_Hero.jpg"
+ alt="Настоящая 3D-модель Везувия V51: чёрный древесный уголь и естественный разветвлённый горячий разлом, вулканическая пыль"
+ loading="eager" camera-controls auto-rotate autoplay rotation-per-second="8deg" auto-rotate-delay="3000"
+ animation-name="GZ45_8Sec_Complete_Loop" camera-orbit="30deg 73deg 112%" min-camera-orbit="auto auto 32%" max-camera-orbit="auto auto 400%"
+ field-of-view="31deg" exposure="1.04" environment-image="neutral" shadow-intensity=".8" tone-mapping="neutral"
+ touch-action="pan-y"></model-viewer>
+<div class="version">REAL CUT · 9×4K PBR · 122 ASH/EMBER PARTICLES</div>
+<div id="loadmsg" class="loading">Загрузка настоящей 3D-модели…</div>
+<div class="instructions">Вращай пальцем · Приближай двумя пальцами · Пульсация и пыль зациклены</div>
+</section>
+<aside class="panel">
+<h2>Трещина не нарисована</h2>
+<p>Геометрия камня действительно вырезана, нижняя часть разлома имеет отдельный материал лавы. 1 650 пепельных крупиц встроены в камень, 122 частицы пыли и угольков двигаются в восьмисекундном цикле.</p>
+<div class="controls">
+<button type="button" id="pause">⏸ Пауза</button>
+<button type="button" id="macro">⌕ Макро</button>
+<button type="button" id="reset">↺ Сброс</button>
+</div>
+<label for="speed" class="sliderline">Скорость цикла <span id="speedv">1×</span></label>
+<input id="speed" type="range" min=".25" max="2" step=".25" value="1">
+<label for="glow" class="sliderline">Интенсивность лавы <span id="glowv">120%</span></label>
+<input id="glow" type="range" min=".6" max="2.5" step=".1" value="1.2">
+<div class="metrics">
+<div class="metric"><b>9 × 4K</b><small>PBR-карты исходной модели</small></div>
+<div class="metric"><b>0</b><small>открытых рёбер корпуса</small></div>
+<div class="metric"><b>122</b><small>двигающиеся частицы вулканической пыли</small></div>
+<div class="metric"><b>8 секунд</b><small>модель, искры и кипение</small></div>
+</div>
+<p class="detail">Веб-версия использует облегчённые текстуры 2048 px. Исходники 4096 px, PBR-шейдеры и полноценная сцена сохранены в Blender/Unreal. Это художественная итерация, не подтверждённый AAAA-финал.</p>
+</aside>
+</div>
+<div class="gallery">
+<a class="imagecard" href="images/GZ51_Vesuvius_Hero.jpg"><img src="images/GZ51_Vesuvius_Hero.jpg" loading="lazy" alt="Везувий V51 рендер спереди"><strong>01 · Силуэт</strong><small>Объёмный живой разлом</small></a>
+<a class="imagecard" href="images/GZ51_Vesuvius_Macro.jpg"><img src="images/GZ51_Vesuvius_Macro.jpg" loading="lazy" alt="Крупный план вулканической трещины и чёрного угля"><strong>02 · Макро</strong><small>Пепел и раскрытая трещина</small></a>
+<a class="imagecard" href="images/GZ51_Vesuvius_Side.jpg"><img src="images/GZ51_Vesuvius_Side.jpg" loading="lazy" alt="Везувий вид сбоку"><strong>03 · Сбоку</strong><small>Структура угольных сколов</small></a>
+<a class="imagecard" href="images/GZ51_Vesuvius_Underside.jpg"><img src="images/GZ51_Vesuvius_Underside.jpg" loading="lazy" alt="Везувий снизу"><strong>04 · Снизу</strong><small>Замкнутая геометрия</small></a>
+</div>
+<footer class="footer">GUSTAVA ZONE 2040 · V51 · Настоящий Blender/Unreal 3D-ассет. Проверены UV, PBR-материалы, непрерывность геометрии и анимационный GLB. Для финального уровня AAAA ещё необходимы ручной арт-ревью и тест производительности в игровом режиме Unreal Engine.</footer>
+</main>
+<script type="module">
+const mv=document.getElementById('model'),load=document.getElementById('loadmsg'),pause=document.getElementById('pause'),speed=document.getElementById('speed'),glow=document.getElementById('glow');
+let running=true,materials=[],glowLoop=false,last=0;
+mv.addEventListener('load',()=>{
+  load.style.display='none';
+  try{mv.animationName='GZ45_8Sec_Complete_Loop';mv.timeScale=Number(speed.value);mv.play()}catch(e){console.warn('Animation',e)}
+  try{
+    materials=(mv.model?.materials||[]).filter(m=>/FissureCharredWalls|HotInnerStrata|IncandescentMagmaRiver/.test(m.name));
+  }catch(e){console.warn('Materials',e);materials=[]}
+  if(!glowLoop){glowLoop=true;requestAnimationFrame(heatGlow)}
+});
+mv.addEventListener('error',()=>{load.textContent='Ошибка загрузки модели — открой снимки ниже'});
+function heatGlow(ms){
+ if(ms-last>65){
+  last=ms;
+  const t=(mv.currentTime||0)/8*2*Math.PI;
+  const pulse=.76+.24*Math.sin(t*2-1.1);
+  const warmth=.72+.28*Math.sin(t+.65);
+  for(const material of materials){
+   try{
+    const strength=/Incandescent/.test(material.name)?12:/HotInner/.test(material.name)?8:3;
+    material.setEmissiveFactor([1,.27+.32*warmth,.035]);
+    material.setEmissiveStrength(strength*pulse*Number(glow.value));
+   }catch(e){materials=[];break}
+  }
+ }
+ requestAnimationFrame(heatGlow);
+}
+pause.addEventListener('click',()=>{
+ running=!running;
+ if(running){mv.play();pause.textContent='⏸ Пауза'}
+ else{mv.pause();pause.textContent='▶ Продолжить'}
+});
+document.getElementById('macro').addEventListener('click',()=>{mv.cameraOrbit='25deg 77deg 59%';mv.fieldOfView='26deg'});
+document.getElementById('reset').addEventListener('click',()=>{mv.cameraOrbit='30deg 73deg 112%';mv.fieldOfView='31deg'});
+speed.addEventListener('input',()=>{mv.timeScale=Number(speed.value);document.getElementById('speedv').textContent=speed.value+'×'});
+glow.addEventListener('input',()=>{document.getElementById('glowv').textContent=Math.round(100*Number(glow.value))+'%'});
+</script>
+</body></html>
