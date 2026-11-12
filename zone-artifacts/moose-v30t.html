@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лось V30T | Проверка 3D модели</title>
+<meta name="description" content="Пять настоящих Blender-рендеров 3D-модели лося V30T. Глазницы, горб, янтарные кристаллы, шерсть.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,Segoe UI,Arial,sans-serif;background:#080b09;color:#edece7}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top right,#283026,#0c100d 45%,#060806 92%);min-height:100vh}
+main{max-width:1290px;margin:auto;padding:28px 22px 48px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.tag{font-size:12px;letter-spacing:2.5px;font-weight:800;color:#d0b174}
+.ver{font-size:12px;padding:7px 13px;border:1px solid #728065;border-radius:30px;color:#dfdec9}
+h1{font-size:clamp(25px,5vw,48px);margin:26px 0 12px;letter-spacing:-1.1px;line-height:1.1}
+.sub{font-size:14px;line-height:1.7;color:#a9b3a7;max-width:1000px}
+.viewer{margin:24px 0 10px;background:#030403;border:1px solid #394034;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 20px 70px #0009}
+.viewer img{width:100%;height:auto;max-height:73vh;object-fit:contain;display:block;margin:auto}
+.viewer a{display:block;cursor:zoom-in}
+.viewer .label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#080b09e0);padding:40px 18px 13px;color:#f6f2ec;font-size:13px;pointer-events:none}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.controls button{background:#222a22;color:#eee;padding:9px 15px;border:1px solid #485748;border-radius:8px;cursor:pointer;font-weight:650}
+.controls button:hover{background:#394438}
+.controls small{color:#abb4a5}
+.thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.pick{padding:7px;border-radius:11px;border:1px solid #424b40;background:#171b17;cursor:pointer;color:#d4dcd3;text-align:left;font-size:12px}
+.pick[aria-pressed=true]{border-color:#d4ac60;background:#303024;color:#fff}
+.pick img{width:100%;height:100px;object-fit:cover;border-radius:7px;display:block;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:25px}
+.grid div{background:#161b17;border:1px solid #374337;border-radius:12px;padding:16px}
+.grid span{display:block;color:#94a392;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.grid strong{font-size:14px;line-height:1.4;display:block}
+footer{padding-top:17px;border-top:1px solid #414b40;margin-top:25px;color:#a2ada0;font-size:12px;line-height:1.8}
+a{color:#dec18c}
+@media(max-width:760px){main{padding:18px 12px 28px}.thumbs{gap:5px}.pick{font-size:10px;padding:4px}.pick img{height:65px}.grid{grid-template-columns:1fr}.viewer .label{font-size:11px}}
+</style></head><body><main>
+<header><span class="tag">GUSTAVA ZONA 2040 / MUTANTS</span><span class="ver">V30T · BLENDER 5.2</span></header>
+<h1>Лесной лось — реальная 3D-модель V30T</h1>
+<p class="sub">В этой версии переделаны обе глазницы непосредственно в меше головы, добавлены настоящие веки и горизонтальные зрачки. Вокруг 26 янтарных наростов сформирован рельеф кожи, на горбе и шее появилось 12 600 новых прядей. Ниже — реальные рендеры из Blender, не концепт-арт. Работа по доводке до AAAA продолжается.</p>
+<div class="viewer"><a id="open" href="images/moose-v30t-front.jpg" target="_blank" rel="noopener" aria-label="Открыть текущий рендер в полном размере"><img id="main" src="images/moose-v30t-front.jpg" alt="Лось V30T спереди, реальный Blender-рендер"></a><div class="label" id="caption">1 / 5 — Лицо спереди, посадка обоих глаз</div></div>
+<div class="controls"><button onclick="show(current-1)" type="button">← Назад</button><small>Открой изображение нажатием · Клавиши ← / →</small><button onclick="show(current+1)" type="button">Вперёд →</button></div>
+<nav class="thumbs" aria-label="Виды настоящей модели">
+<button class="pick" type="button" aria-pressed="true" onclick="show(0)"><img src="images/moose-v30t-front.jpg" alt=""><span>01 · Спереди</span></button>
+<button class="pick" type="button" aria-pressed="false" onclick="show(1)"><img src="images/moose-v30t-left-eye.jpg" alt=""><span>02 · Левый глаз</span></button>
+<button class="pick" type="button" aria-pressed="false" onclick="show(2)"><img src="images/moose-v30t-right-eye.jpg" alt=""><span>03 · Правый глаз</span></button>
+<button class="pick" type="button" aria-pressed="false" onclick="show(3)"><img src="images/moose-v30t-hump.jpg" alt=""><span>04 · Горб и кристаллы</span></button>
+<button class="pick" type="button" aria-pressed="false" onclick="show(4)"><img src="images/moose-v30t-body.jpg" alt=""><span>05 · Весь лось</span></button>
+</nav>
+<section class="grid">
+<div><span>Глаза</span><strong>Геометрия глазниц и век включена в исходный меш головы</strong></div>
+<div><span>Шерсть</span><strong>12 600 дополнительных 3D-прядей, привязанных к телу</strong></div>
+<div><span>Кристаллы</span><strong>26 точек укоренения; рельеф кожи скорректирован</strong></div>
+</section>
+<footer>Это контрольная галерея Blender-рендеров, а не интерактивная модель для вращения. Полные редактируемые .blend и игровые .glb сохранены на подключённом ПК в <code>GUSTAVA_MUTANTS_3D / AI_Production / REALISTIC_MUTANTS_V2 / V30T_CRYSTAL_ROOTS_SHAGGY_HUMP_AND_REAL_EYELIDS</code>. Unreal Engine импорт ещё не проверен. Эта версия не утверждена как AAAA-финал.</footer>
+</main><script>
+const frames=[
+["images/moose-v30t-front.jpg","Лицо спереди, посадка обоих глаз"],
+["images/moose-v30t-left-eye.jpg","Левый глаз — геометрия глазницы"],
+["images/moose-v30t-right-eye.jpg","Правый глаз — геометрия глазницы"],
+["images/moose-v30t-hump.jpg","Мохнатый горб, кристаллы, кожа"],
+["images/moose-v30t-body.jpg","Весь мутант в полный рост"]];
+let current=0;
+function show(i){current=(i+frames.length)%frames.length;
+document.getElementById('main').src=frames[current][0];
+document.getElementById('open').href=frames[current][0];
+document.getElementById('caption').textContent=(current+1)+' / 5 — '+frames[current][1];
+document.querySelectorAll('.pick').forEach((b,j)=>b.setAttribute('aria-pressed',j===current?'true':'false'))}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1)});
+</script></body></html>
