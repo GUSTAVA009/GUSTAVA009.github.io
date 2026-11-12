@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лось V32E | Полные 3D-сферические глаза</title>
+<meta name="description" content="Реальная новая 3D-модель глаз лося V32E: оба глазных яблока — полноценные замкнутые сферы, анимация взгляда независимо от глазниц, контрольные рендеры Blender.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#090d0b;color:#ecece6}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 83% 2%,#293a2e,#0e1510 42%,#080b09 86%)}main{max-width:1280px;margin:auto;padding:28px 21px 46px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.eyebrow{letter-spacing:2px;color:#ddbf82;font-weight:850;font-size:12px}
+.ver{border-radius:50px;color:#dce8db;border:1px solid #60845b;padding:8px 13px;font-size:12px}
+h1{font-size:clamp(27px,5vw,49px);letter-spacing:-1px;line-height:1.12;margin:24px 0 14px}
+p{color:#b4c2b0;font-size:14px;line-height:1.7;max-width:960px}
+.viewer{border:1px solid #50684b;border-radius:14px;overflow:hidden;background:#030403;margin:21px 0 10px;box-shadow:0 24px 65px #0009}
+.viewer video{width:100%;max-height:75vh;display:block;background:#030403}
+.labels{display:flex;justify-content:space-around;padding:10px 14px;background:#151f17;border-top:1px solid #3d4d3e;font-weight:750;font-size:12px;letter-spacing:.5px}
+.buttons{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:12px 0}
+button,.links a{background:#26372a;color:#f6f4ea;border:1px solid #597653;border-radius:9px;padding:10px 13px;font-size:12px;font-weight:700;cursor:pointer}
+button:hover,.links a:hover{background:#39553e}
+.note{font-size:12px;color:#9db09c}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:26px 0}
+.metrics div{border-radius:11px;border:1px solid #3d543f;background:#162017;padding:15px}
+.metrics small{display:block;text-transform:uppercase;letter-spacing:.9px;color:#99b29b;font-size:10px;margin-bottom:8px}
+.metrics strong{font-size:13px;line-height:1.5}
+h2{font-size:23px;margin:29px 0 10px}
+.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.photos figure{border:1px solid #405643;border-radius:11px;overflow:hidden;margin:0;background:#111612}
+.photos a{display:block;cursor:zoom-in}.photos img{width:100%;height:auto;display:block;aspect-ratio:1.6;object-fit:contain;background:#030403}
+.photos figcaption{padding:11px 13px;font-size:13px;color:#e4eee0;font-weight:700}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:17px 0}
+.compare figure{margin:0;border:1px solid #536c4d;border-radius:11px;overflow:hidden;background:#090d09}
+.compare img{width:100%;aspect-ratio:1.6;object-fit:contain;display:block}
+.compare figcaption{padding:10px 13px;font-size:12px;font-weight:700}
+.links{display:flex;gap:9px;flex-wrap:wrap;margin:23px 0}
+.links a{display:inline-block;text-decoration:none}
+footer{border-top:1px solid #3d503d;padding-top:18px;margin-top:29px;font-size:12px;line-height:1.75;color:#a4b6a3}
+@media(max-width:720px){main{padding:17px 11px 30px}.metrics{grid-template-columns:1fr;gap:7px}.photos,.compare{gap:7px}.photos figcaption,.compare figcaption{font-size:11px;padding:8px}.buttons button{flex:1}}
+</style></head><body><main>
+<header><span class="eyebrow">GUSTAVA ZONA 2040 · MUTANTS</span><span class="ver">V32E · TRUE 3D EYES</span></header>
+<h1>Лось V32E: полностью сферические глаза</h1>
+<p>Это реальные рендеры <strong>исправленной 3D-модели из Blender</strong>, не концепт-арт. Вместо старых сплющенных глазных мешей теперь два замкнутых шара: центр вращения находится внутри каждого глаза, а глазницы и череп остаются на месте. Смотрите ниже, как оба глазных яблока независимо от головы переводят взгляд влево и обратно.</p>
+<div class="viewer">
+<video id="movie" src="videos/moose-v32e-closed-eyes-animation.mp4" poster="images/moose-v32e-right-neutral.jpg" controls muted autoplay loop playsinline preload="metadata">
+<source src="videos/moose-v32e-closed-eyes-animation.mp4" type="video/mp4">
+<img src="images/moose-v32e-closed-eyes-animation.gif" alt="Анимация настоящей 3D-модели лося V32E">
+</video>
+<div class="labels"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div>
+</div>
+<div class="buttons">
+<button type="button" onclick="seek(0)">Смотреть прямо · кадр 1</button>
+<button type="button" onclick="seek(1.35)">Взгляд влево · кадр 33</button>
+<button type="button" onclick="restart()">▶ Воспроизвести</button>
+</div>
+<div class="note">Видео собрано из 40 кадров реального Blender-рендера. Клип модели содержит 60 кадров при 24 FPS; в видео кадры прорежены для быстрого просмотра.</div>
+<section class="metrics">
+<div><small>Цельная 3D-геометрия</small><strong>2 закрытые сферические сетки по 10 114 вершин. Нет открытых рёбер или отверстий.</strong></div>
+<div><small>Анатомия и материалы</small><strong>Центральный pivot, 4K PBR-радужка, натуральный горизонтально-овальный зрачок и тёмная склера.</strong></div>
+<div><small>Отдельная анимация</small><strong>EYES_LOOK_STRAIGHT_LEFT_LOOP. Оба глаза вращаются, а голова и глазницы не привязаны к контроллерам.</strong></div>
+</section>
+<h2>Проверка обоих глаз</h2>
+<p>Нажмите на любое изображение, чтобы открыть реальный рендер крупнее.</p>
+<div class="photos">
+<figure><a href="images/moose-v32e-right-neutral.jpg" target="_blank"><img src="images/moose-v32e-right-neutral.jpg" alt="Правый глаз V32E прямо"></a><figcaption>Правый глаз · нейтральный взгляд</figcaption></figure>
+<figure><a href="images/moose-v32e-right-left.jpg" target="_blank"><img src="images/moose-v32e-right-left.jpg" alt="Правый глаз V32E влево"></a><figcaption>Правый глаз · взгляд влево</figcaption></figure>
+<figure><a href="images/moose-v32e-left-neutral.jpg" target="_blank"><img src="images/moose-v32e-left-neutral.jpg" alt="Левый глаз V32E прямо"></a><figcaption>Левый глаз · нейтральный взгляд</figcaption></figure>
+<figure><a href="images/moose-v32e-left-left.jpg" target="_blank"><img src="images/moose-v32e-left-left.jpg" alt="Левый глаз V32E влево"></a><figcaption>Левый глаз · взгляд влево</figcaption></figure>
+</div>
+<h2>Морда спереди</h2>
+<div class="photos">
+<figure><a href="images/moose-v32e-face-neutral.jpg" target="_blank"><img src="images/moose-v32e-face-neutral.jpg" alt="Мутант лось V32E смотрит прямо"></a><figcaption>Глаза в нейтральном положении</figcaption></figure>
+<figure><a href="images/moose-v32e-face-left.jpg" target="_blank"><img src="images/moose-v32e-face-left.jpg" alt="Мутант лось V32E смотрит влево"></a><figcaption>Оба глаза повёрнуты влево</figcaption></figure>
+</div>
+<h2>Старый глаз и новая сфера</h2>
+<div class="compare">
+<figure><img src="images/moose-v31h-right-neutral.jpg" alt="V31H до ремонта, старый сплющенный глаз"><figcaption>До · V31H (сплющенный меш)</figcaption></figure>
+<figure><img src="images/moose-v32e-right-neutral.jpg" alt="V32E полный шар"><figcaption>После · V32E (замкнутая сфера)</figcaption></figure>
+</div>
+<div class="links">
+<a href="videos/moose-v32e-closed-eyes-animation.mp4" target="_blank" rel="noopener">Открыть MP4</a>
+<a href="images/moose-v32e-closed-eyes-animation.gif" target="_blank" rel="noopener">Открыть GIF</a>
+</div>
+<footer><strong>Редактируемый Blender и игровой GLB уже сохранены на ПК</strong> в <code>GUSTAVA_MUTANTS_3D\AI_Production\REALISTIC_MUTANTS_V2\V32E_FULL_SPHERICAL_EYE_REBUILD_GAME</code>. GLB содержит 3 клипа анимации, включая отдельный поворот обоих глаз. Этот веб-просмотр — галерея фактических рендеров, не вращаемая WebGL-модель. <strong>Оставшиеся работы:</strong> художественная доводка нижних краёв век, исправление старых мелких артефактов кожи, тест импорта в Unreal Engine. V32E не утверждена как финал AAAA.</footer>
+</main><script>
+const video=document.getElementById('movie');function seek(t){video.pause();video.currentTime=t}
+function restart(){video.currentTime=0;video.play().catch(()=>{})}
+</script></body></html>
