@@ -1,0 +1,70 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лось V32J | Исправление 3D-глаз</title>
+<meta name="description" content="Реальные Blender-рендеры и видео двух глаз мутанта-лося V32J: закрытые 3D-сферы, уменьшенная радужка, новая посадка в глазницу и отдельная анимация взгляда.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#0a0d0b;color:#f0eee7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#2d392d,#101810 48%,#080c09 80%);min-height:100vh}
+main{max-width:1250px;margin:auto;padding:30px 19px 54px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.eyebrow{font-size:12px;font-weight:850;letter-spacing:1.6px;color:#e2c38e}.tag{border:1px solid #62815e;padding:7px 13px;border-radius:24px;color:#d8e7d4;font-size:12px}
+h1{font-size:clamp(29px,4.8vw,48px);letter-spacing:-.8px;line-height:1.13;margin:26px 0 11px}
+h2{font-size:clamp(20px,3vw,26px);margin:32px 0 10px}
+p{font-size:14px;line-height:1.72;color:#b8c8b6;max-width:1040px}
+.viewer{background:#020403;border:1px solid #4e6a4a;border-radius:13px;overflow:hidden;margin-top:19px;box-shadow:0 18px 48px #0008}
+.viewer video{display:block;width:100%;max-height:68vh;object-fit:contain;background:#000}
+.viewer .under{display:flex;justify-content:space-around;background:#18231a;color:#e6e9df;border-top:1px solid #334834;padding:10px;font-size:12px;font-weight:700}
+.controls{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:12px 0}
+.controls button,.links a{border:1px solid #72836c;background:#223127;border-radius:9px;padding:10px 14px;color:#f0eee7;font-size:12px;font-weight:750;cursor:pointer;text-decoration:none}
+.controls button:hover,.links a:hover{background:#3b513a}
+.note{font-size:12px;color:#a5b5a5}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:24px 0}
+.metrics div{border:1px solid #405641;background:#152017;border-radius:10px;padding:14px}
+.metrics small{display:block;text-transform:uppercase;letter-spacing:.8px;font-size:10px;color:#9eb69c;margin-bottom:8px}
+.metrics strong{font-size:13px;line-height:1.5;display:block}
+.comparison,.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+figure{margin:0;border:1px solid #425841;border-radius:10px;overflow:hidden;background:#111711}
+figure a{display:block;cursor:zoom-in}figure img{width:100%;display:block;aspect-ratio:1.58;object-fit:contain;background:#020302}
+figcaption{padding:10px 13px;font-size:13px;color:#edf0e7;font-weight:700}
+.description{font-size:12px;font-weight:450;color:#aec3ae;margin-top:4px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+footer{margin-top:30px;border-top:1px solid #38503c;padding-top:19px;font-size:12px;line-height:1.75;color:#9fb09d}
+@media(max-width:680px){main{padding:17px 11px 32px}.metrics{grid-template-columns:1fr}.comparison,.gallery{gap:7px}figcaption{padding:8px;font-size:11px}.controls button{flex:1}}
+</style></head><body><main>
+<header><span class="eyebrow">GUSTAVA ZONA 2040 / MUTANTS</span><span class="tag">V32J · РЕАЛЬНАЯ 3D-МОДЕЛЬ</span></header>
+<h1>Лось V32J — исправление глазниц и глаз</h1>
+<p>Это <strong>кадры настоящей модели в Blender</strong>, не нейросетевой концепт. Исходные глаза V32E выступали из глазниц, а радужки выглядели слишком крупными. В V32J изменены размер и глубина посадки обоих сферических глаз, материал радужки и склеры, UV-развёртка век и несколько острых полигонов по краям глазниц. Голову и шерсть сохранили.</p>
+<div class="viewer"><video id="movie" controls autoplay muted loop playsinline preload="metadata" poster="images/moose-v32j-right-neutral.jpg">
+<source src="videos/moose-v32j-real-eyes.mp4" type="video/mp4">Ваш браузер не показывает MP4. <a href="images/moose-v32j-real-eyes.gif">Смотреть GIF</a>
+</video><div class="under"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div></div>
+<div class="controls">
+<button type="button" onclick="seek(0)">Кадр 1 · Прямо</button>
+<button type="button" onclick="seek(1.34)">Кадр 33 · Влево</button>
+<button type="button" onclick="restart()">▶ Повторить анимацию</button>
+</div>
+<p class="note">Видео собрано из 40 настоящих рендеров Blender. Игровая анимация: 60 кадров, 24 FPS, 2,5 секунды. Вращаются глазные яблоки; глазницы неподвижны.</p>
+<section class="metrics">
+<div><small>Геометрия</small><strong>2 замкнутые сферы, 10 114 вершин каждая, 0 открытых рёбер</strong></div>
+<div><small>Текстура и глазницы</small><strong>4K PBR радужка, тёмная склера, более глубокая посадка, исправлена UV-развёртка век</strong></div>
+<div><small>Игровая анимация</small><strong><code>EYES_LOOK_STRAIGHT_LEFT_LOOP</code> и 2 прежних клипа в GLB</strong></div>
+</section>
+<h2>Сравнение V32E → V32J</h2>
+<div class="comparison">
+<figure><a href="images/moose-v32e-right-neutral.jpg" target="_blank"><img src="images/moose-v32e-right-neutral.jpg" alt="До. Правый глаз V32E"></a><figcaption>До · V32E<div class="description">Глаз сильнее выступает, радужка занимает больше видимой поверхности</div></figcaption></figure>
+<figure><a href="images/moose-v32j-right-neutral.jpg" target="_blank"><img src="images/moose-v32j-right-neutral.jpg" alt="После. Правый глаз V32J"></a><figcaption>После · V32J<div class="description">Сфера посажена глубже, глаз уменьшен, край века подправлен</div></figcaption></figure>
+</div>
+<h2>Оба глаза: прямо и влево</h2>
+<p>Нажмите на изображение, чтобы увеличить именно Blender-рендер.</p>
+<div class="gallery">
+<figure><a target="_blank" href="images/moose-v32j-right-neutral.jpg"><img src="images/moose-v32j-right-neutral.jpg" alt="Правый глаз нейтрально"></a><figcaption>Правый глаз · прямо</figcaption></figure>
+<figure><a target="_blank" href="images/moose-v32j-right-left.jpg"><img src="images/moose-v32j-right-left.jpg" alt="Правый глаз влево"></a><figcaption>Правый глаз · влево</figcaption></figure>
+<figure><a target="_blank" href="images/moose-v32j-left-neutral.jpg"><img src="images/moose-v32j-left-neutral.jpg" alt="Левый глаз нейтрально"></a><figcaption>Левый глаз · прямо</figcaption></figure>
+<figure><a target="_blank" href="images/moose-v32j-left-left.jpg"><img src="images/moose-v32j-left-left.jpg" alt="Левый глаз влево"></a><figcaption>Левый глаз · влево</figcaption></figure>
+</div>
+<h2>Морда спереди</h2>
+<div class="gallery">
+<figure><a target="_blank" href="images/moose-v32j-face-neutral.jpg"><img src="images/moose-v32j-face-neutral.jpg" alt="Мутант лось, нейтральный взгляд"></a><figcaption>Нейтральный взгляд</figcaption></figure>
+<figure><a target="_blank" href="images/moose-v32j-face-left.jpg"><img src="images/moose-v32j-face-left.jpg" alt="Мутант лось смотрит влево"></a><figcaption>Оба глаза влево</figcaption></figure>
+</div>
+<div class="links"><a href="videos/moose-v32j-real-eyes.mp4" target="_blank">Открыть видео MP4</a><a href="images/moose-v32j-real-eyes.gif" target="_blank">Открыть анимацию GIF</a></div>
+<footer><strong>Редактируемый .blend и игровой .glb сохранены на компьютере</strong> внутри существующей рабочей структуры <code>GUSTAVA_MUTANTS_3D\AI_Production\REALISTIC_MUTANTS_V2\V32J_MOOSE_EYES_REBUILT_3D_RELEASE</code>. Это контрольные рендеры, а не вращаемая WebGL-модель. <strong>Это ещё не AAAA-финал:</strong> левое верхнее веко имеет несколько острых фрагментов, а у правого края глазницы остается небольшой шов. Импорт V32J в Unreal Engine не проверен. Исходные V32E/V31H не перезаписаны.</footer>
+</main><script>const video=document.getElementById('movie');function seek(s){video.pause();video.currentTime=s}function restart(){video.currentTime=0;video.play().catch(()=>{})}</script></body></html>
