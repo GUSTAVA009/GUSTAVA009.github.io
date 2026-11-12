@@ -1,0 +1,71 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лесной лось V31B | Контроль настоящей 3D-модели</title>
+<meta name="description" content="Настоящие Blender-рендеры лося V31B: оба глаза, анатомичные горизонтальные зрачки, глазницы, горб и 3D-модель целиком.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#080b09;color:#e9e9e0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#2f362b,#101710 37%,#080b09 78%);min-height:100vh}
+main{max-width:1260px;margin:0 auto;padding:27px 22px 40px}
+.kicker{letter-spacing:2px;font-size:11px;font-weight:800;color:#d6bd81}.pill{border:1px solid #5b6d55;border-radius:30px;color:#d9e1d4;padding:6px 11px;font-size:12px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+h1{font-size:clamp(29px,5vw,50px);line-height:1.12;letter-spacing:-1.2px;margin:24px 0 12px}
+p{font-size:14px;color:#b2bcb1;line-height:1.7}
+.lead{max-width:900px}
+.viewer{position:relative;margin-top:20px;background:#030503;overflow:hidden;border-radius:12px;border:1px solid #3b4937;box-shadow:0 25px 70px #0009}
+.viewer>a{display:block}.viewer img{display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;margin:0 auto}
+.viewer .caption{position:absolute;bottom:0;left:0;right:0;padding:35px 16px 12px;background:linear-gradient(transparent,#050805e9);font-size:13px;color:#f6f4e9;font-weight:600;pointer-events:none}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:12px 0}
+.controls button{color:#fff;cursor:pointer;background:#263026;border:1px solid #4f604a;border-radius:8px;padding:10px 15px;font-weight:650}
+.controls button:hover{background:#3b4938}.controls small{color:#b2bcb0;font-size:11px}
+.thumbs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.thumb{background:#161b15;border:1px solid #4d5848;border-radius:9px;color:#d5ddd1;text-align:left;padding:5px;cursor:pointer;font-size:11px}
+.thumb[aria-pressed=true]{background:#3d3a29;border-color:#e3c47a;color:#fff}
+.thumb img{width:100%;height:75px;object-fit:cover;display:block;border-radius:5px;margin-bottom:5px}
+h2{font-size:22px;margin:34px 0 10px}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.comp{background:#151915;border:1px solid #394238;border-radius:10px;overflow:hidden}
+.comp img{width:100%;display:block}
+.comp strong{display:block;padding:10px 12px;font-size:13px;color:#eee6d7}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}
+.metrics div{background:#141914;border:1px solid #3a4539;border-radius:10px;padding:15px}
+.metrics small{display:block;color:#9aa995;letter-spacing:.9px;text-transform:uppercase;font-size:10px;margin-bottom:8px}
+.metrics strong{font-size:14px;line-height:1.4}
+footer{border-top:1px solid #3c4a3c;padding-top:16px;font-size:12px;color:#a0b09f;line-height:1.7}
+a{color:#e0c17e}
+@media(max-width:820px){main{padding:16px 11px 30px}.thumbs{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.thumb{font-size:10px}.thumb img{height:65px}.metrics{grid-template-columns:1fr}.viewer .caption{font-size:11px}.comparison{gap:7px}}
+</style></head><body><main>
+<header><span class="kicker">GUSTAVA ZONA 2040 / MUTANTS</span><span class="pill">REAL 3D · V31B · BLENDER</span></header>
+<h1>Лось-мутант: переделанные глаза</h1>
+<p class="lead">Новая версия существующей 3D-модели. Углублена посадка левого глаза, переработаны обе радужки и горизонтальные зрачки, сужена геометрия верхних и нижних век, уменьшена припухлость внутренних уголков. Контрольные изображения ниже — настоящие Blender-рендеры, не концепт-арт. Нажмите на большой кадр, чтобы открыть его в полном размере.</p>
+<div class="viewer"><a id="biglink" href="images/moose-v31b-front.jpg" target="_blank" rel="noopener"><img id="big" src="images/moose-v31b-front.jpg" alt="Лось V31B, переделанные глаза, реальная 3D-модель"></a><div class="caption" id="caption">1 / 7 · Морда спереди</div></div>
+<div class="controls"><button type="button" onclick="show(idx-1)">← Назад</button><small>Используйте клавиши ← / → для смены ракурса</small><button type="button" onclick="show(idx+1)">Вперёд →</button></div>
+<nav class="thumbs" aria-label="Ракурсы 3D модели">
+<button type="button" class="thumb" aria-pressed="true" onclick="show(0)"><img src="images/moose-v31b-front.jpg" alt="">Спереди</button>
+<button type="button" class="thumb" aria-pressed="false" onclick="show(1)"><img src="images/moose-v31b-eye-left.jpg" alt="">Левый глаз</button>
+<button type="button" class="thumb" aria-pressed="false" onclick="show(2)"><img src="images/moose-v31b-eye-right.jpg" alt="">Правый глаз</button>
+<button type="button" class="thumb" aria-pressed="false" onclick="show(3)"><img src="images/moose-v31b-left-threequarter.jpg" alt="">Слева ¾</button>
+<button type="button" class="thumb" aria-pressed="false" onclick="show(4)"><img src="images/moose-v31b-right-threequarter.jpg" alt="">Справа ¾</button>
+<button type="button" class="thumb" aria-pressed="false" onclick="show(5)"><img src="images/moose-v31b-hump.jpg" alt="">Горб и янтарь</button>
+<button type="button" class="thumb" aria-pressed="false" onclick="show(6)"><img src="images/moose-v31b-full.jpg" alt="">Весь лось</button>
+</nav>
+<h2>Сравнение глаз: V30V → V31B</h2>
+<p>Слева — предыдущая версия с выпуклым глазным яблоком и маленьким зрачком. Справа — текущая V31B с изменённой посадкой и более открытой, узкой линией век.</p>
+<div class="comparison"><div class="comp"><img src="images/moose-v30v-right.jpg" alt="Старый правый глаз V30V"><strong>До · V30V</strong></div><div class="comp"><img src="images/moose-v31b-eye-right.jpg" alt="Правый глаз V31B"><strong>После · V31B</strong></div></div>
+<div class="metrics">
+<div><small>Геометрия глаз</small><strong>2 объёмных глаза, боковые глазницы, 204 полигона век в меше черепа</strong></div>
+<div><small>Остальная модель</small><strong>Оригинальная 4K PBR-кожа, горб, шерсть и 26 кристаллических образований сохранены</strong></div>
+<div><small>Файлы на ПК</small><strong>.blend 329,8 МБ · игровой .glb 265,1 МБ</strong></div>
+</div>
+<footer><strong>Статус: рабочая итерация, не финальное AAAA-утверждение.</strong> На крупных ракурсах ещё возможны небольшие артефакты в уголках век. Импорт V31B и анимации в Unreal Engine пока не проверялись. Это галерея фактических Blender-рендеров, не вращаемая WebGL-модель. Файлы лежат на подключённом ПК в <code>GUSTAVA_MUTANTS_3D\AI_Production\REALISTIC_MUTANTS_V2\V31B_MOOSE_NATIVE_EYELIDS_HORIZONTAL_PUPILS</code>.</footer>
+</main><script>
+const views=[
+["images/moose-v31b-front.jpg","Морда спереди"],
+["images/moose-v31b-eye-left.jpg","Левый глаз крупно"],
+["images/moose-v31b-eye-right.jpg","Правый глаз крупно"],
+["images/moose-v31b-left-threequarter.jpg","Слева ¾"],
+["images/moose-v31b-right-threequarter.jpg","Справа ¾"],
+["images/moose-v31b-hump.jpg","Горб, шерсть и кристаллы"],
+["images/moose-v31b-full.jpg","Весь лось"]];
+let idx=0;function show(i){idx=(i+views.length)%views.length;document.getElementById('big').src=views[idx][0];document.getElementById('biglink').href=views[idx][0];document.getElementById('caption').textContent=(idx+1)+' / '+views.length+' · '+views[idx][1];document.querySelectorAll('.thumb').forEach((b,j)=>b.setAttribute('aria-pressed',j===idx?'true':'false'))}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1)});
+</script></body></html>
