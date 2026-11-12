@@ -1,0 +1,68 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лось V31I · Исправлены глазницы 3D</title>
+<meta name="description" content="Реальные Blender-рендеры мутанта-лося V31I. Обе глазницы, 3D-глаза, UV век, 4K PBR и сравнение с V31G.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#090c0a;color:#eeeae2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#27332a 0,#101510 45%,#070a08 90%);min-height:100vh}
+main{max-width:1270px;margin:auto;padding:28px 20px 45px}header{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:750;letter-spacing:2.1px;font-size:12px;color:#d7bc80}.pill{font-size:12px;border-radius:25px;border:1px solid #60745d;padding:7px 12px;color:#d3dfcd}
+h1{font-size:clamp(28px,5vw,50px);line-height:1.12;margin:24px 0 10px;letter-spacing:-1px}
+p{color:#adbaab;line-height:1.7;font-size:14px}.lead{max-width:970px}
+.viewer{position:relative;border:1px solid #40543b;border-radius:12px;background:#030503;overflow:hidden;margin:18px 0 10px;box-shadow:0 20px 70px #0009}
+.viewer>a{display:block;cursor:zoom-in;line-height:0}.viewer img{width:100%;height:auto;max-height:73vh;object-fit:contain;display:block}
+.cap{position:absolute;bottom:0;left:0;right:0;padding:35px 16px 12px;background:linear-gradient(transparent,#080c09ea);font-size:14px;font-weight:600;pointer-events:none}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:12px 0}
+.controls button{border:1px solid #647761;border-radius:8px;background:#253029;color:#fff;font-weight:650;font-size:12px;padding:11px 14px;cursor:pointer}
+.controls button:hover{background:#41513e}.controls small{font-size:11px;color:#aab8a8;text-align:center}
+.thumbs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.pick{background:#19201a;border:1px solid #445345;border-radius:10px;color:#cdd8ca;text-align:left;padding:6px;font-size:11px;font-weight:650;cursor:pointer}
+.pick[aria-pressed=true]{border-color:#d6b16b;background:#393727;color:#fff}.pick img{width:100%;height:75px;object-fit:cover;display:block;border-radius:6px;margin-bottom:6px}
+h2{margin:30px 0 9px;font-size:23px;letter-spacing:-.3px}.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.compare figure{margin:0;background:#101611;border:1px solid #3f503e;border-radius:12px;overflow:hidden}
+.compare img{width:100%;aspect-ratio:1.6;object-fit:contain;background:#020403;display:block}
+.compare figcaption{padding:11px 13px;font-size:13px;font-weight:650;color:#e3e2d9}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:25px 0}
+.meta>div{background:#161c16;border:1px solid #3c4d3c;padding:15px;border-radius:11px}
+.meta small{display:block;color:#a5b3a1;letter-spacing:.8px;font-size:11px;text-transform:uppercase;margin-bottom:8px}
+.meta strong{font-size:13px;line-height:1.5}footer{border-top:1px solid #435343;margin-top:28px;padding-top:18px;color:#9faf9e;font-size:12px;line-height:1.7}
+a{color:#dec287}code{white-space:normal;overflow-wrap:anywhere}
+@media(max-width:750px){main{padding:17px 11px 32px}.thumbs{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.pick{font-size:10px;padding:4px}.pick img{height:62px}.meta{grid-template-columns:1fr}.compare{gap:7px}.compare figcaption{font-size:11px}}
+</style></head><body><main>
+<header><span class="brand">GUSTAVA ZONA 2040 / MUTANT ASSETS</span><span class="pill">BLENDER 5.2 · V31I</span></header>
+<h1>Лось V31I — исправлены оба глаза</h1>
+<p class="lead">Новые рендеры сделаны из настоящей отредактированной 3D-модели, а не из генератора картинок. Оба глазных яблока перемещены в центр собственных глазниц; поверхность глаз подогнана к контуру век. Исправлены вырожденные UV-полигоны кожи, из-за которых в V31G на правом веке были серые треугольники. Не затронуты рога, кристаллы, шерсть и исходные PBR-материалы. Нажмите на большой кадр для увеличения.</p>
+<div class="viewer"><a id="open" target="_blank" rel="noopener" href="images/moose-v31i-front.jpg"><img id="big" src="images/moose-v31i-front.jpg" alt="3D-модель лося V31I — Blender"></a><div class="cap" id="caption">1 / 7 · Морда спереди</div></div>
+<div class="controls"><button onclick="show(index-1)">← Предыдущий</button><small>Клавиши ← / → меняют ракурс</small><button onclick="show(index+1)">Следующий →</button></div>
+<nav class="thumbs" aria-label="Фактические ракурсы новой модели">
+<button type="button" class="pick" aria-pressed="true" onclick="show(0)"><img src="images/moose-v31i-front.jpg" alt="">Морда</button>
+<button type="button" class="pick" aria-pressed="false" onclick="show(1)"><img src="images/moose-v31i-right-eye.jpg" alt="">Правый глаз</button>
+<button type="button" class="pick" aria-pressed="false" onclick="show(2)"><img src="images/moose-v31i-left-eye.jpg" alt="">Левый глаз</button>
+<button type="button" class="pick" aria-pressed="false" onclick="show(3)"><img src="images/moose-v31i-left.jpg" alt="">Слева ¾</button>
+<button type="button" class="pick" aria-pressed="false" onclick="show(4)"><img src="images/moose-v31i-right.jpg" alt="">Справа ¾</button>
+<button type="button" class="pick" aria-pressed="false" onclick="show(5)"><img src="images/moose-v31i-hump.jpg" alt="">Горб и янтарь</button>
+<button type="button" class="pick" aria-pressed="false" onclick="show(6)"><img src="images/moose-v31i-full.jpg" alt="">Весь лось</button>
+</nav>
+<h2>Что поменялось относительно V31G</h2>
+<p>Сравните крупный ракурс справа: старый правый глаз располагался не по центру глазницы, а узкие полосы вокруг него имели некорректную UV-развёртку. В новой версии 204 полигонов век получили развернутые UV-координаты, а глазное яблоко физически подогнано к отверстию.</p>
+<div class="compare">
+<figure><img src="images/moose-v31g-eye-right.jpg" alt="Ранее: глаз V31G"><figcaption>Было · V31G</figcaption></figure>
+<figure><img src="images/moose-v31i-right-eye.jpg" alt="Стало: глаз V31I"><figcaption>Стало · V31I</figcaption></figure>
+</div>
+<div class="meta">
+<div><small>Геометрия</small><strong>2 настоящих объёмных глаза; плотная посадка, сглаженные кольца век</strong></div>
+<div><small>Материалы</small><strong>4K радужки и исходная 4K кожа; исправлены UV 204 полигонов</strong></div>
+<div><small>Рабочие файлы</small><strong>BLEND 343,8 МБ и игровой GLB 279,2 МБ на ПК</strong></div>
+</div>
+<footer><strong>Статус: исправленная рабочая 3D-версия, ещё не утверждённый AAAA-финал.</strong> Верхняя складка левого глаза и грубые крупные волоски ещё нуждаются в художественной доводке. Проверка импорта в Unreal Engine не выполнена. Эта страница показывает настоящие Blender-рендеры; для вращения 3D-модели откройте BLEND или GLB в папке <code>REALISTIC_MUTANTS_V2\V31I_REAL_SOCKET_FIT_REBUILT_EYES_FINAL_QA</code> на подключённом ПК.</footer>
+</main><script>
+const shots=[['images/moose-v31i-front.jpg','Морда спереди'],
+ ['images/moose-v31i-right-eye.jpg','Правый глаз крупно'],
+ ['images/moose-v31i-left-eye.jpg','Левый глаз крупно'],
+ ['images/moose-v31i-left.jpg','Левый ракурс ¾'],
+ ['images/moose-v31i-right.jpg','Правый ракурс ¾'],
+ ['images/moose-v31i-hump.jpg','Горб и янтарь'],
+ ['images/moose-v31i-full.jpg','Модель в полный рост']];
+let index=0;
+function show(next){index=(next+shots.length)%shots.length;document.getElementById('big').src=shots[index][0];document.getElementById('open').href=shots[index][0];document.getElementById('caption').textContent=(index+1)+' / '+shots.length+' · '+shots[index][1];document.querySelectorAll('.pick').forEach((el,i)=>el.setAttribute('aria-pressed',index===i?'true':'false'))}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(index-1);else if(e.key==='ArrowRight')show(index+1)});
+</script></body></html>
