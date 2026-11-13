@@ -1,0 +1,72 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лось V32M / настоящая 3D-модель</title>
+<meta name="description" content="Реальные Blender-рендеры V32M: правый глаз и глазница выдвинуты вперёд, левый глаз слегка наружу, движение глазниц от дыхания устранено, новый GLB и видео анимации.">
+<style>
+:root{color-scheme:dark;background:#080b09;color:#f0f2e9;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#2a392d 0,#101811 39%,#080b09 78%);min-height:100vh}
+main{max-width:1230px;margin:auto;padding:26px 22px 45px}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.kicker{color:#dbbe86;letter-spacing:1.8px;font-size:12px;font-weight:850}.version{border:1px solid #728b68;border-radius:30px;padding:7px 13px;color:#e4e9df;font-size:12px}
+h1{font-size:clamp(28px,4.8vw,48px);line-height:1.12;letter-spacing:-.8px;margin:22px 0 12px}
+p{color:#b1c0ae;font-size:14px;line-height:1.7;max-width:990px}
+.viewer{background:#050705;border:1px solid #4f6c4d;border-radius:12px;overflow:hidden;box-shadow:0 18px 65px #0009;margin:20px 0 8px}
+video{display:block;width:100%;max-height:72vh;background:#030503}
+.video-foot{display:flex;justify-content:space-around;gap:10px;padding:10px;background:#172419;font-size:12px;font-weight:800}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin:13px 0}
+.buttons button,.links a{background:#293a2a;border:1px solid #71916d;border-radius:9px;color:#f6f4e9;padding:11px 14px;font-size:12px;font-weight:800;text-decoration:none;cursor:pointer}
+.buttons button:hover,.links a:hover{background:#37563e}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:27px 0}
+.stats div{background:#152119;border:1px solid #3b503d;border-radius:11px;padding:15px}
+.stats small{display:block;text-transform:uppercase;letter-spacing:.7px;color:#9fb39c;font-size:11px;margin-bottom:8px}
+.stats strong{display:block;line-height:1.45;font-size:14px}
+h2{font-size:23px;letter-spacing:-.2px;margin:29px 0 10px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.gallery figure{margin:0;border:1px solid #405b42;border-radius:11px;overflow:hidden;background:#0c120e}
+.gallery a{display:block}.gallery img{display:block;width:100%;height:auto;aspect-ratio:1.56;object-fit:contain;background:#050705}
+.gallery figcaption{padding:10px 12px;font-size:13px;font-weight:750}
+.links{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0}
+footer{border-top:1px solid #40583f;margin-top:28px;padding-top:18px;font-size:12px;line-height:1.75;color:#9cb39c}
+@media(max-width:710px){main{padding:17px 11px 31px}.stats{grid-template-columns:1fr;gap:8px}.gallery{gap:7px}.gallery figcaption{font-size:11px;padding:8px}.buttons button{flex:1}}
+</style></head><body><main>
+<header><span class="kicker">GUSTAVA ZONA 2040 / MUTANTS / BLENDER</span><span class="version">V32M · REAL 3D</span></header>
+<h1>Лось V32M — поправлены глаза и глазницы</h1>
+<p>Это <strong>контрольные рендеры реально отредактированной 3D-модели Blender</strong>, не генерация концепта. Правый глаз вместе с кожей глазницы перемещён вперёд ещё на 35 мм (суммарно на 50 мм по локальной оси от V32K). Левое глазное яблоко выдвинуто наружу на 4 мм. Устранено непредусмотренное движение обеих глазниц от анимации дыхания. Голова и веки не вращаются вместе с глазными яблоками.</p>
+<div class="viewer">
+<video id="video" controls autoplay muted loop playsinline preload="metadata" poster="images/moose-v32m-right-neutral.jpg">
+<source src="videos/moose-v32m-eyes-final.mp4" type="video/mp4">Видео не поддерживается браузером.</video>
+<div class="video-foot"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div>
+</div>
+<div class="buttons">
+<button type="button" onclick="showPose(0)">Кадр 1 · Прямо</button>
+<button type="button" onclick="showPose(1.375)">Кадр 33 · Влево</button>
+<button type="button" onclick="replay()">▶ Воспроизвести заново</button>
+</div>
+<div class="stats">
+<div><small>Правая сторона</small><strong>+35 мм вперёд к морде вместе с глазницей; суммарно +50 мм от V32K</strong></div>
+<div><small>Левая сторона</small><strong>Глазное яблоко на 4 мм наружу; глазница остаётся на месте во время взгляда</strong></div>
+<div><small>Проверка анимации</small><strong>60/60 кадров — совпадающие углы двух глаз; 0 мм нежелательного движения кожи в контрольных участках</strong></div>
+</div>
+<h2>Сравнение до и после — правый глаз</h2>
+<p>В обоих снимках использован один и тот же ракурс камеры, чтобы разница положения глаза была видна без подмены перспективы.</p>
+<div class="gallery">
+<figure><a target="_blank" href="images/moose-v32l-right-neutral.jpg"><img src="images/moose-v32l-right-neutral.jpg" alt="Правая глазница V32L до дополнительного переноса"></a><figcaption>До — V32L</figcaption></figure>
+<figure><a target="_blank" href="images/moose-v32m-right-neutral.jpg"><img src="images/moose-v32m-right-neutral.jpg" alt="Правая глазница V32M после дополнительного переноса"></a><figcaption>После — V32M</figcaption></figure>
+</div>
+<h2>Правый и левый глаз: два положения</h2>
+<div class="gallery">
+<figure><a href="images/moose-v32m-right-neutral.jpg" target="_blank"><img src="images/moose-v32m-right-neutral.jpg" alt="Правый глаз прямо"></a><figcaption>Правый глаз — прямо</figcaption></figure>
+<figure><a href="images/moose-v32m-right-left.jpg" target="_blank"><img src="images/moose-v32m-right-left.jpg" alt="Правый глаз влево"></a><figcaption>Правый глаз — влево</figcaption></figure>
+<figure><a href="images/moose-v32m-left-neutral.jpg" target="_blank"><img src="images/moose-v32m-left-neutral.jpg" alt="Левый глаз прямо"></a><figcaption>Левый глаз — прямо</figcaption></figure>
+<figure><a href="images/moose-v32m-left-left.jpg" target="_blank"><img src="images/moose-v32m-left-left.jpg" alt="Левый глаз влево"></a><figcaption>Левый глаз — влево</figcaption></figure>
+</div>
+<h2>Морда и положение глаз в пространстве</h2>
+<div class="gallery">
+<figure><a href="images/moose-v32m-front-neutral.jpg" target="_blank"><img src="images/moose-v32m-front-neutral.jpg" alt="Морда спереди"></a><figcaption>Морда — нейтральное положение</figcaption></figure>
+<figure><a href="images/moose-v32m-front-left.jpg" target="_blank"><img src="images/moose-v32m-front-left.jpg" alt="Морда и взгляд влево"></a><figcaption>Морда — взгляд влево</figcaption></figure>
+<figure><a href="images/moose-v32m-right-3q.jpg" target="_blank"><img src="images/moose-v32m-right-3q.jpg" alt="Правый ракурс 3/4"></a><figcaption>Правый ракурс ¾</figcaption></figure>
+<figure><a href="images/moose-v32m-left-3q.jpg" target="_blank"><img src="images/moose-v32m-left-3q.jpg" alt="Левый ракурс 3/4"></a><figcaption>Левый ракурс ¾</figcaption></figure>
+</div>
+<div class="links"><a target="_blank" rel="noopener" href="videos/moose-v32m-eyes-final.mp4">Открыть MP4 напрямую</a><a target="_blank" rel="noopener" href="moose-v32l.html">Сравнить с V32L</a></div>
+<footer><strong>Редактируемая версия Blender и игровой GLB уже сохранены на подключённом ПК:</strong> <code>REALISTIC_MUTANTS_V2\V32M_BOLDER_RIGHT_ORBIT_LEFT_GLOBE_REWORK</code>. GLB успешно экспортирован как glTF 2.0: 3 анимационных клипа, включая <code>EYES_LOOK_STRAIGHT_LEFT_LOOP</code> с отдельными каналами обеих сфер. Грудное дыхание оставлено, но больше не двигает глазницы. Предыдущая V32L не перезаписана. <strong>Статус: рабочая 3D-версия, не AAAA-финал.</strong> Некоторые края век и пряди шерсти визуально требуют дальнейшей доработки, а Unreal Engine импорт не проверялся.</footer>
+</main><script>const vid=document.getElementById('video');function showPose(t){vid.pause();vid.currentTime=t}function replay(){vid.currentTime=0;vid.play().catch(()=>{})}</script></body></html>
