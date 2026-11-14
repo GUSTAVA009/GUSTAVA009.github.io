@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Любич GZ284: реальный Unreal Engine 5.8 фотоотчёт</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101817;color:#e7e9de;font:16px/1.55 system-ui,-apple-system,Arial,sans-serif}main{max-width:1240px;margin:auto;padding:24px 17px 70px}h1{font-size:clamp(26px,4.2vw,42px);line-height:1.12;margin:10px 0 16px}h2{font-size:21px;margin:8px 0 16px}p{max-width:970px}header{padding:25px 0 30px;border-bottom:1px solid #344740}.eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:12px;color:#afbbac;font-weight:800}.status{display:inline-block;font-size:13px;border:1px solid #79714b;color:#e2d3a4;background:#292718;padding:6px 13px;border-radius:30px;margin-top:6px}section{margin:34px 0 44px}figure{margin:16px 0 7px}figure img{display:block;width:100%;height:auto;border-radius:9px;border:1px solid #526052}figcaption{font-size:14px;color:#c9d1c3;margin-top:10px}a{color:#b6dcb6}aside{padding:21px 24px;border:1px solid #475b4d;border-radius:12px;background:#16211c;margin-top:25px}ul{padding-left:24px}li{margin-bottom:6px}small{color:#aab8ad}
+</style></head><body><main>
+<header><div class="eyebrow">GUSTAVA / ZONA 2040 / UE 5.8 / GZ284</div>
+<h1>Любич — реальный фотоотчёт текущей карты</h1>
+<div class="status">Рабочая версия · визуальная приёмка не пройдена</div>
+<p>Настоящие скриншоты игровой локации, снятые средствами Unreal Engine 5.8 из сохранённого проекта. Не концепты, не нейросетевые изображения. Кадры представлены в виде 1600×900 JPEG, оригиналы 1920×1080 PNG сохранены в <code>Saved/Diagnostics</code> на рабочем ПК.</p>
+</header>
+<section><h2>01 — Улица Любича после изменения покрытия и дворов</h2>
+<figure><a href="street.jpg" target="_blank" rel="noopener"><img src="street.jpg" alt="Реальный кадр Unreal Engine 5.8: улица Любича, грунтовая дорога, автомобиль, деревянные дома, заборы и растительность"></a>
+<figcaption>Кадр GZ284. Изменено дорожное покрытие, добавлены 35 деревянных заборов и 6 840 экземпляров придорожной растительности. Часть застройки и травы ещё выглядит недостаточно реалистично.</figcaption></figure></section>
+<section><h2>02 — Склон за деревней: дефект дальнего леса</h2>
+<figure><a href="taiga.jpg" target="_blank" rel="noopener"><img src="taiga.jpg" alt="Реальный кадр Unreal Engine 5.8: хвойный лес на переднем плане и пустой дальний склон за Любичем"></a>
+<figcaption>Кадр GZ284. Ранее установленный экспериментальный дальний лес отклонён и удалён: модели выглядели как спирали или тонкие столбы. Передний лес сохранён, дальний склон пока незавершён.</figcaption></figure></section>
+<aside><h2>Подтверждённые факты по проекту</h2><ul>
+<li>Сохранён рабочий уровень <code>/Game/GZ_NewWorld/Maps/GZ_L_Lyubich</code> и резервные копии.</li>
+<li>На карте сохранились 8 оригинальных сюжетных акторов, 5 дополнительных квестовых точек, 2 перехода, 9 домов, 3 машины, 3 сарая, 35 новых деревянных заборов.</li>
+<li>6 840 растений возле домов остались на карте. Проблемный экспериментальный дальний лес (3 867 деревьев) удалён после визуальной проверки.</li>
+<li>Все 50 квестовых линеек и 200 заданий записаны в мастер-данных <code>Design/Questlines/GZ280_50QuestlinesMasterDesign_v01.json</code>, но это пока дизайн-спецификация, не 200 внедрённых игровых миссий.</li>
+<li>Сохранён QA-отчёт <code>Saved/Diagnostics/GZ283_RemovedFailedDistantForest_FromPlayableMapQA.json</code> со статусом PASS. Это проверка целостности, не оценка AAA-качества.</li>
+</ul></aside>
+<p><small>Дата контрольной точки: 15 ноября 2026. Источник: фактический проект Unreal Engine 5.8 на WIN-MFKU10DKMMC, кадры GZ284. Следующая работа: география, архитектура и качественная лесная растительность; не маскировать плохие ассеты массовой расстановкой.</small></p>
+</main></body></html>
