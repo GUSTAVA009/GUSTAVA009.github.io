@@ -1,0 +1,66 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUSTAVA ZONA 2040 — Лось V32U | реальные 3D-исправления глазниц</title>
+<meta name="description" content="Реальная Blender-модель лося V32U: закрытые глазницы, веки соединены с телом, изменена посадка глаз, исправлена серебряная кайма. 8 настоящих рендеров и видео анимации.">
+<style>
+:root{color-scheme:dark;background:#0a0d0a;color:#f0eee5;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 84% -2%,#304033 0,#101711 45%,#080b09 80%)}
+main{max-width:1100px;margin:auto;padding:24px 19px 45px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.kicker{font-size:11px;font-weight:850;letter-spacing:1.8px;color:#e1c38b}
+.version{font-size:12px;border-radius:30px;border:1px solid #738f6e;padding:7px 11px}
+h1{font-size:clamp(29px,4.7vw,47px);line-height:1.08;letter-spacing:-.75px;margin:24px 0 14px}
+p{color:#b5c4b3;line-height:1.65;font-size:14px;max-width:980px}
+strong{color:#eef0e7}
+video{display:block;width:100%;max-height:70vh;background:#020403}
+.player{border:1px solid #5f805e;border-radius:13px;overflow:hidden;background:#010301;margin:22px 0 10px;box-shadow:0 12px 30px #0007}
+.labels{display:flex;justify-content:space-around;padding:10px;background:#152119;font-size:11px;letter-spacing:1px;font-weight:800}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.actions a,.actions button{display:inline-flex;align-items:center;background:#263d2b;border:1px solid #678465;border-radius:8px;color:#f2f3ec;font-weight:750;padding:11px 14px;text-decoration:none;font-size:12px;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:24px 0}
+.metrics div{background:#162219;border:1px solid #405c43;padding:13px;border-radius:10px}
+.metrics small{display:block;text-transform:uppercase;letter-spacing:.8px;font-size:10px;color:#a5bca4;margin-bottom:9px}
+.metrics strong{font-size:14px;line-height:1.4;display:block}
+h2{font-size:22px;margin:29px 0 12px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+figure{margin:0;background:#121a14;border:1px solid #485f4a;border-radius:10px;overflow:hidden}
+figure a{display:block}figure img{width:100%;display:block;aspect-ratio:1.5;object-fit:contain;background:#030503}
+figcaption{font-size:13px;font-weight:750;padding:11px}
+footer{border-top:1px solid #425745;margin-top:29px;padding-top:17px;font-size:12px;line-height:1.75;color:#a7b8a6}
+@media(max-width:720px){main{padding:16px 10px 30px}.metrics{grid-template-columns:1fr;gap:8px}.gallery{grid-template-columns:1fr;gap:10px}.actions a,.actions button{flex:1;justify-content:center}}
+</style></head><body><main>
+<header><span class="kicker">GUSTAVA ZONA 2040 · BLENDER 5.2 · MUTANTS</span><span class="version">V32U · REAL 3D</span></header>
+<h1>Лось V32U — глазницы больше не открыты</h1>
+<p>Это <strong>рендеры настоящей изменённой модели Blender</strong>, не сгенерированный концепт. В V32R оба края глазниц были физически открыты — 37 рёбер слева и 31 справа. В V32U все 68 прежних граничных рёбер получили соединённую с оригинальным мешем внутреннюю поверхность век: четыре ряда геометрии и непрозрачную анатомическую подкладку за сферой глаза.</p>
+<p>Глаза теперь посажены глубже (левый на 3,5 мм, правый на 3 мм по локальной X). Переработан слишком зеркальный материал век, из-за которого вокруг глаза появлялась бело-серебряная кайма. Сохранены 4K-материалы и синхронное вращение обоих глаз.</p>
+<div class="player"><video id="clip" controls autoplay loop muted playsinline preload="metadata" poster="images/moose-v32u-left-straight.jpg">
+<source src="videos/moose-v32u-both-eyes.mp4" type="video/mp4">Видео не поддерживается браузером.</video>
+<div class="labels"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div></div>
+<div class="actions"><button type="button" onclick="pose(0)">Прямо · кадр 1</button><button type="button" onclick="pose(1.375)">Влево · кадр 33</button><button type="button" onclick="restart()">▶ Воспроизвести</button><a href="videos/moose-v32u-both-eyes.mp4" target="_blank" rel="noopener">Открыть видео отдельно</a></div>
+<div class="metrics">
+<div><small>Геометрия</small><strong>68/68 прежних открытых рёбер глазных проёмов теперь manifold; 4 соединённых ряда ткани с каждой стороны</strong></div>
+<div><small>Посадка глаз</small><strong>Сферы сохранены; левый глубже на 3,5 мм, правый на 3 мм, без изменения переднего смещения правого глаза по Y</strong></div>
+<div><small>GLB / анимации</small><strong>glTF 2.0 экспортирован и проверен; 3 клипа, включая синхронный взгляд обоих глаз, сохранены</strong></div>
+</div>
+<h2>Крупные планы — прямо и влево</h2>
+<p>Нажми на изображение для просмотра в полном размере. Каждый кадр получен из нового .blend-файла V32U.</p>
+<section class="gallery">
+<figure><a href="images/moose-v32u-left-straight.jpg" target="_blank"><img src="images/moose-v32u-left-straight.jpg" alt="Левый глаз V32U, взгляд прямо"></a><figcaption>Левый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32u-left-left.jpg" target="_blank"><img src="images/moose-v32u-left-left.jpg" alt="Левый глаз V32U, взгляд влево"></a><figcaption>Левый глаз · влево</figcaption></figure>
+<figure><a href="images/moose-v32u-right-straight.jpg" target="_blank"><img src="images/moose-v32u-right-straight.jpg" alt="Правый глаз V32U, взгляд прямо"></a><figcaption>Правый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32u-right-left.jpg" target="_blank"><img src="images/moose-v32u-right-left.jpg" alt="Правый глаз V32U, взгляд влево"></a><figcaption>Правый глаз · влево</figcaption></figure>
+</section>
+<h2>Морда спереди</h2>
+<section class="gallery">
+<figure><a href="images/moose-v32u-face-straight.jpg" target="_blank"><img src="images/moose-v32u-face-straight.jpg" alt="Лось V32U прямо"></a><figcaption>Прямой взгляд</figcaption></figure>
+<figure><a href="images/moose-v32u-face-left.jpg" target="_blank"><img src="images/moose-v32u-face-left.jpg" alt="Лось V32U переводит глаза влево"></a><figcaption>Оба глаза влево</figcaption></figure>
+</section>
+<h2>Контроль снизу: внутренняя полость больше не открыта</h2>
+<section class="gallery">
+<figure><a href="images/moose-v32u-left-low.jpg" target="_blank"><img src="images/moose-v32u-left-low.jpg" alt="Левая глазница V32U с нижней камеры"></a><figcaption>Левый глаз · нижний ракурс</figcaption></figure>
+<figure><a href="images/moose-v32u-right-low.jpg" target="_blank"><img src="images/moose-v32u-right-low.jpg" alt="Правая глазница V32U с нижней камеры"></a><figcaption>Правый глаз · нижний ракурс</figcaption></figure>
+</section>
+<div class="actions"><a href="moose-v32r.html" target="_blank" rel="noopener">Сравнить с предыдущей V32R</a></div>
+<footer><strong>Редактируемый .blend и игровой .glb сохранены на ПК FASEA</strong> в <code>GUSTAVA_MUTANTS_3D\AI_Production\REALISTIC_MUTANTS_V2\V32U_CLOSED_ORBIT_MATTE_LIDS_GAME_RELEASE</code>. Исходная V32R не перезаписана. <strong>Ограничения:</strong> это технически исправленный игровой 3D-ассет, но ещё не финальная AAAA-художественная приёмка. Отдельные пряди, края век и остальная кожа требуют дополнительного художественного шлифования. Импорт и воспроизведение V32U в Unreal Engine пока не проверялись. Галерея показывает настоящие рендеры Blender, а не интерактивную модель.</footer>
+</main><script>const v=document.getElementById('clip');function pose(t){v.pause();v.currentTime=t}function restart(){v.currentTime=0;v.play().catch(()=>{})}</script>
+</body></html>
