@@ -470,7 +470,7 @@ async function load() {
   mixer.setTime(0);
   updateVolcanoMotion(0);
   if(audioWanted&&playing)startAudio();
-  say('GZ174 SCULPT (V62 source) · GZ174: живое парение → накопление → один выброс → затухание · новая геометрия сколов · UV и PBR без изменений');
+  say('GZ174 SCULPT (V62 source) · GZ174: живое парение → накопление → один выброс → затухание · новые сколы · исходные PBR верха/низа · обновлённый 4K PBR кромки');
   $('#counter').textContent='520 искр';
   $('#source').textContent='V62 · PBR 4K · натуральный каменный торец';
   progress.value=1;
@@ -483,7 +483,9 @@ async function load() {
 retry.onclick=load;
 function loop(now) {
  requestAnimationFrame(loop);
- const dt=Math.min(.05,(now-lastFrame)/1000);
+ // Keep physical time correct when software WebGL or mobile frame rates drop.
+ // The old 50ms clamp stretched the 18-second cycle on slower devices.
+ const dt=Math.min(.5,Math.max(0,(now-lastFrame)/1000));
  lastFrame=now;
  if(playing){
   if(soundSource&&soundContext&&soundContext.state==='running'){
