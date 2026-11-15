@@ -1,0 +1,53 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GUSTAVA ZONA 2040 — Лось V32X-B · новая геометрия век</title><meta name="description" content="Настоящие Blender-рендеры реальной модели лося V32X-B: 1828 изменённых вершин кожи, 816 исправленных граней перехода век, проверенная анимация двух глаз и сравнение с V32W.">
+<style>
+:root{color-scheme:dark;background:#0a100e;color:#eef0e9;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 82% -2%,#2b3d32,#101a14 42%,#090d0b 82%)}
+main{max-width:1100px;margin:auto;padding:24px 17px 50px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.eyebrow{font-size:11px;letter-spacing:1.5px;color:#e7be7d;font-weight:800}.pill{border:1px solid #5b795d;border-radius:20px;padding:7px 12px;font-size:12px;font-weight:750}
+h1{font-size:clamp(29px,4.4vw,48px);letter-spacing:-1.1px;line-height:1.08;margin:24px 0 13px}
+h2{margin:31px 0 12px;font-size:23px}p{color:#b6c6b5;line-height:1.65;font-size:14px;max-width:1000px}
+strong{color:#eef3eb}.viewer{background:#020402;border:1px solid #567556;border-radius:13px;overflow:hidden;margin:19px 0 11px;box-shadow:0 14px 35px #0007}
+video{display:block;width:100%;max-height:70vh;background:#020302}.vlabels{background:#192b1b;display:flex;justify-content:space-around;padding:10px;color:#e6eee6;font-size:11px;font-weight:850;letter-spacing:1px}
+.controls{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 15px}
+button,.controls a{border:1px solid #678368;color:#f1f3ec;background:#2d4933;padding:11px 13px;border-radius:9px;font-size:12px;font-weight:750;cursor:pointer;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:26px 0}
+.stat{background:#17271b;border:1px solid #38523d;border-radius:10px;padding:14px}.stat small{display:block;text-transform:uppercase;letter-spacing:.7px;color:#aabdab;font-size:10px;margin-bottom:9px}.stat strong{font-size:13px;line-height:1.4;display:block}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:11px}.compare figure,.gallery figure{border:1px solid #445c46;border-radius:10px;background:#121c16;margin:0;overflow:hidden}
+figure img{display:block;width:100%;aspect-ratio:1.49;object-fit:contain;background:#020302}
+figcaption{padding:10px;font-size:13px;font-weight:740}.old{color:#c4a59b}.new{color:#b5d4ae}
+.scrub{margin-top:15px;border:1px solid #536f54;overflow:hidden;border-radius:10px;background:#080b08}
+.scrub-inner{position:relative;aspect-ratio:1.49;overflow:hidden}.scrub-inner img{position:absolute;inset:0;height:100%;width:100%;object-fit:contain}.scrub-inner .after{clip-path:inset(0 50% 0 0)}
+.scrub input{width:calc(100% - 30px);margin:17px 15px 12px;accent-color:#80ab7d}.scrub .slabels{display:flex;justify-content:space-between;color:#d4e4d0;font-size:12px;padding:0 15px 14px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:11px}.notice{border-left:3px solid #aa9e76;background:#1b231b;padding:13px 14px;border-radius:3px;margin-top:24px}
+footer{margin-top:28px;padding-top:19px;border-top:1px solid #405343;color:#9eb39f;font-size:12px;line-height:1.75}
+@media(max-width:680px){main{padding:16px 10px 30px}.stats{grid-template-columns:1fr;gap:7px}.compare,.gallery{grid-template-columns:1fr;gap:8px}figcaption{font-size:12px}.controls button{flex:1}}
+</style></head><body><main>
+<header class="top"><span class="eyebrow">GUSTAVA ZONA 2040 · MUTANTS · BLENDER 5.2</span><span class="pill">V32X-B · REAL 3D</span></header>
+<h1>Лось V32X-B — переработка формы глазниц, не только ободков</h1>
+<p>По скриншоту V32W стало понятно, что старые правки практически не изменяли контур проёма в коже. <strong>В V32X-B изменена сама геометрия прилегающей морды:</strong> веки сужены по вертикали, переходы смешаны с исходным PBR-материалом кожи, а сохранённые сферические глаза по-прежнему вращаются синхронно.</p>
+<div class="viewer"><video id="clip" controls muted autoplay loop playsinline preload="metadata" poster="images/moose-v32x-b-left-straight.jpg"><source src="videos/moose-v32x-both-eyes.mp4" type="video/mp4">Ваш браузер не поддерживает MP4.</video><div class="vlabels"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div></div>
+<div class="controls"><button onclick="pose(0)">Взгляд прямо</button><button onclick="pose(1.375)">Взгляд влево</button><button onclick="restart()">▶ Воспроизвести</button><a href="videos/moose-v32x-both-eyes.mp4" target="_blank" rel="noopener">Открыть MP4</a></div>
+<div class="stats"><div class="stat"><small>Перескульпт кожи</small><strong>1 828 изменённых вершин непосредственно возле глазниц</strong></div><div class="stat"><small>PBR-мост</small><strong>816 граней внутренней поверхности век получили исходный материал кожи</strong></div><div class="stat"><small>Техническая проверка</small><strong>GLB 2.0, 3 клипа, синхронность 60 кадров, оба 4K-материала глаз на месте</strong></div></div>
+<h2>Настоящее сравнение V32W → V32X-B</h2>
+<p>Одинаковые углы камеры и освещение в Blender — изменения можно оценить непосредственно, без сгенерированных картинок.</p>
+<div class="compare">
+<figure><a href="images/moose-v32w-right-straight.jpg" target="_blank"><img src="images/moose-v32w-right-straight.jpg" alt="Правый глаз до: V32W"></a><figcaption class="old">До · V32W · прежнее жёсткое кольцо</figcaption></figure>
+<figure><a href="images/moose-v32x-b-right-straight.jpg" target="_blank"><img src="images/moose-v32x-b-right-straight.jpg" alt="Правый глаз после: V32X-B"></a><figcaption class="new">После · V32X-B · суженный проём</figcaption></figure>
+<figure><a href="images/moose-v32w-left-straight.jpg" target="_blank"><img src="images/moose-v32w-left-straight.jpg" alt="Левый глаз до: V32W"></a><figcaption class="old">До · левый глаз V32W</figcaption></figure>
+<figure><a href="images/moose-v32x-b-left-straight.jpg" target="_blank"><img src="images/moose-v32x-b-left-straight.jpg" alt="Левый глаз после: V32X-B"></a><figcaption class="new">После · левый глаз V32X-B</figcaption></figure>
+</div>
+<h2>Сдвинь ползунок, чтобы сравнить геометрию</h2>
+<div class="scrub"><div class="scrub-inner"><img src="images/moose-v32w-right-straight.jpg" alt="Старый правый глаз V32W"><img class="after" id="compareAfter" src="images/moose-v32x-b-right-straight.jpg" alt="Новый правый глаз V32X-B"></div><input id="scrubber" type="range" min="0" max="100" value="50" aria-label="Сравнить старую и новую модель" oninput="document.getElementById('compareAfter').style.clipPath='inset(0 '+(100-this.value)+'% 0 0)'"><div class="slabels"><span>V32W · до</span><span>V32X-B · после</span></div></div>
+<h2>Взгляд прямо / влево</h2>
+<div class="gallery">
+<figure><a href="images/moose-v32x-b-left-straight.jpg" target="_blank"><img src="images/moose-v32x-b-left-straight.jpg" alt="V32X-B левый прямо"></a><figcaption>Левый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32x-b-left-left.jpg" target="_blank"><img src="images/moose-v32x-b-left-left.jpg" alt="V32X-B левый влево"></a><figcaption>Левый глаз · влево</figcaption></figure>
+<figure><a href="images/moose-v32x-b-right-straight.jpg" target="_blank"><img src="images/moose-v32x-b-right-straight.jpg" alt="V32X-B правый прямо"></a><figcaption>Правый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32x-b-right-left.jpg" target="_blank"><img src="images/moose-v32x-b-right-left.jpg" alt="V32X-B правый влево"></a><figcaption>Правый глаз · влево</figcaption></figure>
+<figure><a href="images/moose-v32x-b-face-straight.jpg" target="_blank"><img src="images/moose-v32x-b-face-straight.jpg" alt="V32X-B морда прямо"></a><figcaption>Морда · прямо</figcaption></figure>
+<figure><a href="images/moose-v32x-b-face-left.jpg" target="_blank"><img src="images/moose-v32x-b-face-left.jpg" alt="V32X-B морда взгляд влево"></a><figcaption>Морда · влево</figcaption></figure>
+</div>
+<div class="notice"><strong>Статус: улучшенная рабочая версия, НЕ окончательный AAAA-финал.</strong><p>Остались светлый участок левого верхнего века, яркая кайма у внутреннего уголка правого глаза и некоторые посторонние пряди шерсти. Эти дефекты видны в крупных планах, поэтому художественная приёмка пока не пройдена.</p></div>
+<div class="controls"><a href="moose-v32w.html" target="_blank">Предыдущая V32W</a></div>
+<footer>Редактируемый Blender и игровой GLB находятся на FASEA в папке <code>GUSTAVA_MUTANTS_3D\AI_Production\REALISTIC_MUTANTS_V2\V32X_B_REMODELED_EYELID_APERTURES_GAME_REVIEW</code>. V32W сохранена для отката. GlTF экспорт и наличие анимаций проверены. <strong>Импорт в Unreal Engine не подтверждён.</strong> Веб-страница показывает подлинные Blender-рендеры, а не интерактивный WebGL-меш.</footer>
+</main><script>const v=document.getElementById('clip');function pose(t){v.pause();v.currentTime=t}function restart(){v.currentTime=0;v.play().catch(()=>{})}</script></body></html>
