@@ -1,0 +1,48 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GUSTAVA ZONA 2040 — Лось V32W: доработка век в настоящей 3D-модели</title><meta name="description" content="Настоящая Blender 3D-модель лося V32W: сглаженная интегрированная кромка век, локальная ретопология, проверенный GLB, четыре Blender-рендера и анимация двух глаз."><style>
+:root{color-scheme:dark;background:#0a100d;color:#f0ede6;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 82% -3%,#273c2d,#101a12 44%,#080b09 80%)}
+main{max-width:1120px;margin:0 auto;padding:22px 18px 42px}
+.kicker{color:#e0c18a;font-size:11px;font-weight:850;letter-spacing:1.5px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}.version{border:1px solid #6a9068;border-radius:25px;padding:7px 13px;font-size:12px}
+h1{font-size:clamp(29px,4.8vw,45px);letter-spacing:-.7px;line-height:1.11;margin:22px 0 11px}
+p{font-size:14px;line-height:1.65;color:#b3c6b6;max-width:1010px}
+strong{color:#f1f2ec}
+.player{border-radius:12px;border:1px solid #507a54;overflow:hidden;background:#020403;margin:22px 0 11px}
+video{display:block;width:100%;max-height:72vh;background:#000}
+.labels{background:#19281b;display:flex;justify-content:space-around;padding:10px;font-size:11px;font-weight:850;letter-spacing:1px}
+.controls{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0}
+button,.controls a{border:1px solid #698a68;border-radius:8px;padding:10px 13px;background:#294530;color:#f5f4ed;font-size:12px;font-weight:750;text-decoration:none;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:24px 0}
+.metrics div{border:1px solid #405b41;background:#17251b;border-radius:9px;padding:13px}
+.metrics small{display:block;text-transform:uppercase;color:#a4bca8;font-size:10px;letter-spacing:.7px;margin-bottom:8px}
+.metrics strong{font-size:13px;line-height:1.48;display:block}
+h2{font-size:22px;margin:28px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+figure{margin:0;background:#121b15;border:1px solid #415e47;border-radius:10px;overflow:hidden}
+figure img{display:block;width:100%;aspect-ratio:1.49;object-fit:contain;background:#020402}
+figcaption{padding:10px;font-size:13px;font-weight:740}
+footer{font-size:12px;line-height:1.7;color:#a9b8aa;border-top:1px solid #3d563f;margin-top:27px;padding-top:15px}
+@media(max-width:700px){main{padding:17px 10px 29px}.metrics{grid-template-columns:1fr;gap:7px}.grid{gap:6px}.grid figcaption{font-size:11px;padding:8px}}
+</style></head><body><main>
+<header><span class="kicker">GUSTAVA ZONA 2040 · MUTANTS · BLENDER</span><span class="version">V32W · Real 3D</span></header>
+<h1>Лось V32W — смягчённые края глазниц</h1>
+<p><strong>Это следующая версия реальной 3D-модели, не концепт и не генерация картинки.</strong> После проверки видео V32U уточнил форму внутренней кромки обоих век, уменьшил её чрезмерное выступание и подразделил полигоны локальной поверхности вокруг глаз. Глазницы остаются замкнутыми, оба глазных яблока сферические и продолжают синхронно вращаться.</p>
+<div class="player"><video id="clip" controls muted autoplay loop playsinline preload="metadata" poster="images/moose-v32w-left-straight.jpg"><source src="videos/moose-v32w-both-eyes.mp4" type="video/mp4"></video><div class="labels"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div></div>
+<div class="controls"><button type="button" onclick="pose(0)">Прямо</button><button type="button" onclick="pose(1.375)">Влево</button><button type="button" onclick="restart()">▶ Воспроизвести</button><a href="videos/moose-v32w-both-eyes.mp4" target="_blank">Открыть MP4 отдельно</a></div>
+<div class="metrics"><div><small>Геометрия</small><strong>Локальное подразделение век, более плавная и менее выступающая кромка</strong></div><div><small>Топология</small><strong>427 442 вершины, 801 332 грани; новых неманифолдных или открытых рёбер не появилось</strong></div><div><small>Анимация / GLB</small><strong>Сохранены 3 клипа, оба канала вращения глаз, игровой GLB успешно проверен</strong></div></div>
+<h2>Новые ракурсы из Blender</h2>
+<div class="grid">
+<figure><a href="images/moose-v32w-left-straight.jpg" target="_blank"><img src="images/moose-v32w-left-straight.jpg" alt="V32W левый глаз прямо"></a><figcaption>Левый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32w-left-left.jpg" target="_blank"><img src="images/moose-v32w-left-left.jpg" alt="V32W левый глаз влево"></a><figcaption>Левый глаз · влево</figcaption></figure>
+<figure><a href="images/moose-v32w-right-straight.jpg" target="_blank"><img src="images/moose-v32w-right-straight.jpg" alt="V32W правый глаз прямо"></a><figcaption>Правый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32w-right-left.jpg" target="_blank"><img src="images/moose-v32w-right-left.jpg" alt="V32W правый глаз влево"></a><figcaption>Правый глаз · влево</figcaption></figure>
+</div>
+<h2>Сравнение с предыдущей V32U</h2>
+<div class="grid">
+<figure><a href="images/moose-v32u-right-straight.jpg" target="_blank"><img src="images/moose-v32u-right-straight.jpg" alt="V32U до правки"><figcaption>До · V32U</figcaption></a></figure>
+<figure><a href="images/moose-v32w-right-straight.jpg" target="_blank"><img src="images/moose-v32w-right-straight.jpg" alt="V32W после правки"><figcaption>После · V32W</figcaption></a></figure>
+</div>
+<div class="controls"><a href="moose-v32u.html" target="_blank">Предыдущая версия V32U</a></div>
+<footer><strong>Файлы на FASEA:</strong> <code>GUSTAVA_MUTANTS_3D\AI_Production\REALISTIC_MUTANTS_V2\V32W_ANATOMICAL_ORBIT_SMOOTH_RIM_QA</code>. В папке находятся редактируемый .blend, игровой .glb и контрольные рендеры. Исходная V32U не перезаписана. <strong>Статус: рабочая геометрическая итерация, ещё не AAAA-приёмка.</strong> Остаются недостаточно естественные внутренние уголки, рельеф тканей и шерсть перед левым глазом. Импорт в Unreal Engine не проверен. Это настоящие Blender-кадры, но страница не является интерактивным WebGL-просмотром.</footer>
+</main><script>const v=document.getElementById('clip');function pose(t){v.pause();v.currentTime=t}function restart(){v.currentTime=0;v.play().catch(()=>{})}</script>
+</body></html>
