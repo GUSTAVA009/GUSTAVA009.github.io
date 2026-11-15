@@ -1,0 +1,45 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GUSTAVA ZONA 2040 — Лось V32Q / глаза 4K</title>
+<meta name="description" content="Реальные Blender-рендеры лося V32Q: правый угол глазницы исправлен, левое веко сглажено, натуральные 4K капилляры склеры, анимация обоих глаз.">
+<style>:root{color-scheme:dark;background:#090c0a;color:#eff1e9;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 87% 2%,#2d3c31,#101711 40%,#080b09 83%)}
+main{max-width:1160px;margin:auto;padding:26px 18px 45px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}.kicker{color:#dcbb80;letter-spacing:1.8px;font-size:12px;font-weight:800}
+.version{border:1px solid #557e56;border-radius:30px;padding:7px 14px;font-size:12px}
+h1{font-size:clamp(28px,5vw,48px);letter-spacing:-.8px;line-height:1.1;margin:23px 0 13px}
+p{color:#adbdac;font-size:14px;line-height:1.65;max-width:970px}
+.viewer{border-radius:12px;border:1px solid #526e53;overflow:hidden;background:#030403;margin:18px 0 11px}
+video{display:block;width:100%;max-height:73vh;background:#020302}.labels{display:flex;justify-content:space-around;background:#1b291d;padding:10px;font-size:12px;font-weight:800}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.btnrow button,.links a{background:#304332;border:1px solid #617d5e;color:#f6f6ec;border-radius:8px;padding:10px 14px;font-size:12px;font-weight:750;cursor:pointer;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:25px 0}
+.stats div{background:#19251a;border:1px solid #3b553e;border-radius:10px;padding:13px}
+.stats small{color:#a7c3a5;font-size:10px;display:block;margin-bottom:9px;text-transform:uppercase;letter-spacing:.7px}
+.stats strong{font-size:13px;line-height:1.4}
+h2{margin:28px 0 12px;font-size:22px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.grid figure{margin:0;border-radius:10px;border:1px solid #3a543e;background:#111913;overflow:hidden}
+.grid img{display:block;width:100%;aspect-ratio:1.5;object-fit:contain;background:#030503}.grid figcaption{padding:10px;font-size:13px;font-weight:700}
+.links{display:flex;gap:10px;margin:22px 0;flex-wrap:wrap}
+footer{border-top:1px solid #3c573e;color:#9dad9d;font-size:12px;line-height:1.6;padding-top:18px;margin-top:29px}
+@media(max-width:700px){main{padding:17px 10px 32px}.stats{grid-template-columns:1fr;gap:7px}.grid{gap:6px}.grid figcaption{font-size:11px;padding:8px}}
+</style></head><body><main>
+<header><span class="kicker">GUSTAVA ZONA 2040 · MUTANTS · BLENDER</span><span class="version">V32Q · REAL 3D</span></header>
+<h1>Лось V32Q — исправленные глаза с капиллярами</h1>
+<p><strong>Это реальные рендеры отредактированной 3D-модели Blender, не концепт.</strong> У правого глаза убраны аномальные пики сетки возле носа, левое верхнее веко сглажено. На глазных яблоках — отдельные 4K-карты разветвлённых сосудов на склере, без красных штрихов на радужке. Оба глазных яблока остаются сферическими и синхронно вращаются внутри неподвижных глазниц.</p>
+<div class="viewer"><video id="clip" controls autoplay muted loop playsinline preload="metadata" poster="images/moose-v32q-left-straight.jpg"><source src="videos/moose-v32q-both-eyes.mp4" type="video/mp4"></video><div class="labels"><span>ЛЕВЫЙ ГЛАЗ</span><span>ПРАВЫЙ ГЛАЗ</span></div></div>
+<div class="btnrow"><button onclick="pose(0)">Прямо · кадр 1</button><button onclick="pose(1.35)">Влево · кадр 33</button><button onclick="restart()">▶ Повторить</button></div>
+<div class="stats"><div><small>Скульпт</small><strong>Правый угол: среднее отклонение проблемных вершин 6,0 → 1,0 мм. Доработаны также носовая складка и левое веко</strong></div>
+<div><small>PBR-материалы</small><strong>Две отдельные карты 4K сосудов, привязанные к UV и поворачивающиеся вместе с глазными яблоками</strong></div>
+<div><small>Анимация</small><strong>Три клипа в GLB, включая EYES_LOOK_STRAIGHT_LEFT_LOOP с двумя каналами вращения. Проверены все 60 кадров</strong></div></div>
+<h2>Оба глаза — прямо и влево</h2>
+<div class="grid">
+<figure><a href="images/moose-v32q-right-straight.jpg" target="_blank"><img src="images/moose-v32q-right-straight.jpg" alt="Правый глаз V32Q прямо"></a><figcaption>Правый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32q-right-left.jpg" target="_blank"><img src="images/moose-v32q-right-left.jpg" alt="Правый глаз V32Q влево"></a><figcaption>Правый глаз · влево</figcaption></figure>
+<figure><a href="images/moose-v32q-left-straight.jpg" target="_blank"><img src="images/moose-v32q-left-straight.jpg" alt="Левый глаз V32Q прямо"></a><figcaption>Левый глаз · прямо</figcaption></figure>
+<figure><a href="images/moose-v32q-left-left.jpg" target="_blank"><img src="images/moose-v32q-left-left.jpg" alt="Левый глаз V32Q влево"></a><figcaption>Левый глаз · влево</figcaption></figure>
+</div><h2>Морда спереди</h2>
+<div class="grid">
+<figure><a href="images/moose-v32q-face-straight.jpg" target="_blank"><img src="images/moose-v32q-face-straight.jpg" alt="Лось смотрит прямо"></a><figcaption>Морда · прямо</figcaption></figure>
+<figure><a href="images/moose-v32q-face-left.jpg" target="_blank"><img src="images/moose-v32q-face-left.jpg" alt="Лось переводит взгляд влево"></a><figcaption>Морда · взгляд влево</figcaption></figure>
+</div>
+<div class="links"><a href="videos/moose-v32q-both-eyes.mp4" target="_blank">Открыть MP4 отдельно</a><a href="moose-v32m.html" target="_blank">Сравнить со старой V32M</a></div>
+<footer><strong>Редактируемая модель и игровой GLB находятся на подключённом ПК FASEA.</strong> Папка <code>REALISTIC_MUTANTS_V2\V32Q_EYES_4K_CAPILLARIES_FINAL_REVIEW</code>. Файл glTF 2.0 экспортирован и технически проверен, содержит 3 анимационных клипа. Эта страница показывает рендеры — не интерактивный WebGL-меш. <strong>V32Q ещё не окончательный AAAA-финал:</strong> верхний край левого века и отдельные длинные пряди гривы требуют доработки; импорт в Unreal Engine не проверен. Исходная V32M сохранена для отката.</footer>
+</main><script>const v=document.getElementById('clip');function pose(t){v.pause();v.currentTime=t}function restart(){v.currentTime=0;v.play().catch(()=>{})}</script></body></html>
