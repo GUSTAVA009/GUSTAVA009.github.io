@@ -75,8 +75,11 @@ pauseBtn.onclick=()=>{
   if(audioWanted)audioBtn.textContent='🔊 Звук включён (пауза)';
  }else if(audioWanted)startAudio();
 };
+$('#speed').value='1.25';
+$('#speed').disabled=true;
+$('#speedVal').textContent='1.25× · фиксировано';
 $('#speed').oninput=e=>{
- speed=Number(e.target.value);
+ speed=1.25;
  $('#speedVal').textContent=speed.toFixed(2)+'×';
  if(audioWanted)syncAudioToAnimation(true);
 };
@@ -368,32 +371,47 @@ function tickParticles(t) {
   e.outer.instanceMatrix.needsUpdate=true;
  }
 }
-// The GLB already contains the full flip and descent (landing at ~5.9 s).
-// Add a decaying coin-like gyroscopic precession ONLY after it comes down.
-// An 18-degree tilt travels around the entire rim, then settles flat
-// before the clip seamlessly returns to its first keyframe.
+// Preserve the original V62 launch/flip/landing animation. Add articulated
+// pre-launch rocking and a brief tipping impulse, without replacing the GLB.
+// All additional motion resolves to identity at the 8-second seam.
 function updateCoinLanding(seconds){
  if(!landingRig)return;
  const t=((seconds%clipDuration)+clipDuration)%clipDuration;
- const landing=5.88,end=Math.min(7.94,clipDuration-.03);
  landingRig.quaternion.identity();
  landingRig.position.set(0,0,0);
+ const smooth=x=>{x=clamp(x,0,1);return x*x*(3-2*x);};
+ // Rock on BOTH horizontal axes (15-20 degrees), becoming more restless.
+ // Rest at t=0 for a clean seamless loop.
+ const preEnd=Math.min(2.72,clipDuration*.34);
+ if(t<preEnd){
+  const attack=smooth(t/.36);
+  const release=1-smooth((t-(preEnd-.26))/.26);
+  const amplitude=attack*release;
+  const x=THREE.MathUtils.degToRad(18)*amplitude*Math.sin(2*Math.PI*t/1.02);
+  const z=THREE.MathUtils.degToRad(16)*amplitude*Math.sin(2*Math.PI*t/1.31+.18);
+  // Abrupt final forward tipping, just before the original GLB's airborne
+  // trajectory and full flip take over. Returns to zero before hand-off.
+  const tip=THREE.MathUtils.degToRad(23)*
+    smooth((t-(preEnd-.38))/.14)*
+    (1-smooth((t-(preEnd-.15))/.15));
+  landingRig.rotation.set(x+tip,0,z,'XYZ');
+  landingRig.position.y=.011*amplitude*(Math.sin(t*11)**2);
+  return;
+ }
+ // Original GLB already launches, flips and descends. On its landing,
+ // the artifact rolls on a decaying rim-precession like a settling coin.
+ const landing=5.88,end=Math.min(7.94,clipDuration-.03);
  if(t<landing||t>=end)return;
  const elapsed=t-landing;
  const decay=Math.pow((end-t)/(end-landing),.78);
  const rise=1-Math.exp(-15*elapsed);
  const envelope=rise*decay;
  const tilt=THREE.MathUtils.degToRad(20)*envelope;
- // Rim-contact point makes a circle, reducing angular speed as it settles.
  const spin=2*Math.PI*(2.2*elapsed-.31*elapsed*elapsed);
  coinAxis.set(Math.cos(spin),0,Math.sin(spin));
  landingRig.quaternion.setFromAxisAngle(coinAxis,tilt);
  const displacement=.019*envelope;
- landingRig.position.set(
-  displacement*Math.sin(spin),
-  .030*Math.sin(tilt),
-  -displacement*Math.cos(spin)
- );
+ landingRig.position.set(displacement*Math.sin(spin),.030*Math.sin(tilt),-displacement*Math.cos(spin));
 }
 
 async function load() {
@@ -434,7 +452,7 @@ async function load() {
   mixer.setTime(0);
   updateCoinLanding(0);
   if(audioWanted&&playing)startAudio();
-  say('V63: 520 искр · анимация 1.25× · приземление монеткой · плавный звук');
+  say('V64: покачивание 18°/16° → наклон и переворот → монетка · 520 искр · звук без паузы');
   $('#counter').textContent='520 искр';
   $('#source').textContent='V62 · PBR 4K · натуральный каменный торец';
   progress.value=1;
