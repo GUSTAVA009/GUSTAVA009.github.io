@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "source": "Vesuvius_GZ173_OrganicBasaltSculpt",
+  "new_asset": "Vesuvius_GZ174_PhotobasaltRealFissures",
+  "source_sha256": "924b5809fd0e5d8be47908e0900963589e4dcfe8fa3814948129b07de812e472",
+  "new_sha256": "c8731266fd7eebcd985ec1eb5d4c801ddf2c18bbb2c1ae14cca3d0955b80586a",
+  "new_size": 97495416,
+  "parts": [
+    {
+      "name": "Vesuvius_GZ174_PhotobasaltRealFissures.part01.bin",
+      "bytes": 20000000,
+      "sha256": "b766ad713ebbfc5b5ceb1bf173ca81459e8e91924e0158a2fe4b6babc229a072"
+    },
+    {
+      "name": "Vesuvius_GZ174_PhotobasaltRealFissures.part02.bin",
+      "bytes": 20000000,
+      "sha256": "8625da163b367ac2529da330c49df72e5122e12a50de14c80f0bbbeb1e71dad9"
+    },
+    {
+      "name": "Vesuvius_GZ174_PhotobasaltRealFissures.part03.bin",
+      "bytes": 20000000,
+      "sha256": "2b7fe321945b1e0985ff531f5c614e3656d39cc23c8d1ea0ba5d11f528350515"
+    },
+    {
+      "name": "Vesuvius_GZ174_PhotobasaltRealFissures.part04.bin",
+      "bytes": 20000000,
+      "sha256": "11abe40e4973330af6e1ea2b1b87a0c280818306946651f29ef5ce18471010e7"
+    },
+    {
+      "name": "Vesuvius_GZ174_PhotobasaltRealFissures.part05.bin",
+      "bytes": 17495416,
+      "sha256": "f7f743a1fd7e4704cae0596d81638409a15905597d0671f64c2448a1a0a2ccef"
+    }
+  ],
+  "material_changed_index": 3,
+  "top_bottom_materials_preserved": true,
+  "source_uv_preserved": true,
+  "source_morph_preserved": true,
+  "source_animated_node_preserved": true,
+  "source_mesh_geometry_from_GZ173": true,
+  "cc0_source": "https://polyhaven.com/a/rock_surface",
+  "textures": {
+    "albedo4k": 1170021,
+    "normal4k": 2808023,
+    "emission4k": 225918
+  }
+}
