@@ -1,0 +1,50 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0e1012">
+<title>Везувий GZ177 — реальная 3D-модель и анимация ZONA 2040</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#111418;--fg:#e8e4de;--soft:#aeb6bd;--fire:#f69d58;--line:#393f45}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+main{max-width:1320px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:5px 0 19px;gap:12px;flex-wrap:wrap}
+a{color:#ffa96f}h1{font-size:clamp(28px,5vw,58px);margin:22px 0 5px;line-height:1.08;letter-spacing:-.03em}h1 span{color:var(--fire)}
+.intro{font-size:16px;max-width:870px;color:var(--soft)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 295px;gap:17px;margin-top:19px}
+viewer-placeholder{display:block}.frame{position:relative;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 20%,#313236,#121519 69%);border-radius:16px;overflow:hidden;min-height:540px}
+model-viewer{width:100%;height:min(72vh,760px);min-height:540px;--poster-color:transparent;--progress-bar-color:var(--fire)}
+.status{position:absolute;bottom:9px;left:12px;right:12px;pointer-events:none;background:#111820dd;border:1px solid #414b51;border-radius:9px;padding:10px 13px;color:#bfc7d0;font-size:12px}
+aside{background:#1a1f24;border:1px solid var(--line);padding:18px;border-radius:15px}button{padding:11px;border:1px solid #6b5549;border-radius:9px;color:#ffcfb1;background:#3a2921;cursor:pointer;font-weight:700}
+button:hover{background:#554031}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}label{display:block;font-size:13px;color:#bec6ce;margin:20px 0 4px}input[type=range]{accent-color:#ff9e62;width:100%}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}.stat div{border:1px solid #3c464d;padding:12px;border-radius:8px;background:#14191e}.stat b{display:block;font-size:18px;color:#ffb887}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:25px 0}.gallery a img{width:100%;border-radius:10px;border:1px solid var(--line)}.gallery small{display:block;color:var(--soft)}.notes{font-size:13px;color:var(--soft)}
+@media(max-width:860px){main{padding:12px}.layout{grid-template-columns:1fr}.frame,model-viewer{min-height:420px;height:55vh}.gallery{grid-template-columns:1fr}}
+</style></head><body><main>
+<header class="top"><strong>GUSTAVA <span style="color:#ff9d61">ZONA 2040</span> · РЕАЛЬНЫЙ АССЕТ</strong><small>GZ177 · Blender / UE5 · версия для художественной приёмки</small></header>
+<h1>ВЕЗУВИЙ <span>GZ177</span></h1>
+<p class="intro">Настоящий фотосканированный базальтовый камень с геометрическим разломом и 18-секундной анимацией «Дыхание недр». Это не картинка и не предыдущий плоский V62/GZ141. Вращай, приближай и останавливай реальную 3D-модель.</p>
+<div class="layout"><div class="frame">
+<model-viewer id="artifact" alt="Настоящий трёхмерный анимированный вулканический артефакт Везувий GZ177" src="GZ177_Vesuvius_ANIMATED_GamePreview_2K.glb" poster="hero.jpg" loading="eager" camera-controls autoplay shadow-intensity=".5" exposure="1.25" environment-image="neutral" touch-action="pan-y" interaction-prompt="auto"></model-viewer>
+<div id="status" class="status">Загрузка анимированного 3D-меша (32 МБ). Первая загрузка может занять время…</div></div>
+<aside><h2 style="margin:0 0 15px">Управление 3D</h2>
+<div class="buttons"><button id="toggle">⏸ Пауза</button><button id="restart">↻ Сначала</button><button id="front">◉ Герой</button><button id="top">↑ Сверху</button><button id="side">⇾ Сбоку</button><button id="reset">⌖ Сброс</button></div>
+<label for="timeline">Фаза движения: <b id="time">0.0 / 18.0 с</b></label><input id="timeline" type="range" min="0" max="18" value="0" step=".05">
+<label for="speed">Скорость <b id="speedval">1.00×</b></label><input id="speed" type="range" min=".5" max="1.5" value="1" step=".1">
+<div class="stat"><div><b>1.59 млн</b><small>Треугольников игровой high-poly-версии</small></div><div><b>270 тыс.</b><small>Лёгкая анимированная 3D-версия для браузера</small></div><div><b>18 сек</b><small>Парение → выброс → переворот → затухание</small></div><div><b>PBR</b><small>4K игровой исходник, 2K предпросмотр</small></div></div>
+</aside></div>
+<section class="gallery"><a href="hero.jpg"><img src="hero.jpg" alt="GZ177 реальный Blender-рендер"><small>Ракурс 3/4 — исходный фотоскан</small></a><a href="top.jpg"><img src="top.jpg" alt="GZ177 реальный рендер разлома"><small>Реальная геометрия разлома</small></a><a href="side.jpg"><img src="side.jpg" alt="GZ177 вид сбоку"><small>Неровный боковой силуэт</small></a></section>
+<p class="notes">Источник фотосканированного базальта: <a href="https://polyhaven.com/a/boulder_01">Poly Haven boulder_01 (CC0)</a>. Полноразмерный исходник 4K PBR, FBX с коллизией и LOD сохраняются отдельно в проекте FASEA. Эта страница — интерактивная художественная проверка, а не подтверждение полного тестирования в Unreal.</p>
+</main>
+<script>
+const viewer=document.querySelector('#artifact'),status=document.querySelector('#status'),time=document.querySelector('#time'),timeline=document.querySelector('#timeline'),speed=document.querySelector('#speed'),toggle=document.querySelector('#toggle');
+let paused=false,scrubbing=false;
+viewer.addEventListener('load',()=>{status.textContent='Модель GZ177 загружена. Вращай мышью или пальцем; анимация 18 с запускается автоматически.';viewer.play()});
+viewer.addEventListener('error',()=>{status.textContent='Не удалось загрузить 3D-модель. Проверь сеть и обнови страницу.'});
+viewer.addEventListener('progress',e=>{if(viewer.loaded)return;status.textContent='Загрузка GZ177: '+Math.round(100*(e.detail?.totalProgress||0))+'% · 32 МБ';});
+document.querySelector('#restart').onclick=()=>{viewer.currentTime=0;viewer.play();paused=false;toggle.textContent='⏸ Пауза'};
+toggle.onclick=()=>{paused=!paused;if(paused){viewer.pause();toggle.textContent='▶ Продолжить'}else{viewer.play();toggle.textContent='⏸ Пауза'}};
+document.querySelector('#front').onclick=()=>{viewer.cameraOrbit='42deg 72deg 1.65m';viewer.cameraTarget='0m .85m 0m'};
+document.querySelector('#top').onclick=()=>{viewer.cameraOrbit='15deg 14deg 1.55m';viewer.cameraTarget='0m .85m 0m'};
+document.querySelector('#side').onclick=()=>{viewer.cameraOrbit='90deg 92deg 1.65m';viewer.cameraTarget='0m .85m 0m'};
+document.querySelector('#reset').onclick=()=>{viewer.cameraOrbit='auto auto auto';viewer.cameraTarget='auto'};
+speed.oninput=()=>{viewer.timeScale=Number(speed.value);document.querySelector('#speedval').textContent=Number(speed.value).toFixed(2)+'×'};
+timeline.onpointerdown=()=>{scrubbing=true};timeline.onpointerup=()=>{scrubbing=false};
+timeline.oninput=()=>{viewer.currentTime=Number(timeline.value)};
+setInterval(()=>{if(!viewer.loaded||scrubbing)return;const t=viewer.currentTime||0;time.textContent=t.toFixed(1)+' / 18.0 с';timeline.value=t%18;},125);
+</script></body></html>
