@@ -1,0 +1,13 @@
+{
+  "artifact": "Vesuvius GZ186",
+  "game": "GUSTAVA ZONA 2040",
+  "format": "animated glTF 2.0 GLB",
+  "preview_resolution": "2K textures",
+  "full_game_mesh": "gustava: GZ186_Vesuvius_HERO_NANITE_PBR4K.fbx",
+  "source": "CC0 Lava002 ambientCG (4K physical PBR materials)",
+  "animation": "GZ172 Breath of Earth 18 seconds",
+  "preview_triangles": 442368,
+  "full_mesh_triangles": 2457600,
+  "status": "artist review (not certified AAA)",
+  "material_source": "https://ambientcg.com/view?id=Lava002"
+}
